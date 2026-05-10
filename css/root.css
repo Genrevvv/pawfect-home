@@ -1,9 +1,10 @@
 :root {
+    --light-color: #f0f0f0;
+
     --light-gray: #ccc;
     --gray: #aaa;
     --dark-gray: #333;
-
-    --light-color: #f0f0f0;
+    --black: #000;
 }
 
 html, body {
