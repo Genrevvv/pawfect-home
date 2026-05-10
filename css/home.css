@@ -1,0 +1,13 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+#hero-img {
+    display: flex;
+    justify-content: center;
+}
+
+#hero-img img {
+    width: 70svw;
+}
