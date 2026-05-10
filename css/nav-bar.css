@@ -1,8 +1,13 @@
 #nav-bar {
-    background-color: blue;
+    width: 70%;
+    background-color: var(--gray);
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin: 0 auto;
+    padding-bottom: 1rem;
+    border-radius: 3rem;
 
     position: sticky;
     top: 13svh;
@@ -11,11 +16,15 @@
 #search-bar {
     width: 50%;
     display: flex;
-    background-color: orange;
+    /* background-color: orange; */
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
     top: -3svh;
+}
+
+#search-bar button {
+    cursor: pointer;
 }
 
 #search {
@@ -28,8 +37,13 @@
 }
 
 #nav-options .nav-option {
-    background-color: green;
+    background-color: var(--light-gray);
     margin: 0 1rem;
     padding: 3rem 2.5rem;
     border-radius: 1rem;
+}
+
+#nav-options .nav-option:hover {
+    background-color: var(--light-color);
+    cursor: pointer;
 }

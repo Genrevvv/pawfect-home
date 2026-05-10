@@ -1,5 +1,9 @@
 :root {
     --light-gray: #ccc;
+    --gray: #aaa;
+    --dark-gray: #333;
+
+    --light-color: #f0f0f0;
 }
 
 html, body {

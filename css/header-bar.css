@@ -4,7 +4,7 @@ header {
 }
 
 #header-bar {
-    background-color: #bdbdbd;
+    background-color: var(--gray);
     height: 13svh;
     display: flex;
     justify-content: space-between;
@@ -31,9 +31,9 @@ header {
 }
 
 #auth-btn {
-    background-color: #353535;
+    background-color: var(--dark-gray);
     font-weight: bold;
-    color: #f0f0f0;
+    color: var(--light-color);
     padding: 1rem;
     border-radius: 0.7rem;
 }
