@@ -47,3 +47,7 @@
     background-color: var(--light-color);
     cursor: pointer;
 }
+
+#nav-options .active-option {
+    background-color: var(--light-color);
+}
