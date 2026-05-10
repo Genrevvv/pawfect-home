@@ -1,0 +1,75 @@
+/* CSS for login and register */
+body {
+    min-height: 90vh;
+
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    width: 100%;
+    max-width: 400px;
+    height: 40%;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--light-gray);
+    border-radius: 16px;
+
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+#form-container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#form-container h1 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+}
+
+#form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 0.7rem;
+}
+
+#form div span {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+#form div input {
+    padding: 0.8rem 0.4rem;
+    border-radius: 1rem;
+}
+
+#submit button {
+    width: 70%;
+    margin: auto auto;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+#submit button:hover {
+    background-color: #bdbdbd;
+    cursor: pointer;
+}
