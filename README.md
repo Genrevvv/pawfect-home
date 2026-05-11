@@ -4,20 +4,20 @@ Website ata
 ### Features (Checklist):
 1. Login and Logout
     - Login ✅
-    - Logout
+    - Logout ✅
 2. Account Management System
    - Register ✅
    - Delete account
 3. Home page
-   - General infomation
+   - General information
    - Featured pets
 4. Admin dashboard
 5. Shopping
     - Checkout
     - Order log
-6. Adaption section
-    - Adaption form
-    - Applicaiton tracker
+6. Adoption section
+    - Adoption form
+    - Application tracker
 7. Featured pets
 8. Promotions
 9. Announcements
