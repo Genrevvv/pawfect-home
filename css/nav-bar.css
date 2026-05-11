@@ -48,6 +48,6 @@
     cursor: pointer;
 }
 
-#nav-options .active-option {
+#nav-options .highlighted {
     background-color: var(--light-color);
 }

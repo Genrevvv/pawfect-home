@@ -13,13 +13,17 @@ main {
 }
 
 #content {
-    height: 100px; /* temp */
+    height: 400px; /* temp */
     width: 70%;
+
     background-color: gray;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     margin: 0 auto;
     margin-top: 1rem;
+
+    border-radius: 2rem;
 }
