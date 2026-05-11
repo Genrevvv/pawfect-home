@@ -31,6 +31,8 @@ form.addEventListener('submit', (e) => {
                 }
 
                 sessionStorage.setItem('username', data['username']);
+                sessionStorage.setItem('user_type', data['user_type']);
+
                 window.location.href = '/';
             });
     }

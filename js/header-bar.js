@@ -1,4 +1,17 @@
+const headerOptions = document.getElementById('header-options');
 const authBtn = document.getElementById('auth-btn');
+
+console.log(sessionStorage.getItem('user_type'));
+if (sessionStorage.getItem('user_type') === 'admin') {
+    console.log("You are an admin");
+
+    const adminPage = document.createElement('div');
+    adminPage.id = 'admin-page';
+    adminPage.innerText = 'Admin Page';
+    adminPage.onclick = () => { window.location.href = '/admin-page' }
+
+    headerOptions.prepend(adminPage);
+}
 
 if (sessionStorage.getItem('username')) {
     authBtn.innerText = 'LOG OUT';
@@ -17,7 +30,7 @@ function logOut() {
         .then(res => res.json())
         .then(data => {
             if (data['success']) {
-                sessionStorage.removeItem('username');
+                sessionStorage.clear();
                 window.location.href = '/'
             }
         });

@@ -21,7 +21,6 @@
             }
         }
 
-
         public function get_user($username) {
             $stmt = $this->db->prepare('SELECT * FROM users WHERE username = :username');
             $stmt->execute(['username' => $username]);
@@ -65,8 +64,8 @@
             }
             
             $stmt = $this->db->prepare('
-                INSERT INTO users (username, password)
-                VALUES (:username, :password)'
+                INSERT INTO users (username, password, user_type)
+                VALUES (:username, :password, "user")'
             );
 
             return $stmt->execute([

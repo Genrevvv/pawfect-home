@@ -34,7 +34,7 @@ header {
     font-size: 1.5rem;
 }
 
-#auth-btn {
+#auth-btn, #admin-page {
     background-color: var(--black);
     font-weight: bold;
     text-decoration: none;
@@ -43,7 +43,7 @@ header {
     border-radius: 0.7rem;
 }
 
-#auth-btn:hover {
+#auth-btn:hover, #admin-page:hover {
     background-color: var(--dark-gray);
     cursor: pointer;
 }

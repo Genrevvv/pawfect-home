@@ -10,13 +10,6 @@
 
     // Path redirection
     $router->add('/', function () {
-        // if (isset($_SESSION['username']) && isset($_SESSION['user_id'])) {
-        //     header('Location: index.html');
-        // }
-        // else {
-        //     header('Location: /html/login.html');
-        // }
-
         header('Location: index.html');
     });
 
@@ -37,18 +30,21 @@
             exit();
         }
 
-        $user_id = $db->get_user_id($data['username']);
-        $user_id = $user_id['id'];
+        $result = $db->get_user($data['username']);
 
-        $_SESSION['username'] = $data['username'];
-        $_SESSION['user_id'] = $user_id;
+        $_SESSION['username'] = $result['username'];
+        $_SESSION['user_id'] = $result['id'];
+        $_SESSION['user_type'] = $result['user_type'];
         
-        echo json_encode(['success' => true, 'username' => $data['username']]);
+        echo json_encode([
+            'success' => true,
+            'username' => $data['username'],
+            'user_type' => $result['user_type']
+        ]);
     });
 
     $router->add('/user-logout', function () {
-        unset($_SESSION['username']);
-        unset($_SESSION['user_id']);
+        session_unset();
 
         echo json_encode(['success' => true, 'message' => 'logout successful']);
     });
@@ -69,6 +65,10 @@
         }
 
         echo json_encode(['success' => true]);
+    });
+
+    $router->add('/admin-page', function () {
+        header('Location: /html/admin-page.html');
     });
 
     $router->dispatch($path);
