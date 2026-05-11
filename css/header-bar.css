@@ -35,9 +35,15 @@ header {
 }
 
 #auth-btn {
-    background-color: var(--dark-gray);
+    background-color: var(--black);
     font-weight: bold;
+    text-decoration: none;
     color: var(--light-color);
     padding: 1rem;
     border-radius: 0.7rem;
+}
+
+#auth-btn:hover {
+    background-color: var(--dark-gray);
+    cursor: pointer;
 }

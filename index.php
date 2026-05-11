@@ -10,12 +10,14 @@
 
     // Path redirection
     $router->add('/', function () {
-        if (isset($_SESSION['username']) && isset($_SESSION['user_id'])) {
-            header('Location: index.html');
-        }
-        else {
-            header('Location: /html/login.html');
-        }
+        // if (isset($_SESSION['username']) && isset($_SESSION['user_id'])) {
+        //     header('Location: index.html');
+        // }
+        // else {
+        //     header('Location: /html/login.html');
+        // }
+
+        header('Location: index.html');
     });
 
     $router->add('/login', function () {
@@ -42,6 +44,13 @@
         $_SESSION['user_id'] = $user_id;
         
         echo json_encode(['success' => true, 'username' => $data['username']]);
+    });
+
+    $router->add('/user-logout', function () {
+        unset($_SESSION['username']);
+        unset($_SESSION['user_id']);
+
+        echo json_encode(['success' => true, 'message' => 'logout successful']);
     });
 
     $router->add('/user-register', function () use ($db) {
