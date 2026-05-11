@@ -4,6 +4,7 @@ const container = document.getElementById('container');
 
 const dashboard = document.getElementById('dashboard');
 const products = document.getElementById('products');
+const adoptions = document.getElementById('adoptions');
 
 dashboard.onclick = () => {
     highlightOption('dashboard');
@@ -12,7 +13,12 @@ dashboard.onclick = () => {
 
 products.onclick = () => {
     highlightOption('products');
-    updateContent('html/products.html');
+    updateContent('html/product-management.html');
+}
+
+adoptions.onclick = () => {
+    highlightOption('adoptions');
+    updateContent('html/adoption-management.html');
 }
 
 function updateContent(htmlFilePath) {
@@ -24,7 +30,7 @@ function updateContent(htmlFilePath) {
 }
 
 function highlightOption(option) {
-    const options = [dashboard, products];
+    const options = [dashboard, products, adoptions];
 
     switch (option) {
         case 'dashboard':
@@ -32,6 +38,9 @@ function highlightOption(option) {
             break;
         case 'products':
             options.forEach(optionElement => setupColor('products', optionElement));
+            break;
+        case 'adoptions':
+            options.forEach(optionElement => setupColor('adoptions', optionElement));
             break;
         dafault:
             console.log('Option not found');
@@ -43,10 +52,10 @@ function highlightOption(option) {
             return;
         }
 
-        if (optionElement.classList.contains('highlighted')) {
-            optionElement.classList.remove('highlighted');
-            return;
-        }
+        // if (optionElement.classList.contains('highlighted')) {
+        //     optionElement.classList.remove('highlighted');
+        //     return;
+        // }
 
         optionElement.classList.add('highlighted');
     }

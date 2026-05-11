@@ -1,3 +1,5 @@
+window.history.pushState(null, "", "/");
+
 const content = document.getElementById('content');
 
 const adoptPet = document.getElementById('adopt-pet');
