@@ -64,3 +64,33 @@ main {
     
     padding: 1rem;
 }
+
+#log-container {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+}
+
+#order-log {
+    width: 100%;
+    border-radius: 1rem;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+}
+
+#order-log tr:nth-child(odd) {
+    background-color: #bbb;
+}
+
+#order-log tr td, #order-log tr th {
+    padding: 0.5rem;
+}
+
+#top-products {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+}

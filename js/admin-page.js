@@ -61,4 +61,4 @@ function highlightOption(option) {
     }
 }
 
-dashboard.click();
+products.click();
