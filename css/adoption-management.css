@@ -8,7 +8,7 @@
 #adoption-log {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 10px;
+    border-spacing: 0 0.5rem;
     /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
 }
 
@@ -19,7 +19,7 @@
 
 #adoption-log td,
 #adoption-log th {
-    padding: 15px 20px;
+    padding: 0.7rem 1.3rem;
     border: none;
     background-clip: padding-box;
 }
@@ -30,14 +30,14 @@
 
 #adoption-log tr th:first-child,
 #adoption-log tr td:first-child  {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
 }
 
 #adoption-log tr th:last-child,
 #adoption-log tr td:last-child {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 .contact-info {
