@@ -61,4 +61,4 @@ function highlightOption(option) {
     }
 }
 
-products.click();
+adoptions.click();

@@ -4,25 +4,6 @@ main {
     flex-direction: column;
 }
 
-#dashboard {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-#dashboard .overview-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-#overview-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
 #nav-bar {
     background-color: #ccc !important;    
     width: auto;
@@ -60,9 +41,6 @@ main {
 #container {
     display: flex;
     justify-content: center;
-    flex: 1;
-    
-    padding: 1rem;
 }
 
 #log-container {
@@ -76,8 +54,8 @@ main {
     width: 100%;
     border-radius: 1rem;
     border-collapse: collapse;
-    overflow: hidden;
     box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 #order-log tr:nth-child(odd) {

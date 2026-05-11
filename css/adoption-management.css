@@ -1,0 +1,47 @@
+#adoption-management-container {
+    background-color: #fff;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#adoption-log {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+}
+
+#adoption-log tr:first-child {
+    background-color: gray;
+    color: white;
+}
+
+#adoption-log td,
+#adoption-log th {
+    padding: 15px 20px;
+    border: none;
+    background-clip: padding-box;
+}
+
+#adoption-log tr:not(:first-child) td {
+    background-color: rgba(255, 238, 227, 0.93);
+}
+
+#adoption-log tr th:first-child,
+#adoption-log tr td:first-child  {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+#adoption-log tr th:last-child,
+#adoption-log tr td:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
