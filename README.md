@@ -11,7 +11,17 @@ Website ata
 3. Home page
    - General information
    - Featured pets
+   - navigation
+       - adopt a pet
+       - pet houses
+       - pet gadgets
+       - pet foods
 4. Admin dashboard
+    - dashboard
+          - order log
+    - Products
+          - Add products
+          - Edit products
 5. Shopping
     - Checkout
     - Order log
