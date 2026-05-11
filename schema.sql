@@ -9,3 +9,10 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     user_type VARCHAR(20) CHECK (user_type IN ('user', 'admin'))
 );
+
+CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100) NOT NULL,
+    stock INT NOT NULL,
+    price DOUBLE(10, 2) NOT NULL
+);

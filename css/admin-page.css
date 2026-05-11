@@ -1,0 +1,48 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-bar {
+    background-color: var(--gray);
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    border: 1px solid var(--black);
+}
+
+#nav-bar:hover div {
+    background-color: var(--gray) !important;
+    cursor: pointer;
+}
+
+#nav-bar div {
+    padding: 0.7rem 1rem;
+    border-radius: 1rem;
+    transition: 0.3s;
+}
+
+#nav-bar div:hover {
+    background-color: var(--light-gray) !important;
+}
+
+#nav-bar div.highlighted {
+    background-color: var(--light-gray);
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    
+    padding: 1rem;
+}
+
+#container .content {
+    display: flex;
+    justify-content: center;
+}
