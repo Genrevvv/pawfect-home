@@ -1,15 +1,17 @@
 header {
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 #header-bar {
-    background-color: var(--gray);
+    background-color: var(--pale-cream);
     height: 13svh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    box-shadow: 0 2px 8px rgba(196, 155, 102, 0.5);
 }
 
 #header-options {
@@ -31,19 +33,36 @@ header {
 }
 
 #header-options ul li i {
+    color: var(--dark-charcoal);
     font-size: 1.5rem;
 }
 
+#header-options ul li i:hover {
+    color: var(--deep-bronze);
+    cursor: pointer;
+}
+
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-charcoal);
+    text-decoration: none;
+}
+
+#logo:hover {
+    color: var(--deep-bronze);
+}
+
 #auth-btn, #admin-page {
-    background-color: var(--black);
+    background-color: var(--warm-honey);
     font-weight: bold;
     text-decoration: none;
-    color: var(--light-color);
+    color: var(--white);
     padding: 1rem;
     border-radius: 0.7rem;
 }
 
 #auth-btn:hover, #admin-page:hover {
-    background-color: var(--dark-gray);
+    background-color: var(--sandy-tan);
     cursor: pointer;
 }

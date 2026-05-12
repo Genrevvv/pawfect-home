@@ -1,0 +1,140 @@
+#content {
+    /* height: 400px; temp */
+
+    /* background-color: gray; */
+    display: flex;
+    flex-direction: column;
+
+
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+#description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+#description h2 {
+    margin: 0;
+    padding: 0;
+}
+
+#description p {
+    width: 70%;
+    text-align: center;
+}
+
+#featured h2 {
+    text-align: center;
+}
+
+#featured-dogs {
+    background-color: var(--warm-honey);
+}
+
+#featured-cats {
+    background-color: var(--pale-cream);
+}
+
+#featured-pet-accessories {
+    background-color: var(--warm-honey);
+}
+
+#view-all-dogs,
+#view-all-cats,
+#view-all-items {
+    background-color: var(--tan-ocher);
+    width: 10rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+    margin-top: 0.5rem;
+
+    color: var(--cream);
+    border-radius: 1rem;
+    border: 0.2rem solid var(--deep-bronze);
+}
+
+.featured-container {
+    /* height: 10rem; */
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.featured-container .inner-container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin: 0 auto;
+    gap: 0.5rem;
+}
+
+.featured-dog {
+    background-color: var(--pale-cream);
+    display: flex;
+    flex-direction: column;    
+    /* padding: 0.5rem; */
+    border-radius: 1rem;
+    border: 0.2rem solid var(--deep-bronze);
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-dog img {
+    max-width: 100%;
+    height: 45%;
+    display: block;
+    object-fit: cover;    
+    margin-bottom: 0.5rem;
+}
+
+.featured-dog .details {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding:  0.1rem 0.5rem;
+}
+
+.featured-dog .fa-heart {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--soft-red);  
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;  
+}
+
+.featured-dog .pet-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.featured-dog .pet-description {
+    font-size: small;
+}
+
+.featured-dog .pet-gender {
+    background-color: var(--soft-blue);
+    font-size: 1.5rem;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    transform: translateY(-1.5rem);
+}

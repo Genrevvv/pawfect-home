@@ -6,12 +6,29 @@
     --dark-gray: #333;
     --black: #000;
 
+    /* for homepage */
+    --pale-cream: #f9f3ea;
+    --ivory-eggshell: #fffbf2;
+    --light-almond: #f4e8d8;
+    --sandy-tan: #cc9e61;
+    --warm-honey: #d8b486;
+
+    /* for auth */
     --cream: #faf4ea;
     --sandy-brown: #c49b66;
     --deep-bronze: #8c6239;
     --white: #ffffff;
     --dark-charcoal: #3e3225;
     --muted-ocher: #b08c5d;
+
+    --light-tan: #f2e6d7;
+    --tan-ocher: #c4a478;
+    --dark-tan: #b08c5d;
+    --off-white: #efe5d6;
+    --muted-bronze: #d1b99a;
+
+    --soft-red: rgb(223, 157, 157);
+    --soft-blue: rgb(147, 147, 214);
 }
 
 html, body {
@@ -25,7 +42,7 @@ html, body {
 main {
     display: flex;
 
-    min-height: 400vh; /*temporary for testing */
+    /* min-height: 400vh; temporary for testing */
     width: 100%;
     height: 100%;
 }

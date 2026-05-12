@@ -1,4 +1,5 @@
 main {
+    background-color: var(--ivory-eggshell);
     display: flex;
     flex-direction: column;
 }
@@ -44,26 +45,11 @@ main {
 }
 
 #hero-img {
+    background-color: var(--white);
     display: flex;
     justify-content: center;
 }
 
 #hero-img img {
     width: 70svw;
-}
-
-#content {
-    height: 400px; /* temp */
-    width: 70%;
-
-    background-color: gray;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    margin: 0 auto;
-    margin-top: 1rem;
-
-    border-radius: 2rem;
 }

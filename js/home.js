@@ -69,5 +69,3 @@ function highlightOption(option) {
         optionElement.classList.add('highlighted');
     }
 }
-
-adoptPet.click();
