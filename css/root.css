@@ -5,6 +5,13 @@
     --gray: #aaa;
     --dark-gray: #333;
     --black: #000;
+
+    --cream: #faf4ea;
+    --sandy-brown: #c49b66;
+    --deep-bronze: #8c6239;
+    --white: #ffffff;
+    --dark-charcoal: #3e3225;
+    --muted-ocher: #b08c5d;
 }
 
 html, body {

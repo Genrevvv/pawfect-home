@@ -1,26 +1,15 @@
-/* CSS for login and register */
-body {
-    min-height: 90vh;
-
-    /* background-color: blue; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #container {
     width: 100%;
     max-width: 400px;
-    height: 40%;
 
     display: flex;
     justify-content: center;
 
-    background-color: var(--light-gray);
-    border-radius: 16px;
+    background-color: var(--cream);
+    border-radius: 2rem;
 
     padding: 1rem;
-    border: 1px solid black;
+    border: 1px solid var(--dark-charcoal);
 }
 
 #form-container {
@@ -32,10 +21,22 @@ body {
 }
 
 #form-container h1 {
+    color: var(--deep-bronze);
     text-align: center;
     margin: 0;
     margin-bottom: 1rem;
     padding: 0.5rem 0;
+}
+
+#form-container a {
+    font-weight: bold;
+    color: var(--muted-ocher);
+    text-decoration: underline;
+}
+
+#form-container a:hover {
+    color: var(--deep-bronze);
+    cursor: pointer;
 }
 
 #form {
@@ -58,18 +59,23 @@ body {
 
 #form div input {
     padding: 0.8rem 0.4rem;
-    border-radius: 1rem;
+    border: 1px solid var(--dark-charcoal);
+    border-radius: 2rem;
 }
 
 #submit button {
-    width: 70%;
+    background-color: var(--sandy-brown);
+    width: 100%;
     margin: auto auto;
     padding: 0.8rem;
-    border-radius: 1rem;
+    border: none;
+    border-radius: 2rem;
     cursor: pointer;
 }
 
 #submit button:hover {
-    background-color: #bdbdbd;
+    background-color: var(--deep-bronze);
+    color: var(--white);
     cursor: pointer;
+    transition: 0.3s;
 }

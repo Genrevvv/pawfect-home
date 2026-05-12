@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="/assets/fontawsome/css/all.min.css">
     <link rel="stylesheet" href="/assets/fontawsome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/css/auth.css">
     <link rel="stylesheet" href="/css/header-bar.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/nav-bar.css">
@@ -24,12 +25,14 @@
                         <i class="fa-solid fa-cart-shopping"></i>
                     </li>
                 </ul>
-                <div id="auth-btn">SIGN-IN / REGISTER</div>
+                <div id="auth-btn">LOGIN / REGISTER</div>
             </div>
         </nav>
     </header>
 
     <main>
+        <div id="message-overlay"></div>
+        <div id="overlay-container"></div>
         <div id="hero-img">
             <img src="/assets/images/catsndogs-header.png" alt="">
         </div>
@@ -59,7 +62,9 @@
 
     </main>
 
-    <script src="/js/header-bar.js"></script>
-    <script src="/js/content.js"></script>
-</body>
+    <script src="/js/header-bar.js" type="module"></script>
+    <script src="/js/home.js"></script>
+    <script src="/js/login.js" type="module"></script>
+    <script src="/js/register.js" type="module"></script>
+</body> 
 </html>

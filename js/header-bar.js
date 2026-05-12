@@ -1,5 +1,18 @@
-const headerOptions = document.getElementById('header-options');
+import { loginScript } from "./login.js";
+
 const authBtn = document.getElementById('auth-btn');
+const headerOptions = document.getElementById('header-options');
+const overlayContainer = document.getElementById('overlay-container');
+
+overlayContainer.onclick = (e) => {
+    if (e.target != overlayContainer) {
+        return;
+    }
+    
+    overlayContainer.innerHTML = '';
+    overlayContainer.style.visibility = 'hidden';
+    document.body.style.overflowY = 'visible';
+}
 
 console.log(sessionStorage.getItem('user_type'));
 if (sessionStorage.getItem('user_type') === 'admin') {
@@ -21,11 +34,19 @@ else {
     authBtn.onclick = logIn;
 }
 
-function logIn() {
-    window.location.href = '/login';
+export function logIn() {
+    overlayContainer.style.visibility = 'visible';
+    document.body.style.overflowY = 'hidden';
+
+    fetch('html/login.html')
+        .then(res => res.text())
+        .then(html => {
+            overlayContainer.innerHTML = html;
+            loginScript();
+        })
 }
 
-function logOut() {
+export function logOut() {
     fetch('/user-logout')
         .then(res => res.json())
         .then(data => {

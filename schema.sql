@@ -1,7 +1,7 @@
 DROP DATABASE pawfect_home;
 
 CREATE DATABASE IF NOT EXISTS pawfect_home;
-USE socialMD;
+USE pawfect_home;
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
