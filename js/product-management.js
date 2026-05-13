@@ -170,7 +170,7 @@ export function productManagementScript() {
                 document.body.style.overflowY = 'visible';
 
                 productRow.querySelector('.product_name').innerText = updatedProductData['product_name'];
-                productRow.querySelector('.price').innerText = updatedProductData['price'];
+                productRow.querySelector('.price').innerText = `₱${updatedProductData['price']}`;
                 productRow.querySelector('.stock').innerText = updatedProductData['stock'];
                 productRow.querySelector('.status').innerText = updatedProductData['stock'] > 0 ? 'In Stock' : 'No Stock';
             });
