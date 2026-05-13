@@ -110,6 +110,10 @@
         echo json_encode(['success' => true, 'product_data' => $product_data]);
     });
 
+    $router->add('/get-products', function () use ($db) {
+        echo json_encode(['products' => $db->get_products()]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

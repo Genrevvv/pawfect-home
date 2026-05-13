@@ -9,6 +9,8 @@ export function productManagementScript() {
     const addProduct = document.getElementById('add-product');
     let imageFile = null;
 
+    loadProducts();
+
     uploadImageArea.onclick = () => {
         const input = document.createElement('input');
             input.type = 'file';
@@ -56,7 +58,6 @@ export function productManagementScript() {
                 console.log(data);
 
                 if (data['error'] === null) {
-                    console.log('dwadwdadadw');
                     displayMessage(data['error']);
                     return;
                 }
@@ -66,16 +67,33 @@ export function productManagementScript() {
             });
     }
 
+    function loadProducts() {
+        fetch('/get-products')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data['products'] === null) {
+                    console.log('hell nah');
+                    return;
+                }
+
+                for (let i = 0; i < data['products'].length; i++) {
+                    addProductElement(data['products'][i]);
+                }
+            });
+    }
+
     function addProductElement(productData) {
         console.log('add prod element');
 
-        const status = productData['quantity'] > 0 ? 'In Stock' : 'No Stock';
+        const status = productData['stock'] > 0 ? 'In Stock' : 'No Stock';
 
         const productLog = document.getElementById('product-log');
         const newProductRow = document.createElement('tr');
         newProductRow.innerHTML = `<td>${productData['product_name']}</td>
                                     <td>₱${productData['price']}</td>
-                                    <td>${productData['quantity']}</td>
+                                    <td>${productData['stock']}</td>
                                     <td>${status}</td>
                                     <td>
                                         <i class="fa-regular fa-pen-to-square"></i>

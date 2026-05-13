@@ -74,6 +74,13 @@
             ]);
         }
 
+        public function get_products() {
+            $stmt = $this->db->prepare('SELECT * FROM products');
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function add_product($product_data) {
             $stmt = $this->db->prepare('INSERT INTO products VALUES (null, :product_name, :category, :price, :stock, :image)');
             $stmt->execute([
