@@ -18,10 +18,11 @@ Website ata
        - pet foods
 4. Admin dashboard
     - dashboard
-          - order log
-    - Products
-          - Add products
-          - Edit products
+      - order log
+    - Products (Note: add input validation later)
+      - Add products ✅
+      - Delete products ✅
+      - Edit products ✅
 5. Shopping
     - Checkout
     - Order log
