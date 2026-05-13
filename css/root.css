@@ -57,3 +57,43 @@ main {
     font-size: 1rem;
     margin: 0 0 0.5rem 0;
 }
+
+#message-overlay {
+    background-color: var(--soft-orange);
+
+    min-width: 20%;
+    height: 3rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-weight: bold;
+    color: white;
+
+    z-index: 200;
+
+    padding: 0 1rem;
+    border-radius: 1rem;
+    position: sticky;
+    top: 20%;
+    margin: 0 auto;
+
+    visibility: hidden;
+}
+
+#overlay-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(102, 102, 102, 0.7);
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+
+    visibility: hidden;
+}

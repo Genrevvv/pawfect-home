@@ -71,6 +71,45 @@
         header('Location: /html/admin-page.html');
     });
 
+    $router->add('/add-product', function () use ($db) {
+        $file = $_FILES['image'];
+
+        $uploadDir = 'uploads/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        if ($file["error"] !== 0) {
+            echo json_encode(['error' => 'File upload was unsuccessful']);
+            exit();
+        }
+
+        $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $fileName = uniqid('prod_', true) . '.' . $extension;
+        $path = $uploadDir . $fileName;
+
+        if (!move_uploaded_file($file['tmp_name'], $path)) {
+            echo json_encode(['error' => 'File save was unsucessful']);
+            exit();
+        }
+
+        $product_data = [
+            'product_name' => $_POST['product_name'],
+            'category' => $_POST['category'],
+            'price' => $_POST['price'],
+            'stock' => $_POST['stock'],
+            'image' => $path
+        ];
+
+        $result = $db->add_product($product_data);
+        if ($result['changes'] == 0) {
+            echo json_encode(['error' => 'Unable to add a product']);
+            exit();
+        }
+
+        echo json_encode(['success' => true, 'product_data' => $product_data]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

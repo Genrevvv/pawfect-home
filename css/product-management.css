@@ -66,6 +66,36 @@
     border: 1px dashed #000;
 
     margin: 0.5rem auto 0 auto;
+
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+}
+
+#upload-image-area:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#upload-image-area:hover .holds-image {
+    visibility: visible;
+}
+
+#remove-image {
+    background-color: var(--soft-red);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 0.2rem 0.3rem;
+    border-radius: 50%;
+    border: 1px solid var(--dark-charcoal);
+
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+
+    visibility: hidden;
 }
 
 #add-product {

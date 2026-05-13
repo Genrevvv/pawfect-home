@@ -11,7 +11,7 @@
             <div class="container-1">
                 <div class="input-container">
                     <span>Product name</span>
-                    <input type="text">
+                    <input id="product-name" name="product-name" type="text">
                  </div>
                 <div class="input-container">
                     <span>Category</span>
@@ -26,11 +26,11 @@
             <div class="container-2">
                 <div class="input-container">
                     <span>Price</span>
-                    <input type="text">
+                    <input id="price" name="price" type="number">
                  </div>
                 <div class="input-container">
                     <span>Stock Quantity</span>
-                    <input type="number">
+                    <input id="stock" name="stock-quantity" type="number">
                 </div>
             </div>
 
@@ -38,16 +38,17 @@
                 <span>Upload Image</span>
                 <div id="upload-image-area">
                     <span>Upload Image</span>
+                    <i id="remove-image" class="fa-solid fa-x"></i>
                 </div>
             </div>
 
-            <button id="add-product" type="submit">Add Product</button>
+            <button id="add-product">Add Product</button>
         </div>
 
         <div id="product-list">
             <h2 class="label">Product List Table</h2>
             <!-- temp, remove later -->
-            <table id="order-log">
+            <table id="product-log">
                 <tr>
                     <th>Product Name</th>
                     <th>Price</th>
@@ -56,7 +57,7 @@
                     <th>Actions</th>
                 </tr>
                 <tr>
-                    <td>KRM-250</td>
+                    <td>KRM-262</td>
                     <td>₱67</td>
                     <td>3</td>
                     <td>In Stock</td>

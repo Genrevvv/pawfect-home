@@ -50,7 +50,8 @@ main {
     box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
 }
 
-#order-log {
+#order-log,
+#product-log {
     width: 100%;
     border-radius: 1rem;
     border-collapse: collapse;
@@ -58,11 +59,11 @@ main {
     overflow: hidden;
 }
 
-#order-log tr:nth-child(odd) {
+ tr:nth-child(odd) {
     background-color: #bbb;
 }
 
-#order-log tr td, #order-log tr th {
+tr td, tr th {
     padding: 0.5rem;
 }
 

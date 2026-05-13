@@ -1,3 +1,5 @@
+import { productManagementScript } from "./product-management.js";
+
 window.history.pushState(null, "", "/admin-page");
 
 const container = document.getElementById('container');
@@ -6,27 +8,26 @@ const dashboard = document.getElementById('dashboard');
 const products = document.getElementById('products');
 const adoptions = document.getElementById('adoptions');
 
-dashboard.onclick = () => {
+dashboard.onclick = async () => {
     highlightOption('dashboard');
     updateContent('html/dashboard.html');
 }
 
-products.onclick = () => {
+products.onclick = async () => {
     highlightOption('products');
-    updateContent('html/product-management.html');
+    await updateContent('html/product-management.html');
+    productManagementScript();
 }
 
-adoptions.onclick = () => {
+adoptions.onclick = async () => {
     highlightOption('adoptions');
     updateContent('html/adoption-management.html');
 }
 
-function updateContent(htmlFilePath) {
-    fetch(htmlFilePath)
-        .then(res => res.text())
-        .then(html => {
-            container.innerHTML = html;
-        });
+async function updateContent(htmlFilePath) {
+    const res = await fetch(htmlFilePath);
+    const html = await res.text();
+    container.innerHTML = html;
 }
 
 function highlightOption(option) {
@@ -61,4 +62,4 @@ function highlightOption(option) {
     }
 }
 
-dashboard.click();
+products.click();

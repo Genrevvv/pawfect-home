@@ -73,6 +73,23 @@
                 'password' => password_hash($password, PASSWORD_DEFAULT),
             ]);
         }
+
+        public function add_product($product_data) {
+            $stmt = $this->db->prepare('INSERT INTO products VALUES (null, :product_name, :category, :price, :stock, :image)');
+            $stmt->execute([
+                'product_name' => $product_data['product_name'],
+                'category' => $product_data['category'],
+                'price' => $product_data['price'],
+                'stock' => $product_data['stock'],
+                'image' => $product_data['image']
+            ]);
+
+            if ($stmt->rowCount() == 0) {
+                return ['changes' => 0];
+            }
+
+            return ['changes' => $stmt->rowCount()];
+        }
     }
 
 ?>
