@@ -43,7 +43,7 @@ html, body {
 main {
     display: flex;
 
-    /* min-height: 400vh; temporary for testing */
+    min-height: 100vh;
     width: 100%;
     height: 100%;
 }

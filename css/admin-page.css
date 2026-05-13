@@ -1,11 +1,11 @@
 main {
-    background-color: #efefef;
+    background-color: var(--cream);
     display: flex;
     flex-direction: column;
 }
 
 #nav-bar {
-    background-color: #ccc !important;    
+    background-color: var(--light-almond) !important;    
     width: auto;
     display: flex;
     justify-content: center;
@@ -13,12 +13,12 @@ main {
     margin: 1rem auto;
     padding: 0.3rem;
     border-radius: 1rem;
-    border: 1px solid var(--black);
+    border: 1px solid var(--dark-charcoal);
 }
 
 #nav-bar:hover div {
-    background-color: #ccc !important;
-    color: #000 !important;
+    background-color: var(--light-almond) !important;
+    color: var(--dark-charcoal) !important;
     cursor: pointer;
 }
 
@@ -29,13 +29,13 @@ main {
 }
 
 #nav-bar div:hover {
-    background-color: orange!important;
-    color: #fff !important;
+    background-color: var(--soft-orange)!important;
+    color: var(--white) !important;
 }
 
 #nav-bar div.highlighted {
-    background-color: orange;
-    color: #fff;
+    background-color: var(--soft-orange);
+    color: var(--white);
 }
 
 #container {
@@ -44,7 +44,7 @@ main {
 }
 
 #log-container {
-    background-color: #fff;
+    background-color:var(--white);
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);

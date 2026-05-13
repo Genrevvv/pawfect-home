@@ -61,4 +61,4 @@ function highlightOption(option) {
     }
 }
 
-adoptions.click();
+dashboard.click();
