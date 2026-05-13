@@ -1,4 +1,4 @@
-import { displayMessage } from "./auxiliary.js";
+import { displayMessage, setupAdminButton } from "./auxiliary.js";
 import { logOut } from "./header-bar.js";
 import { registerScript } from "./register.js";
 
@@ -43,6 +43,11 @@ export function loginScript() {
                     authBtn.innerText = 'LOG OUT';
                     authBtn.onclick = logOut;
                     overlayContainer.style.visibility = 'hidden';
+                    document.body.style.overflowY = 'visible';
+
+                    if (sessionStorage.getItem('user_type') === 'admin') {
+                        setupAdminButton();
+                    }
 
                     displayMessage('Login Successful');
                 });

@@ -27,8 +27,9 @@
     --off-white: #efe5d6;
     --muted-bronze: #d1b99a;
 
-    --soft-red: rgb(223, 157, 157);
     --soft-blue: rgb(147, 147, 214);
+    --soft-orange: rgb(240, 196, 114);
+    --soft-red: rgb(223, 157, 157);
 }
 
 html, body {

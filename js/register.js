@@ -37,7 +37,8 @@ export function registerScript() {
 
                     console.log('register successful');
                     overlayContainer.style.visibility = 'hidden';
-
+                    document.body.style.overflowY = 'visible';
+                    
                     displayMessage('Register Successful');
                 });
         }

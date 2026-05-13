@@ -1,7 +1,7 @@
+import { setupAdminButton } from "./auxiliary.js";
 import { loginScript } from "./login.js";
 
 const authBtn = document.getElementById('auth-btn');
-const headerOptions = document.getElementById('header-options');
 const overlayContainer = document.getElementById('overlay-container');
 
 overlayContainer.onclick = (e) => {
@@ -14,16 +14,8 @@ overlayContainer.onclick = (e) => {
     document.body.style.overflowY = 'visible';
 }
 
-console.log(sessionStorage.getItem('user_type'));
 if (sessionStorage.getItem('user_type') === 'admin') {
-    console.log("You are an admin");
-
-    const adminPage = document.createElement('div');
-    adminPage.id = 'admin-page';
-    adminPage.innerText = 'Admin Page';
-    adminPage.onclick = () => { window.location.href = '/admin-page' }
-
-    headerOptions.prepend(adminPage);
+    setupAdminButton();
 }
 
 if (sessionStorage.getItem('username')) {
