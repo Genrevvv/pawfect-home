@@ -128,6 +128,51 @@
         echo json_encode(['success' => true]);
     });
 
+    $router->add('/update-product', function () use ($db) {
+        if (isset($_FILES['image'])) {
+            $file = $_FILES['image'];
+
+            $uploadDir = 'uploads/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            if ($file["error"] !== 0) {
+                echo json_encode(['error' => 'File upload was unsuccessful']);
+                exit();
+            }
+
+            $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fileName = uniqid('prod_', true) . '.' . $extension;
+            $path = $uploadDir . $fileName;
+
+            if (!move_uploaded_file($file['tmp_name'], $path)) {
+                echo json_encode(['error' => 'File save was unsucessful']);
+                exit();
+            }
+        }
+        else {
+            $path = $_POST['image'];
+        }
+        
+        $product_data = [
+            'product_id' => $_POST['product_id'],
+            'product_name' => $_POST['product_name'],
+            'category' => $_POST['category'],
+            'price' => $_POST['price'],
+            'stock' => $_POST['stock'],
+            'image' => $path
+        ];
+
+        $result = $db->update_product($product_data);
+        if ($result == 0) {
+            echo json_encode(['error' => 'Unable to update a product']);
+            exit();
+        }
+        
+        echo json_encode(['success' => true, 'product_data' => $product_data]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

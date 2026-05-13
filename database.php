@@ -100,5 +100,28 @@
 
             return $stmt->rowCount();
         }
+
+        public function update_product($product_data) {
+            $stmt = $this->db->prepare('
+                UPDATE products SET 
+                    product_name = :product_name, 
+                    category = :category,
+                    price = :price,
+                    stock = :stock,
+                    image = :image
+                WHERE id = :product_id
+            ');
+
+            $stmt->execute([
+                'product_id' => $product_data['product_id'],
+                'product_name' => $product_data['product_name'],
+                'category' => $product_data['category'],
+                'price' => $product_data['price'],
+                'stock' => $product_data['stock'],
+                'image' => $product_data['image'],
+            ]);
+
+            return $stmt->rowCount();
+        }
     }
 ?>
