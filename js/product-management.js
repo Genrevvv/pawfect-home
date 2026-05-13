@@ -88,6 +88,7 @@ export function productManagementScript() {
         console.log('add prod element');
 
         const status = productData['stock'] > 0 ? 'In Stock' : 'No Stock';
+        const deleteProductId = `delete-product-${productData['id']}`;
 
         const productLog = document.getElementById('product-log');
         const newProductRow = document.createElement('tr');
@@ -97,10 +98,26 @@ export function productManagementScript() {
                                     <td>${status}</td>
                                     <td>
                                         <i class="fa-regular fa-pen-to-square"></i>
-                                        <i class="fa-solid fa-trash"></i>
+                                        <i id="${deleteProductId}" class="fa-solid fa-trash"></i>
                                     </td>`;
 
         productLog.append(newProductRow);
+        
+        const deleteButton = document.getElementById(deleteProductId);
+        deleteButton.onclick = () => {
+            const options = {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({product_id: productData['id']})
+            };
+
+            fetch('/delete-product', options)
+                .then(res => res.json())
+                .then(data => {
+                    newProductRow.remove();
+                    displayMessage(`${productData['product_name']} deleted successfully`);
+                });
+        }
     }
 
     function displayImage(imageData) {

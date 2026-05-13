@@ -71,6 +71,10 @@
         header('Location: /html/admin-page.html');
     });
 
+    $router->add('/get-products', function () use ($db) {
+        echo json_encode(['products' => $db->get_products()]);
+    });
+
     $router->add('/add-product', function () use ($db) {
         $file = $_FILES['image'];
 
@@ -107,11 +111,21 @@
             exit();
         }
 
+        $product_data['product_id'] = $result['product_id'];
+        
         echo json_encode(['success' => true, 'product_data' => $product_data]);
     });
 
-    $router->add('/get-products', function () use ($db) {
-        echo json_encode(['products' => $db->get_products()]);
+    $router->add('/delete-product', function () use ($db) {
+        $data = get_json_input();
+
+        $result = $db->delete_product($data['product_id']);
+        if ($result == 0) {
+            echo json_encode(['success' => false]);
+            exit();
+        }
+
+        echo json_encode(['success' => true]);
     });
 
     $router->dispatch($path);

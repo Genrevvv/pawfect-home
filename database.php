@@ -91,12 +91,14 @@
                 'image' => $product_data['image']
             ]);
 
-            if ($stmt->rowCount() == 0) {
-                return ['changes' => 0];
-            }
+            return ['changes' => $stmt->rowCount(), 'product_id' => $this->db->lastInsertId()];
+        }
 
-            return ['changes' => $stmt->rowCount()];
+        public function delete_product($product_id) {
+            $stmt = $this->db->prepare('DELETE FROM products WHERE id = :product_id');
+            $stmt->execute(['product_id' => $product_id]);
+
+            return $stmt->rowCount();
         }
     }
-
 ?>
