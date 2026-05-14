@@ -1,3 +1,4 @@
+import { petGadgetsScript } from "./pet-gadgets.js";
 import { petHousesScript } from "./pet-houses.js";
 
 window.history.pushState(null, "", "/");
@@ -22,7 +23,8 @@ petHouses.onclick = async () => {
 
 petGadgets.onclick = async () => {
     highlightOption('pet-gadgets');
-    updateContent('html/pet-gadgets.html'); 
+    await updateContent('html/pet-gadgets.html');
+    petGadgetsScript();
 }
 
 petFoods.onclick = async () => {
@@ -30,7 +32,7 @@ petFoods.onclick = async () => {
     updateContent('html/pet-foods.html'); 
 }
 
-petHouses.click();
+petGadgets.click();
 
 async function updateContent(htmlFilePath) {
     const res = await fetch(htmlFilePath);
