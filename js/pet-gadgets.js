@@ -36,4 +36,8 @@ export function petGadgetsScript() {
                 productsContainer.append(productData);
             }
         });
+
+    const allBtn = document.getElementById('all-btn');
+    const catBtn = document.getElementById('cats-btn');
+    const dogBtn = document.getElementById('dogs-btn');
 }
