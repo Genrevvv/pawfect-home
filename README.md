@@ -11,11 +11,11 @@ Website ata
 3. Home page
    - General information
    - Featured pets
-   - navigation
+   - Nav sections
        - adopt a pet
-       - pet houses
-       - pet gadgets
-       - pet foods
+       - pet houses ✅
+       - pet gadgets ✅
+       - pet foods ✅
 4. Admin dashboard
     - dashboard
       - order log
