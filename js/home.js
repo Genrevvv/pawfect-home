@@ -1,3 +1,4 @@
+import { loadProducts } from "./load-products.js";
 import { petGadgetsScript } from "./pet-gadgets.js";
 import { petHousesScript } from "./pet-houses.js";
 
@@ -18,18 +19,19 @@ adoptPet.onclick = async () => {
 petHouses.onclick = async () => {
     highlightOption('pet-houses');
     await updateContent('html/pet-houses.html');
-    petHousesScript();
+    loadProducts('pet_houses');
 }
 
 petGadgets.onclick = async () => {
     highlightOption('pet-gadgets');
     await updateContent('html/pet-gadgets.html');
-    petGadgetsScript();
+    loadProducts('pet_gadgets');
 }
 
 petFoods.onclick = async () => {
     highlightOption('pet-foods');
-    updateContent('html/pet-foods.html'); 
+    await updateContent('html/pet-foods.html'); 
+    loadProducts('pet_foods');
 }
 
 petGadgets.click();

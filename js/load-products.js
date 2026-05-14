@@ -1,10 +1,11 @@
-export function petGadgetsScript() {
+// Loads products on products section on index.html
+export function loadProducts(category) {
     const productsContainer = document.getElementById('products-container');
 
     const options = {
         method: 'POST',
         headers:  { 'Content-Type': 'application/json' },
-        body: JSON.stringify({category: 'pet_gadgets'})
+        body: JSON.stringify({category: category})
     };
 
     fetch('/get-products', options)
