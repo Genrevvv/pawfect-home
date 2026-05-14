@@ -74,7 +74,14 @@
             ]);
         }
 
-        public function get_products() {
+        public function get_products($category) {
+            if (isset($category)) {
+                $stmt = $this->db->prepare('SELECT * FROM products WHERE category = :category');
+                $stmt->execute(['category' => $category]);
+
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+
             $stmt = $this->db->prepare('SELECT * FROM products');
             $stmt->execute();
 

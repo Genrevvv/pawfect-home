@@ -10,7 +10,7 @@
     margin-top: 1rem;
 }
 
-#description {
+.description {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,12 +18,12 @@
     padding: 1rem;
 }
 
-#description h2 {
+.description h2 {
     margin: 0;
     padding: 0;
 }
 
-#description p {
+.description p {
     width: 70%;
     text-align: center;
 }

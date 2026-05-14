@@ -1,3 +1,5 @@
+import { petGadgetsScript } from "./pet-gadgets.js";
+
 window.history.pushState(null, "", "/");
 
 const content = document.getElementById('content');
@@ -7,32 +9,33 @@ const petHouses = document.getElementById('pet-houses');
 const petGadgets = document.getElementById('pet-gadgets');
 const petFoods = document.getElementById('pet-foods');
 
-adoptPet.onclick = () => {
+adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
     updateContent('html/adopt-pet.html');
 }
 
-petHouses.onclick = () => {
+petHouses.onclick = async () => {
     highlightOption('pet-houses');
-    updateContent('html/pet-houses.html');
+    await updateContent('html/pet-houses.html');
+    petGadgetsScript();
 }
 
-petGadgets.onclick = () => {
+petGadgets.onclick = async () => {
     highlightOption('pet-gadgets');
     updateContent('html/pet-gadgets.html'); 
 }
 
-petFoods.onclick = () => {
+petFoods.onclick = async () => {
     highlightOption('pet-foods');
     updateContent('html/pet-foods.html'); 
 }
 
-function updateContent(htmlFilePath) {
-    fetch(htmlFilePath)
-        .then(res => res.text())
-        .then(html => {
-            content.innerHTML = html;
-        });
+petHouses.click();
+
+async function updateContent(htmlFilePath) {
+    const res = await fetch(htmlFilePath);
+    const html = await res.text();
+    content.innerHTML = html;
 }
 
 function highlightOption(option) {

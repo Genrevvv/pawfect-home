@@ -1,0 +1,124 @@
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#filter-content {
+    width: 60%;
+    background-color: var(--sandy-brown);
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 0.2rem solid var(--dark-charcoal);
+}
+
+.filter-button {
+    background-color: var(--cream);
+    width: 7%;
+    display: flex;
+    justify-content: center;
+    padding: 0.3rem 2rem;
+    border-radius: 2rem;
+}
+
+.filter-button:hover {
+    box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.filter-button.highlighted {
+    box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.7);
+}
+
+#products-container {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    gap: 1.5rem;
+}
+
+/* .product-row {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+    background-color: red;
+    margin: 0 auto;
+} */
+
+.product-data {
+    background-color: var(--light-almond);
+    color: var(--dark-charcoal);
+    width: 16rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.product-data .product-image {
+    width: 100%;
+    height: 10rem;
+}
+
+.product-data .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details-container {
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.container-1 .product-name {
+    font-size: 1rem;
+}
+
+.container-1 .product-description {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.container-2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-2 .price {
+    font-size: 1.2rem;
+}
+
+.container-2 .add-to-cart {
+    background-color: var(--sandy-brown);
+    color: var(--cream);
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.container-2 .add-to-cart:hover {
+    cursor: pointer;
+}
+

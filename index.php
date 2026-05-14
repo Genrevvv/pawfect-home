@@ -72,7 +72,9 @@
     });
 
     $router->add('/get-products', function () use ($db) {
-        echo json_encode(['products' => $db->get_products()]);
+        $data = get_json_input();
+        
+        echo json_encode(['products' => $db->get_products($data['category'] ?? null)]);
     });
 
     $router->add('/add-product', function () use ($db) {
