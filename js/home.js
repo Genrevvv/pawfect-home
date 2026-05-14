@@ -1,6 +1,4 @@
 import { loadProducts } from "./load-products.js";
-import { petGadgetsScript } from "./pet-gadgets.js";
-import { petHousesScript } from "./pet-houses.js";
 
 window.history.pushState(null, "", "/");
 
