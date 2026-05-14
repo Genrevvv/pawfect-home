@@ -103,7 +103,7 @@
                 'image' => $product_data['image']
             ]);
 
-            return ['changes' => $stmt->rowCount(), 'product_id' => $this->db->lastInsertId()];
+            return ['changes' => $stmt->rowCount(), 'id' => $this->db->lastInsertId()];
         }
 
         public function delete_product($product_id) {

@@ -114,7 +114,7 @@
             exit();
         }
 
-        $product_data['product_id'] = $result['product_id'];
+        $product_data['id'] = $result['id'];
         
         echo json_encode(['success' => true, 'product_data' => $product_data]);
     });
