@@ -1,4 +1,4 @@
-import { petGadgetsScript } from "./pet-gadgets.js";
+import { petHousesScript } from "./pet-houses.js";
 
 window.history.pushState(null, "", "/");
 
@@ -17,7 +17,7 @@ adoptPet.onclick = async () => {
 petHouses.onclick = async () => {
     highlightOption('pet-houses');
     await updateContent('html/pet-houses.html');
-    petGadgetsScript();
+    petHousesScript();
 }
 
 petGadgets.onclick = async () => {
