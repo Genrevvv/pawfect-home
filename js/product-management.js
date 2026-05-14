@@ -5,6 +5,7 @@ export function productManagementScript() {
 
     const productName = document.getElementById('product-name');
     const category = document.getElementById('category');
+    const petType = document.getElementById('pet-type');
     const price = document.getElementById('price');
     const stock = document.getElementById('stock');
     const uploadImageArea = document.getElementById('upload-image-area');
@@ -21,6 +22,7 @@ export function productManagementScript() {
         const productData = new FormData();
         productData.append('product_name', productName.value);
         productData.append('category', category.value);
+        productData.append('pet_type', petType.value);
         productData.append('price', price.value);
         productData.append('stock', stock.value);
         productData.append('image', imageFile);       
@@ -93,6 +95,7 @@ export function productManagementScript() {
                     
                     const editProductName = document.getElementById('edit-product-name');
                     const editCategory = document.getElementById('edit-category');
+                    const editPetType = document.getElementById('edit-pet-type');
                     const editPrice = document.getElementById('edit-price');
                     const editStock = document. getElementById('edit-stock');
                     const editUploadedImageArea = document.getElementById('edit-uploaded-image-area');
@@ -100,6 +103,7 @@ export function productManagementScript() {
 
                     editProductName.value = productData['product_name'];
                     editCategory.value = productData['category'];
+                    editPetType.value = productData['pet_type'];
                     editPrice.value = productData['price'];
                     editStock.value = productData['stock'];
                     displayImage(productData['image'], editUploadedImageArea);
@@ -109,6 +113,7 @@ export function productManagementScript() {
                             product_id: productData['id'],
                             product_name: editProductName.value,
                             category: editCategory.value,
+                            pet_type: editPetType.value,
                             price: editPrice.value,
                             stock: editStock.value,
                             image: imageFile || productData['image']
@@ -140,6 +145,7 @@ export function productManagementScript() {
         updatedData.append('product_id', updatedProductData['product_id']);
         updatedData.append('product_name', updatedProductData['product_name']);
         updatedData.append('category', updatedProductData['category']);
+        updatedData.append('pet_type', updatedProductData['pet_type']);
         updatedData.append('price', updatedProductData['price']);
         updatedData.append('stock', updatedProductData['stock']);
         updatedData.append('image', updatedProductData['image']);     

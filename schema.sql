@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(100) NOT NULL,
     category VARCHAR(100) NOT NULL,
+    pet_type VARCHAR(100) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL,
     image VARCHAR(250)
