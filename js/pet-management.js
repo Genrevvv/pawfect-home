@@ -11,7 +11,7 @@ export function petManagementScript() {
     const addPet = document.getElementById('add-pet');
     let imageFile = null;
 
-    // loadPets();
+    loadPets();
 
     uploadImageArea.onclick = () => {
         uploadImage(uploadImageArea);
@@ -74,16 +74,21 @@ export function petManagementScript() {
 
         const petCards = document.getElementById('pet-cards');
         const newPetCard = document.createElement('div');
+        newPetCard.classList.add('pet-card');
         newPetCard.innerHTML = `<div class="pet-image">
                                     <img src="${petData.image}">
                                 </div>
                                 <div class="details-container">
                                     <div class="container-1">
                                         <span class="pet-name">${petData['pet_name']}</span>
-                                        <span class="pet-description">Cool Shi, bruh :)</span>
+                                        <span class="pet-description">${petData['pet_description']}</span>
                                     </div>
                                     <div class="container-2">
-                                        <span class="pet-age">₱${petData['pet_age']}</span>
+                                        <span class="pet-age">${petData['pet_age']}</span>
+                                    </div>
+                                    <div class="options">
+                                        <i id="${editPetId}" class="fa-regular fa-pen-to-square"></i>
+                                        <i id="${deletePetId}" class="fa-solid fa-trash"></i>
                                     </div>
                                 </div>`;
 
@@ -105,11 +110,11 @@ export function petManagementScript() {
                     const editUploadedImageArea = document.getElementById('edit-uploaded-image-area');
                     const updatePet = document.getElementById('update-pet');
 
-                    editPetName.value = productData['product_name'];
-                    editPetAge.value = productData['category'];
-                    editPetType.value = productData['pet_type'];
-                    editPetDescription.value = productData['price'];
-                    displayImage(productData['image'], editUploadedImageArea);
+                    editPetName.value = petData['pet_name'];
+                    editPetAge.value = petData['pet_age'];
+                    editPetType.value = petData['pet_type'];
+                    editPetDescription.value = petData['pet_description'];
+                    displayImage(petData['image'], editUploadedImageArea);
 
                     updatePet.onclick = () => {
                         updatePetData({
@@ -131,7 +136,7 @@ export function petManagementScript() {
                 body: JSON.stringify({pet_id: petData['id']})
             };
 
-            fetch('/delete-product', options)
+            fetch('/delete-pet', options)
                 .then(res => res.json())
                 .then(data => {
                     newPetCard.remove();

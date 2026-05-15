@@ -181,6 +181,12 @@
         echo json_encode(['success' => true, 'product_data' => $product_data]);
     });
 
+    $router->add('/get-pets', function () use ($db) {
+        $data = get_json_input();
+        
+        echo json_encode(['pets' => $db->get_pets()]);
+    });
+
     $router->add('/add-pet', function () use ($db) {
         $file = $_FILES['image'];
 
@@ -220,6 +226,18 @@
         $pet_data['id'] = $result['id'];
         
         echo json_encode(['success' => true, 'pet_data' => $pet_data]);
+    });
+
+    $router->add('/delete-pet', function () use ($db) {
+        $data = get_json_input();
+
+        $result = $db->delete_pet($data['pet_id']);
+        if ($result == 0) {
+            echo json_encode(['success' => false]);
+            exit();
+        }
+
+        echo json_encode(['success' => true]);
     });
 
     $router->dispatch($path);

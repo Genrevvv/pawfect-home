@@ -138,6 +138,13 @@
             return $stmt->rowCount();
         }
 
+        public function get_pets() {
+            $stmt = $this->db->prepare('SELECT * FROM pets');
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
         public function add_pet($pet_data) {
             $stmt = $this->db->prepare('
                 INSERT INTO pets 
@@ -153,6 +160,13 @@
             ]);
 
             return ['changes' => $stmt->rowCount(), 'id' => $this->db->lastInsertId()];
+        }
+
+        public function delete_pet($pet_id) {
+            $stmt = $this->db->prepare('DELETE FROM pets WHERE id = :pet_id');
+            $stmt->execute(['pet_id' => $pet_id]);
+
+            return $stmt->rowCount();
         }
     }
 ?>
