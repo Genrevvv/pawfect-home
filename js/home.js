@@ -1,3 +1,4 @@
+import { navBarAnimations } from "./animations.js";
 import { loadProducts } from "./load-products.js";
 
 window.history.pushState(null, "", "/");
@@ -8,6 +9,9 @@ const adoptPet = document.getElementById('adopt-pet');
 const petHouses = document.getElementById('pet-houses');
 const petGadgets = document.getElementById('pet-gadgets');
 const petFoods = document.getElementById('pet-foods');
+
+navBarAnimations();
+updateContent('html/home-page.html');
 
 adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
@@ -32,7 +36,7 @@ petFoods.onclick = async () => {
     loadProducts('pet_foods');
 }
 
-petGadgets.click();
+// petGadgets.click();
 
 async function updateContent(htmlFilePath) {
     const res = await fetch(htmlFilePath);
