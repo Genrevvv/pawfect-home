@@ -13,3 +13,17 @@ main {
 #hero-img img {
     width: 70svw;
 }
+
+.card {
+    opacity: 0.3;
+    transform: translate(-40px, 40px);
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+    will-change: opacity, transform;
+}
+
+.card.show {
+    opacity: 1;
+    transform: translate(0, 0);
+}

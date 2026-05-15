@@ -1,3 +1,5 @@
+import { cardAnimation } from "./animations.js";
+
 // Loads products on products section on index.html
 export function loadProducts(category) {
     const productsContainer = document.getElementById('products-container');
@@ -18,7 +20,7 @@ export function loadProducts(category) {
                 const product = data['products'][i];
 
                 const productData = document.createElement('div');
-                productData.classList.add('product-data', product['pet_type']);
+                productData.classList.add('product-data', product['pet_type'], 'card');
                 productData.innerHTML = `
                     <div class="product-image">
                         <img src="${product.image}">
@@ -37,7 +39,10 @@ export function loadProducts(category) {
                 productsContainer.append(productData);
                 setupNavFilter();
             }
-        });
+
+            cardAnimation();
+
+});
 
     function setupNavFilter() {
         const allBtn = document.getElementById('all-btn');

@@ -1,4 +1,4 @@
-export function navBarAnimations() {
+export function navBarAnimation() {
     const navOptions = document.querySelectorAll(".nav-option");
     window.addEventListener("scroll", () => {
 
@@ -28,4 +28,22 @@ export function navBarAnimations() {
         });
 
     });
+}
+
+export function cardAnimation() {
+    const cards = document.querySelectorAll(".card");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            } else {
+                entry.target.classList.remove("show");
+            }
+        });
+    }, {
+        threshold: 0.95
+    });
+
+    cards.forEach(card => observer.observe(card));
 }
