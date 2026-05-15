@@ -180,10 +180,9 @@ export function petManagementScript() {
                 overlayContainer.style.visibility = 'hidden';
                 document.body.style.overflowY = 'visible';
 
-                petCard.querySelector('.pet_name').innerText = updatedPetData['product_name'];
-                petCard.querySelector('.pet_age').innerText = updatedPetData['pet_age'];
-                petCard.querySelector('.pet_type').innerText = updatedPetData['pet_type'];
-                petCard.querySelector('.pet_description').innerText = updatedPetData['pet_description'];
+                petCard.querySelector('.pet-name').innerText = updatedPetData['pet_name'];
+                petCard.querySelector('.pet-age').innerText = updatedPetData['pet_age'];
+                petCard.querySelector('.pet-description').innerText = updatedPetData['pet_description'];
                 petCard.querySelector('.pet-image img').src = updatedPetData['image'];
             });
     }

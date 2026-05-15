@@ -168,5 +168,28 @@
 
             return $stmt->rowCount();
         }
+
+        public function update_pet($pet_data) {
+            $stmt = $this->db->prepare('
+                UPDATE pets SET 
+                    pet_name = :pet_name, 
+                    pet_age = :pet_age,
+                    pet_type = :pet_type,
+                    pet_description = :pet_description,
+                    image = :image
+                WHERE id = :pet_id
+            ');
+
+            $stmt->execute([
+                'pet_id' => $pet_data['pet_id'],
+                'pet_name' => $pet_data['pet_name'],
+                'pet_age' => $pet_data['pet_age'],
+                'pet_type' => $pet_data['pet_type'],
+                'pet_description' => $pet_data['pet_description'],
+                'image' => $pet_data['image'],
+            ]);
+
+            return $stmt->rowCount();
+        }
     }
 ?>

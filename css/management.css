@@ -2,17 +2,19 @@
     width: 80%;
     margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: 2fr 3fr;
+    /* display: grid;
+    grid-template-columns: 2fr 3fr; */
+    display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
-#pet-management-container {
+/* #pet-management-container {
     grid-template-columns: 35% 65%;   
-}
+} */
 
 .management-add-container { 
+    min-width: 18rem;
     background-color: #fff;
 
     display: flex;
@@ -135,6 +137,7 @@
 }
 
 .list {
+    min-width: 30rem;
     background-color: #fff;
     padding: 1rem;
     border-radius: 1rem;

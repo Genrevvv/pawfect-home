@@ -240,6 +240,51 @@
         echo json_encode(['success' => true]);
     });
 
+    $router->add('/update-pet', function () use ($db) {
+        if (isset($_FILES['image'])) {
+            $file = $_FILES['image'];
+
+            $uploadDir = 'uploads/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            if ($file["error"] !== 0) {
+                echo json_encode(['error' => 'File upload was unsuccessful']);
+                exit();
+            }
+
+            $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+            $fileName = uniqid('pet_', true) . '.' . $extension;
+            $path = $uploadDir . $fileName;
+
+            if (!move_uploaded_file($file['tmp_name'], $path)) {
+                echo json_encode(['error' => 'File save was unsucessful']);
+                exit();
+            }
+        }
+        else {
+            $path = $_POST['image'];
+        }
+        
+        $pet_data = [
+            'pet_id' => $_POST['pet_id'],
+            'pet_name' => $_POST['pet_name'],
+            'pet_age' => $_POST['pet_age'],
+            'pet_type' => $_POST['pet_type'],
+            'pet_description' => $_POST['pet_description'],
+            'image' => $path
+        ];
+
+        $result = $db->update_pet($pet_data);
+        if ($result == 0) {
+            echo json_encode(['error' => 'Unable to update a pet']);
+            exit();
+        }
+        
+        echo json_encode(['success' => true, 'pet_data' => $pet_data]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary
