@@ -137,5 +137,22 @@
 
             return $stmt->rowCount();
         }
+
+        public function add_pet($pet_data) {
+            $stmt = $this->db->prepare('
+                INSERT INTO pets 
+                VALUES (null, :pet_name, :pet_age, :pet_type, :pet_description, :image)
+            ');
+            
+            $stmt->execute([
+                'pet_name' => $pet_data['pet_name'],
+                'pet_age' => $pet_data['pet_age'],
+                'pet_type' => $pet_data['pet_type'],
+                'pet_description' => $pet_data['pet_description'],
+                'image' => $pet_data['image']
+            ]);
+
+            return ['changes' => $stmt->rowCount(), 'id' => $this->db->lastInsertId()];
+        }
     }
 ?>

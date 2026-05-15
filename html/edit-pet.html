@@ -1,0 +1,50 @@
+<div id="pet-management-container" class="management-container">
+
+    <div id="add-pet-container" class="management-add-container">
+        <h2 class="label">Add New Pet</h2>
+
+        <div class="input-container">
+            <span>Pet name</span>
+            <input id="edit-pet-name" name="pet-name" type="text">
+        </div>
+
+        <div class="select-input">
+            <div class="input-container">
+                <span>Pet age</span>
+                <input id="edit-pet-age" name="pet-age" type="text">
+            </div>
+            <div class="input-container">
+                <span>Pet Type</span>
+                <select id="edit-pet-type" name="pet-type">
+                    <option value="cat">Cat</option>
+                    <option value="dog">Dog</option>
+                    <option value="cosmic_annihilator">Cosmic Annihilator</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <span>Description</span>
+            <textarea id="edit-pet-description" name="pet-description"></textarea>
+        </div>
+
+        <div class="container-3">
+            <span>Upload Image</span>
+            <div id="edit-uploaded-image-area" class="upload-image-area">
+                <span>Upload Image</span>
+                <i class="fa-solid fa-x remove-image"></i>
+            </div>
+        </div>
+
+        <button id="upadte-pet" class="add-element-btn">Update Pet</button>
+    </div>
+
+    <div id="pet-list" class="list">
+        <h2 class="label">Product List Table</h2>
+
+        <div class="pet-cards">
+        </div>
+
+    </div>
+
+</div>

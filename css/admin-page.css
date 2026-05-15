@@ -4,6 +4,15 @@ main {
     flex-direction: column;
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
 #nav-bar {
     background-color: var(--light-almond) !important;    
     width: auto;

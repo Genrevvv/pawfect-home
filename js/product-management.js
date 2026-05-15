@@ -146,7 +146,7 @@ export function productManagementScript() {
         updatedData.append('product_name', updatedProductData['product_name']);
         updatedData.append('category', updatedProductData['category']);
         updatedData.append('pet_type', updatedProductData['pet_type']);
-        updatedData.append('price', updatedProductData['price']);
+        updatedData.append('price', updatedProductData['price']);   
         updatedData.append('stock', updatedProductData['stock']);
         updatedData.append('image', updatedProductData['image']);     
 

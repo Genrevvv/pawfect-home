@@ -3,6 +3,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: fadeLeft 0.7s ease forwards;
 }
 
 #filter-content {
@@ -42,18 +46,6 @@
     margin: 3rem 0;
     gap: 1.5rem;
 }
-
-/* .product-row {
-    width: 70%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    
-    background-color: red;
-    margin: 0 auto;
-} */
 
 .product-data {
     background-color: var(--light-almond);
@@ -122,3 +114,18 @@
     cursor: pointer;
 }
 
+#adopt-pet-btn {
+    background-color: var(--sandy-brown);
+    color: var(--cream);
+    width: 10rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+#adopt-pet-btn:hover {
+    background-color: var(--tan-ocher);
+    cursor: pointer;
+}

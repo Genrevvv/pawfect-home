@@ -1,3 +1,4 @@
+import { petManagementScript } from "./pet-management.js";
 import { productManagementScript } from "./product-management.js";
 
 window.history.pushState(null, "", "/admin-page");
@@ -6,6 +7,7 @@ const container = document.getElementById('container');
 
 const dashboard = document.getElementById('dashboard');
 const products = document.getElementById('products');
+const pets = document.getElementById('pets');
 const adoptions = document.getElementById('adoptions');
 
 dashboard.onclick = async () => {
@@ -17,6 +19,12 @@ products.onclick = async () => {
     highlightOption('products');
     await updateContent('html/product-management.html');
     productManagementScript();
+}
+
+pets.onclick = async () => {
+    highlightOption('pets');
+    await updateContent('html/pet-management.html');
+    petManagementScript();
 }
 
 adoptions.onclick = async () => {
@@ -31,7 +39,7 @@ async function updateContent(htmlFilePath) {
 }
 
 function highlightOption(option) {
-    const options = [dashboard, products, adoptions];
+    const options = [dashboard, products, pets, adoptions];
 
     switch (option) {
         case 'dashboard':
@@ -39,6 +47,9 @@ function highlightOption(option) {
             break;
         case 'products':
             options.forEach(optionElement => setupColor('products', optionElement));
+            break;
+        case 'pets':
+            options.forEach(optionElement => setupColor('pets', optionElement));
             break;
         case 'adoptions':
             options.forEach(optionElement => setupColor('adoptions', optionElement));
@@ -62,4 +73,4 @@ function highlightOption(option) {
     }
 }
 
-products.click();
+pets.click();

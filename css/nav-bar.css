@@ -20,11 +20,11 @@
 
 #search-bar {
     background-color: var(--white);
-    width: 70%;
+    width: 50%;
     display: flex;
     gap: 0.5rem;
 
-    padding: 0.2rem 0.4rem;
+    padding: 0.4rem 0.6rem;
 
     border-radius: 4rem;
     border: 0.2rem solid var(--dark-charcoal);

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adoption Application Form</title>
+    <link rel="stylesheet" href="/css/animation.css">
+    <link rel="stylesheet" href="/css/adoption-form.css">
+    <link rel="stylesheet" href="/css/header-bar.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+<body>
+    <main>
+        <header>
+            <nav id="header-bar">
+                <a id="logo" href="/">Pawfect Home</a>
+                <div id="header-options">
+                    <ul>
+                        <li>Donations</li>
+                        <li>Volunteer</li>
+                        <li>About us</li>
+                        <li>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </li>
+                    </ul>
+                    <div id="auth-btn">LOGIN / REGISTER</div>
+                </div>
+            </nav>
+        </header>
+        <section class="form-section">
+            <div class="title">
+                <h1>Adoption Application Form</h1>
+                <p>
+                    Thank you for considering giving a forever home.<br>
+                    Please complete this form to begin the adoption process.
+                </p>
+            </div>
+            <div class="form-container">
+                <div class="section-header">Adopter Information</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email">
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-group">
+                        <label>Home Address</label>
+                        <input type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <div class="section-header">Pet Selection</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Name of Pet</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-group">
+                        <label>Pet Breed</label>
+                        <input type="text">
+                    </div>
+                    <div class="input-group">
+                        <label>Number of Pets to Adopt</label>
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3+</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Reason for wanting to adopt</label>
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="section-header">Home Assessment</div>
+                <div class="radio-grid">
+                    <div class="radio-group">
+                        <label class="main-label">Housing Type</label>
+                        <label><input type="radio" name="housing"> House</label>
+                        <label><input type="radio" name="housing"> Apartment</label>
+                        <label><input type="radio" name="housing"> Townhouse</label>
+                        <label><input type="radio" name="housing"> Homehouse</label>
+                        <label><input type="radio" name="housing"> etc.</label>
+                    </div>
+                    <div class="radio-group">
+                        <label class="main-label">Yard Availability</label>
+
+
+                        <label><input type="radio" name="yard"> Yes - Fenced</label>
+                        <label><input type="radio" name="yard"> Yes - Unfenced</label>
+                        <label><input type="radio" name="yard"> No</label>
+                    </div>
+                </div>
+
+                <div class="input-group full-width">
+                    <label>
+                        Do you have any existing pets? (Yes/No). If yes, please specify species and age.
+                    </label>
+                    <textarea></textarea>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button onclick="window.location.href='/'">
+                    Submit Application
+                </button>
+            </div>
+        </section>        
+    </main>
+    <script src="/js/header-bar.js" type="module"></script>
+</body>
+</html>

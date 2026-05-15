@@ -1,14 +1,14 @@
-#product-management-container {
-    width: 100%;
+.management-container {
+    width: 80%;
+    margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 2fr 3fr;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
-#add-product-container,
-#edit-product-container {    
+.management-add-container { 
     background-color: #fff;
 
     display: flex;
@@ -19,15 +19,8 @@
     gap: 1rem;
 }
 
-#add-product-container span,
-#edit-product-container span {
+.management-add-container span {
     margin: 0 0 0.5rem 0;
-}
-
-#product-list {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 1rem;
 }
 
 .input-container {
@@ -35,9 +28,24 @@
     flex-direction: column;
 }
 
-.input-container input, .input-container select {
-    padding: 0.5rem;
+.input-container input,
+.input-container select,
+.input-container textarea {
+    width: 100%;
+
+    padding: 0.65rem;
+
+    border: 1px solid #ccc;
     border-radius: 1rem;
+
+    font-size: 0.95rem;
+
+    box-sizing: border-box;
+}
+
+.input-container textarea {
+    resize: vertical;
+    min-height: 6rem;
 }
 
 .select-input {
@@ -63,8 +71,7 @@
     flex-direction: column;
 }
 
-#upload-image-area,
-#edit-uploaded-image-area {
+.upload-image-area {
     width: 13rem;
     height: 8rem;
 
@@ -83,14 +90,12 @@
     position: relative;
 }
 
-#upload-image-area:hover,
-#edit-uploaded-image-area:hover {
+.upload-image-area:hover {
     background-color: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-#upload-image-area:hover .holds-image,
-#edit-uploaded-image-area:hover .holds-image {
+.upload-image-area:hover .holds-image{
     visibility: visible;
 }
 
@@ -110,8 +115,7 @@
     visibility: hidden;
 }
 
-#add-product,
-#update-product {
+.add-element-btn {
     background-color: orange;
     width: 70%;
 
@@ -121,8 +125,14 @@
     border-radius: 1rem;
 }
 
-#add-product:hover,
-#update-product:hover {
+.add-element-btn:hover {
     background-color: rgb(255, 179, 39);
     cursor: pointer;
+}
+
+
+.list {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
 }

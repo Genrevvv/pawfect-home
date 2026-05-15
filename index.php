@@ -21,6 +21,10 @@
         header('Location: /html/register.html');
     });
 
+    $router->add('/adoption-form', function () {
+        header('Location: /html/adoption-form.html');
+    });
+
     $router->add('/user-login', function () use ($db) {
         $data = get_json_input();
 
@@ -175,6 +179,47 @@
         }
         
         echo json_encode(['success' => true, 'product_data' => $product_data]);
+    });
+
+    $router->add('/add-pet', function () use ($db) {
+        $file = $_FILES['image'];
+
+        $uploadDir = 'uploads/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        if ($file["error"] !== 0) {
+            echo json_encode(['error' => 'File upload was unsuccessful']);
+            exit();
+        }
+
+        $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $fileName = uniqid('pet_', true) . '.' . $extension;
+        $path = $uploadDir . $fileName;
+
+        if (!move_uploaded_file($file['tmp_name'], $path)) {
+            echo json_encode(['error' => 'File save was unsucessful']);
+            exit();
+        }
+
+        $pet_data = [
+            'pet_name' => $_POST['pet_name'],
+            'pet_age' => $_POST['pet_age'],
+            'pet_type' => $_POST['pet_type'],
+            'pet_description' => $_POST['pet_description'],
+            'image' => $path
+        ];
+
+        $result = $db->add_pet($pet_data);
+        if ($result['changes'] == 0) {
+            echo json_encode(['error' => 'Unable to add a pet']);
+            exit();
+        }
+
+        $pet_data['id'] = $result['id'];
+        
+        echo json_encode(['success' => true, 'pet_data' => $pet_data]);
     });
 
     $router->dispatch($path);

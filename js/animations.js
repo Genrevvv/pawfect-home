@@ -42,7 +42,7 @@ export function cardAnimation() {
             }
         });
     }, {
-        threshold: 0.95
+        threshold: 0.8
     });
 
     cards.forEach(card => observer.observe(card));

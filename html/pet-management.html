@@ -1,0 +1,56 @@
+<div id="pet-management">
+    <div class="header">
+        <h1 class="header"><i class="fa-solid fa-paw"></i> Pet Management</h1>
+    </div>
+
+    <div id="pet-management-container" class="management-container">
+
+        <div id="add-pet-container" class="management-add-container">
+            <h2 class="label">Add New Pet</h2>
+
+            <div class="input-container">
+                <span>Pet name</span>
+                <input id="pet-name" name="pet-name" type="text">
+            </div>
+
+            <div class="select-input">
+                <div class="input-container">
+                    <span>Pet age</span>
+                    <input id="pet-age" name="pet-age" type="text">
+                </div>
+                <div class="input-container">
+                    <span>Pet Type</span>
+                    <select id="pet-type" name="pet-type">
+                        <option value="cat">Cat</option>
+                        <option value="dog">Dog</option>
+                        <option value="cosmic_annihilator">Cosmic Annihilator</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <span>Description</span>
+                <textarea id="pet-description" name="pet-description"></textarea>
+            </div>
+
+            <div class="container-3">
+                <span>Upload Image</span>
+                <div id="upload-image-area" class="upload-image-area">
+                    <span>Upload Image</span>
+                    <i class="fa-solid fa-x remove-image"></i>
+                </div>
+            </div>
+
+            <button id="add-pet" class="add-element-btn">Add Pet</button>
+        </div>
+    
+        <div id="pet-list" class="list">
+            <h2 class="label">Pet List</h2>
+
+            <div id="pet-cards">
+            </div>
+            
+        </div>
+
+    </div>
+</div>
