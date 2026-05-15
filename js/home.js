@@ -1,4 +1,5 @@
 import { navBarAnimation } from "./animations.js";
+import { loadPets } from "./load-pets.js";
 import { loadProducts } from "./load-products.js";
 
 window.history.pushState(null, "", "/");
@@ -16,7 +17,8 @@ await updateContent('html/home-page.html');
 
 adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
-    updateContent('html/adopt-pet.html');
+    await updateContent('html/adopt-pet.html');
+    loadPets();
 }
 
 petHouses.onclick = async () => {

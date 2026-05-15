@@ -1,41 +1,34 @@
 import { cardAnimation } from "./animations.js";
 
 // Loads products on products section on index.html
-export function loadProducts(category) {
+export function loadPets() {
     const productsContainer = document.getElementById('products-container');
 
-    const options = {
-        method: 'POST',
-        headers:  { 'Content-Type': 'application/json' },
-        body: JSON.stringify({category: category})
-    };
-
-    fetch('/get-products', options)
+    fetch('/get-pets')
         .then(res => res.json())
         .then(data => {
             console.log(data);
             console.log(productsContainer);
 
-            for (let i = 0; i < data['products'].length; i++) {
-                const product = data['products'][i];
+            for (let i = 0; i < data['pets'].length; i++) {
+                const pet = data['pets'][i];
 
-                const productData = document.createElement('div');
-                productData.classList.add('product-data', product['pet_type'], 'card');
-                productData.innerHTML = `<div class="product-image">
-                                            <img src="${product.image}">
+                const petData = document.createElement('div');
+                petData.classList.add('pet-data', pet['pet_type'], 'card');
+                petData.innerHTML = `<div class="pet-image">
+                                            <img src="${pet.image}">
                                         </div>
                                         <div class="details-container">
                                             <div class="container-1">
-                                                <span class="product-name">${product['product_name']}</span>
-                                                <span class="product-description">Cool Shi, bruh :)</span>
+                                                <span class="pet-name">${pet['pet_name']}</span>
+                                                <span class="pet-description">${pet['pet_description']}</span>
                                             </div>
                                             <div class="container-2">
-                                                <span class="price">₱${product['price']}</span>
-                                                <div class="add-to-cart">Add to Cart</div>
+                                                <span class="pet-age">${pet['pet_age']}</span>
                                             </div>
                                         </div>`;
             
-                productsContainer.append(productData);
+                productsContainer.append(petData);
                 setupNavFilter();
             }
 
