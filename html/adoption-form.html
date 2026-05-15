@@ -8,25 +8,28 @@
     <link rel="stylesheet" href="/css/adoption-form.css">
     <link rel="stylesheet" href="/css/header-bar.css">
     <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="/css/select-pet.css">
 </head>
 <body>
+    <header>
+        <nav id="header-bar">
+            <a id="logo" href="/">Pawfect Home</a>
+            <div id="header-options">
+                <ul>
+                    <li>Donations</li>
+                    <li>Volunteer</li>
+                    <li>About us</li>
+                    <li>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </li>
+                </ul>
+                <div id="auth-btn">LOGIN / REGISTER</div>
+            </div>
+        </nav>
+    </header>
     <main>
-        <header>
-            <nav id="header-bar">
-                <a id="logo" href="/">Pawfect Home</a>
-                <div id="header-options">
-                    <ul>
-                        <li>Donations</li>
-                        <li>Volunteer</li>
-                        <li>About us</li>
-                        <li>
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </li>
-                    </ul>
-                    <div id="auth-btn">LOGIN / REGISTER</div>
-                </div>
-            </nav>
-        </header>
+        <div id="message-overlay"></div>
+        <div id="overlay-container"></div>
         <section class="form-section">
             <div class="title">
                 <h1>Adoption Application Form</h1>
@@ -59,27 +62,17 @@
 
             <div class="form-container">
                 <div class="section-header">Pet Selection</div>
-                <div class="form-grid">
-                    <div class="input-group">
-                        <label>Name of Pet</label>
-                        <input type="text">
+                <div class="select-pet-container">
+                    <div id="selected-pets">
+                        Selected pet displays here
                     </div>
-                    <div class="input-group">
-                        <label>Pet Breed</label>
-                        <input type="text">
-                    </div>
-                    <div class="input-group">
-                        <label>Number of Pets to Adopt</label>
-                        <select>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3+</option>
-                        </select>
+                    <div id="select-pet-btn">
+                        Select a Pet
                     </div>
                     <div class="input-group">
                         <label>Reason for wanting to adopt</label>
                         <textarea></textarea>
-                    </div>
+                    </div>                    
                 </div>
             </div>
             <div class="form-container">
@@ -117,6 +110,7 @@
             </div>
         </section>        
     </main>
+    <script src="/js/adoption-form.js"></script>
     <script src="/js/header-bar.js" type="module"></script>
 </body>
 </html>

@@ -45,6 +45,38 @@ main {
     font-weight: bold;
 }
 
+.select-pet-container {
+    padding: 1.25rem;
+}
+
+#selected-pets {
+    background-color: var(--cream);
+    width: auto;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#select-pet-btn {
+    background-color: var(--warm-honey);
+    min-width: 10rem;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem auto 1rem auto;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+#select-pet-btn:hover {
+    background-color: var(--muted-ocher);
+    color: var(--cream);
+    cursor: pointer;
+}
+
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
