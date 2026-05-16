@@ -217,7 +217,7 @@
                 'yard_type' => $form_data['yard_type'],
                 'reason' => $form_data['reason'],
                 'existing_pet' => $form_data['existing_pet'],
-                'status' => 'Pending'
+                'status' => 'pending'
             ]);
 
             $application_id = $this->db->lastInsertId();
