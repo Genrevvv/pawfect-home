@@ -18,7 +18,7 @@ Website ata
        - pet houses ✅
        - pet gadgets ✅
        - pet foods ✅
-4. Admin dashboard
+4. Admin page
     - Dashboard
       - Overview
       - Order log
