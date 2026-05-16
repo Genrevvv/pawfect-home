@@ -1,13 +1,47 @@
+import { displayMessage } from './auxiliary.js';
+
 window.history.pushState(null, "", "/adoption-form");
 
-const selectPetBtn = document.getElementById('select-pet-btn');
 const overlayContainer = document.getElementById('overlay-container');
+const selectPetBtn = document.getElementById('select-pet-btn');
+const submitApplication = document.getElementById('submit-application');
+
 let pets = [];
 let selectedPets = [];
 
-// localStorage.removeItem('form_data');
 
-console.log(localStorage.getItem('form_data'));
+submitApplication.onclick = () => {
+
+    const formData = {
+        full_name: getValue('full-name'),
+        email_address: getValue('email-address'),   
+        phone_number: getValue('phone-number'),
+        home_address: getValue('home-address'),
+        reason: getValue('reason'),
+        existing_pet: getValue('existing-pet'),
+
+        selected_pets: selectedPets.map(p => p.id),
+
+        house_type: document.querySelector('input[name="house"]:checked')?.value ?? "",
+        yard_type: document.querySelector('input[name="yard"]:checked')?.value ?? ""
+    };
+
+    // validation
+    for (const value of Object.values(formData)) {
+        if (value == null || value.toString().trim() === "") {
+            displayMessage('Please fill up all fields.');
+            return;
+        }
+    }
+
+    fetch('/submit-adoption-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data));
+};
 
 window.addEventListener("load", () => {
     const raw = localStorage.getItem('form_data');
@@ -19,34 +53,31 @@ window.addEventListener("load", () => {
     document.getElementById('email-address').value = formData.email_address || "";
     document.getElementById('phone-number').value = formData.phone_number || "";
     document.getElementById('home-address').value = formData.home_address || "";
-
-    selectedPets = formData.selected_pets || [];
-    selectedPets.forEach(insertSelectedPet);
-
     document.getElementById('reason').value = formData.reason || "";
+    document.getElementById('existing-pet').value = formData.existing_pet || "";
 
-    const house = document.querySelector(`input[name="house"][value="${formData.house}"]`);
+    const house = document.querySelector(`input[name="house"][value="${formData.house_type}"]`);
     if (house) house.checked = true;
 
-    const yard = document.querySelector(`input[name="yard"][value="${formData.yard}"]`);
+    const yard = document.querySelector(`input[name="yard"][value="${formData.yard_type}"]`);
     if (yard) yard.checked = true;
-}); 
+
+    selectedPets = formData.selected_pets || [];
+
+    renderSelectedPets();
+});
 
 window.addEventListener("beforeunload", () => {
-    const houseRadio = document.querySelector('input[name="house"]:checked');
-    const yardRadio = document.querySelector('input[name="yard"]:checked');
-
-    const getValue = (id) => document.getElementById(id)?.value ?? "";
-
     const formData = {
         full_name: getValue('full-name'),
         email_address: getValue('email-address'),
         phone_number: getValue('phone-number'),
         home_address: getValue('home-address'),
         reason: getValue('reason'),
+        existing_pet: getValue('existing-pet'),
         selected_pets: selectedPets,
-        house: document.querySelector('input[name="house"]:checked')?.value ?? null,
-        yard: document.querySelector('input[name="yard"]:checked')?.value ?? null
+        house_type: document.querySelector('input[name="house"]:checked')?.value ?? null,
+        yard_type: document.querySelector('input[name="yard"]:checked')?.value ?? null
     };
 
     localStorage.setItem("form_data", JSON.stringify(formData));
@@ -55,9 +86,7 @@ window.addEventListener("beforeunload", () => {
 fetch('/get-pets')
     .then(res => res.json())
     .then(data => {
-        console.log(data);
-
-        pets = data['pets'];
+        pets = data.pets;
 
         selectPetBtn.onclick = async () => {
             await updateContent('html/select-pet.html');
@@ -65,69 +94,81 @@ fetch('/get-pets')
             overlayContainer.style.visibility = 'visible';
             document.body.style.overflowY = 'hidden';
 
-            for (let i = 0; i < pets.length; i++) {
-                console.log(pets[i]['pet_type']);
-                addPetCard(pets[i]);
-            }
-        }
-
+            renderPets();
+        };
     });
 
-async function updateContent(htmlFilePath) {
-    const res = await fetch(htmlFilePath);
-    const html = await res.text();
-    overlayContainer.innerHTML = html;
+async function updateContent(path) {
+    const res = await fetch(path);
+    overlayContainer.innerHTML = await res.text();
 }
 
-function addPetCard(petData) {
+const getValue = (id) => document.getElementById(id)?.value ?? "";
+
+function getAvailablePets() {
+    return pets.filter(pet => !selectedPets.some(sel => sel.id === pet.id)
+    );
+}
+
+function renderPets() {
     const selectPetUI = document.getElementById('select-pet-ui');
+    if (!selectPetUI) return;
 
-    const petCard = document.createElement('div');
-    petCard.classList.add('card');
-    petCard.innerHTML = `<div class="pet-image" style="background-image: url('${petData.image}')">
-                            </div>
-                            <div class="pet-details">
-                            <span class="pet-name">${petData['pet_name']}</span>
-                            <span class="pet-age">${petData['pet_age']}</span>
-                            <span class="pet-description">${petData['pet_description']}</span>
-                            </div>`;
-    selectPetUI.append(petCard);
+    selectPetUI.innerHTML = "";
 
-    petCard.onclick = () => {
-        pets = pets.filter(pet => pet.id !== petData['id']);
-        selectedPets.push(petData);
+    getAvailablePets().forEach(pet => {
+        const petCard = document.createElement('div');
+        petCard.classList.add('card');
 
-        insertSelectedPet(petData);
-        
-        overlayContainer.style.visibility = 'hidden';
-        document.body.style.overflowY = 'visible';
-    }
+        petCard.innerHTML = `
+            <div class="pet-image" style="background-image: url('${pet.image}')"></div>
+            <div class="pet-details">
+                <span class="pet-name">${pet.pet_name}</span>
+                <span class="pet-age">${pet.pet_age}</span>
+                <span class="pet-description">${pet.pet_description}</span>
+            </div>
+        `;
+
+        petCard.onclick = () => {
+            selectedPets.push(pet);
+            renderSelectedPets();
+            renderPets();
+
+            overlayContainer.style.visibility = 'hidden';
+            document.body.style.overflowY = 'visible';
+        };
+
+        selectPetUI.appendChild(petCard);
+    });
 }
 
-function insertSelectedPet(petData) {
-    const selectedPetsContainer = document.getElementById('selected-pets');
-    const placeHolder = selectedPetsContainer.querySelector('.placeholder');
-    if (placeHolder) {
-        placeHolder.remove();
+function renderSelectedPets() {
+    const container = document.getElementById('selected-pets');
+
+    container.innerHTML = "";
+
+    if (selectedPets.length === 0) {
+        container.innerHTML =
+            '<span class="placeholder">Selected pet displays here</span>';
+        return;
     }
-    
-    const petRow = document.createElement('div');
-    petRow.classList.add('pet-row');
-    petRow.innerHTML = `<span>${petData['pet_name']}</span>
-                        <span>${petData['pet_age']}</span>
-                        <span>${petData['pet_type']}</span>
-                        <span>${petData['pet_age']}</span>`;
 
-    selectedPetsContainer.append(petRow);
+    selectedPets.forEach(pet => {
+        const row = document.createElement('div');
+        row.classList.add('pet-row');
 
-    petRow.onclick = () => {
-        petRow.remove();
+        row.innerHTML = `
+            <span>${pet.pet_name}</span>
+            <span>${pet.pet_age}</span>
+            <span>${pet.pet_type}</span>
+        `;
 
-        selectedPets = selectedPets.filter(pet => pet.id !== petData['id']);
-        pets.push(petData);
+        row.onclick = () => {
+            selectedPets = selectedPets.filter(p => p.id !== pet.id);
+            renderSelectedPets();
+            renderPets();
+        };
 
-        if (selectedPets.length === 0) {
-            selectedPetsContainer.innerHTML = '<span class="placeholder">Selected pet displays here</span>';
-        }
-    }
+        container.appendChild(row);
+    });
 }

@@ -191,5 +191,41 @@
 
             return $stmt->rowCount();
         }
+
+        public function setup_adoption_application($form_data) {
+            $stmt = $this->db->prepare('
+                INSERT INTO adoption_applications
+                VALUES (null, :user_id, :email, :phone_number, :home_address, :house_type, :yard_type, :reason, :existing_pet, :status)
+            ');
+
+            $stmt->execute([
+                'user_id' => $form_data['user_id'],
+                'email' => $form_data['email_address'],
+                'phone_number' => $form_data['phone_number'],
+                'home_address' => $form_data['home_address'],
+                'house_type' => $form_data['house_type'],
+                'yard_type' => $form_data['yard_type'],
+                'reason' => $form_data['reason'],
+                'existing_pet' => $form_data['existing_pet'],
+                'status' => 'Pending'
+            ]);
+
+            $application_id = $this->db->lastInsertId();
+
+            foreach ($form_data['selected_pets'] as $pet_id) {
+                $stmt = $this->db->prepare('
+                    INSERT INTO adopteds
+                    VALUES (:application_id, :pet_id)
+                ');
+
+                $stmt->execute([
+                    'application_id' => $application_id,
+                    'pet_id' => $pet_id
+                ]);
+            }
+
+            return $application_id;
+        }
+
     }
 ?>

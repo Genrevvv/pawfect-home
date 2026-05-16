@@ -285,6 +285,15 @@
         echo json_encode(['success' => true, 'pet_data' => $pet_data]);
     });
 
+    $router->add('/submit-adoption-application', function () use ($db) {
+        $data = get_json_input();
+        $data['user_id'] = $_SESSION['user_id'];
+
+        $result = $db->setup_adoption_application($data);
+
+        echo json_encode(['success' => true, 'application_id' => $result]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

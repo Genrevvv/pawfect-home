@@ -28,3 +28,25 @@ CREATE TABLE IF NOT EXISTS pets (
     pet_description VARCHAR(500) NOT NULL,
     image VARCHAR(250)
 );
+
+CREATE TABLE IF NOT EXISTS adoption_applications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    email_address VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(100) NOT NULL,
+    home_address VARCHAR(200) NOT NULL,
+    house_type VARCHAR(100) NOT NULL,
+    yard_type VARCHAR(100) NOT NULL,
+    reason VARCHAR(200) NOT NULL,
+    existing_pet VARCHAR(200) NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+    CREATE TABLE IF NOT EXISTS adopteds (
+        application_id INT NOT NULL,
+        pet_id INT NOT NULL,
+        FOREIGN KEY (application_id) REFERENCES adoption_applications(id),
+        FOREIGN KEY (pet_id) REFERENCES pets(id),
+        PRIMARY KEY (application_id, pet_id)
+    );
