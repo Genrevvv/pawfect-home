@@ -1,3 +1,81 @@
+ .pet-ui-container {
+    background-color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+}
+
 #select-pet-ui {
-    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#select-pet-ui .card {
+    width: 8rem;
+    height: 12rem;
+
+    display: flex;
+    flex-direction: column;
+
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    flex: 0 0 auto;
+}
+
+#select-pet-ui .pet-image {
+    height: 6rem;
+    width: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#select-pet-ui .pet-details {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0.5rem;
+    gap: 0.2rem;
+
+    overflow: hidden;
+}
+
+#select-pet-ui .pet-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#select-pet-ui .pet-age,
+#select-pet-ui .pet-description {
+    font-size: 0.7rem;
+    color: #666;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#select-pet-ui .card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#select-pet-ui .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 }
