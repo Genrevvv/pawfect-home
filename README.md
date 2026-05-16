@@ -39,7 +39,7 @@ Website ata
       - Reject application
 5. Adoption section
     - Adoption form ✅
-       - Select pets ui ✅
+       - Select pets UI ✅
        - Submit application ✅
 6. Shopping
     - Checkout
