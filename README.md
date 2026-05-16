@@ -9,32 +9,43 @@ Website ata
    - Register ✅
    - Delete account
 3. Home page
-   - General information
-   - Featured pets
+   - Main
+       - Featured Cats
+       - Featured Dogs
+       - Featured Pet Accessories
    - Nav sections
-       - adopt a pet
+       - adopt a pet ✅
        - pet houses ✅
        - pet gadgets ✅
        - pet foods ✅
 4. Admin dashboard
-    - dashboard
-      - order log
+    - Dashboard
+      - Overview
+      - Order log
+      - Data graphs or something (tentative)
     - Products (Note: add input validation later)
-      - Add products ✅
-      - Delete products ✅
-      - Edit products ✅
-5. Shopping
+      - Load products ✅
+      - Add product ✅
+      - Delete product ✅
+      - Edit product ✅
+    - Pets (Note: add input validation later)
+      - Load pets ✅
+      - Add pet ✅
+      - Delete pet ✅
+      - Edit pet ✅
+    - Adoptions
+      - Load applications
+      - Approve application
+      - Reject application
+5. Adoption section
+    - Adoption form ✅
+       - Select pets ui ✅
+       - Submit application ✅
+6. Shopping
     - Checkout
     - Order log
-6. Adoption section
-    - Adoption form
-    - Application tracker
-7. Featured pets
-8. Promotions
-9. Announcements
-10. Success stories
 11. Responsive Design
-12. Kamusta ka na?
+12. Gusto ko na magbakasyon
 
 ### Requirements:
 1. PHP
