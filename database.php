@@ -139,7 +139,17 @@
         }
 
         public function get_pets() {
-            $stmt = $this->db->prepare('SELECT * FROM pets');
+            $stmt = $this->db->prepare('
+                SELECT p.*
+                    FROM pets p
+                    WHERE p.id NOT IN (
+                        SELECT a.pet_id
+                        FROM adopteds a
+                        JOIN adoption_applications ap
+                            ON ap.id = a.application_id
+                        WHERE ap.status = "approved"
+                    );
+            ');
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

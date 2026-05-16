@@ -43,10 +43,10 @@ CREATE TABLE IF NOT EXISTS adoption_applications (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-    CREATE TABLE IF NOT EXISTS adopteds (
-        application_id INT NOT NULL,
-        pet_id INT NOT NULL,
-        FOREIGN KEY (application_id) REFERENCES adoption_applications(id),
-        FOREIGN KEY (pet_id) REFERENCES pets(id),
-        PRIMARY KEY (application_id, pet_id)
-    );
+CREATE TABLE IF NOT EXISTS adopteds (
+    application_id INT NOT NULL,
+    pet_id INT NOT NULL,
+    FOREIGN KEY (application_id) REFERENCES adoption_applications(id),
+    FOREIGN KEY (pet_id) REFERENCES pets(id),
+    PRIMARY KEY (application_id, pet_id)
+);
