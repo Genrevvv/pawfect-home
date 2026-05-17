@@ -1,4 +1,6 @@
+import { updateContent } from "./auxiliary.js";
 import { petContentPreview } from "./content-preview.js";
+import { loadProducts } from "./load-products.js";
 import { setPetFilter } from "./state.js";
 
 export function featuredScript() {
@@ -12,7 +14,7 @@ export function featuredScript() {
 
     const viewAllDogs = document.getElementById('view-all-dogs');
     const viewAllCats = document.getElementById('view-all-cats');
-    const viewAllGadgets = document.getElementById('view-all-gadgets');
+    const viewAllProducts = document.getElementById('view-all-products');
 
     viewAllDogs.onclick = () => {
         setPetFilter("dog");
@@ -24,8 +26,10 @@ export function featuredScript() {
         adoptPet.click();
     };
 
-    viewAllGadgets.onclick = () => {
-        petGadgets.click();
+    viewAllProducts.onclick = async () => {
+        const content = document.getElementById('content');
+        await updateContent('html/all-products.html', content);
+        loadProducts(null);
     }
 
     fetch('/get-featured')
