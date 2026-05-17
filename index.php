@@ -300,6 +300,10 @@
         echo json_encode(['success' => true, 'application_id' => $result]);
     });
 
+    $router->add('/get-adoption-applications', function () use ($db) {
+        echo json_encode($db->get_adoption_applications());
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

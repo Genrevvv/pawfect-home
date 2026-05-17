@@ -1,3 +1,4 @@
+import { adoptionManagementScript } from "./adoption-management.js";
 import { petManagementScript } from "./pet-management.js";
 import { productManagementScript } from "./product-management.js";
 
@@ -29,8 +30,11 @@ pets.onclick = async () => {
 
 adoptions.onclick = async () => {
     highlightOption('adoptions');
-    updateContent('html/adoption-management.html');
+    await updateContent('html/adoption-management.html');
+    adoptionManagementScript();
 }
+
+adoptions.click();
 
 async function updateContent(htmlFilePath) {
     const res = await fetch(htmlFilePath);
@@ -72,5 +76,3 @@ function highlightOption(option) {
         optionElement.classList.add('highlighted');
     }
 }
-
-pets.click();

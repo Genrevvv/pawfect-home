@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS pets (
 CREATE TABLE IF NOT EXISTS adoption_applications (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
     email_address VARCHAR(100) NOT NULL,
     phone_number VARCHAR(100) NOT NULL,
     home_address VARCHAR(200) NOT NULL,

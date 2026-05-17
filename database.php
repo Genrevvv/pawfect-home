@@ -228,11 +228,12 @@
         public function setup_adoption_application($form_data) {
             $stmt = $this->db->prepare('
                 INSERT INTO adoption_applications
-                VALUES (null, :user_id, :email, :phone_number, :home_address, :house_type, :yard_type, :reason, :existing_pet, :status)
+                VALUES (null, :user_id, :full_name, :email, :phone_number, :home_address, :house_type, :yard_type, :reason, :existing_pet, :status)
             ');
 
             $stmt->execute([
                 'user_id' => $form_data['user_id'],
+                'full_name' => $form_data['full_name'],
                 'email' => $form_data['email_address'],
                 'phone_number' => $form_data['phone_number'],
                 'home_address' => $form_data['home_address'],
@@ -258,6 +259,82 @@
             }
 
             return $application_id;
+        }
+
+        public function get_adoption_applications() {
+            $stmt = $this->db->prepare('
+                SELECT 
+                    aa.id AS application_id,
+                    aa.user_id,
+                    aa.full_name,
+                    aa.email_address,
+                    aa.phone_number,
+                    aa.home_address,
+                    aa.house_type,
+                    aa.yard_type,
+                    aa.reason,
+                    aa.existing_pet,
+                    aa.status,
+
+                    u.id AS user_id,
+                    u.username,
+                    u.user_type,
+
+                    p.id AS pet_id,
+                    p.pet_name,
+                    p.pet_age,
+                    p.pet_type,
+                    p.pet_description,
+                    p.image AS pet_image
+
+                FROM adoption_applications aa
+                JOIN users u ON aa.user_id = u.id
+                JOIN adopteds a ON aa.id = a.application_id
+                JOIN pets p ON a.pet_id = p.id;
+            ');
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $applications = [];
+
+            foreach ($result as $row) {
+                $appId = $row['application_id'];
+
+                if (!isset($applications[$appId])) {
+                    $applications[$appId] = [
+                        'user' => [
+                            'id' => $row['user_id'],
+                            'username' => $row['username'],
+                            'user_type' => $row['user_type']
+                        ],
+                        'adoption_application' => [
+                            'id' => $row['application_id'],
+                            'full_name' => $row['full_name'],
+                            'email_address' => $row['email_address'],
+                            'phone_number' => $row['phone_number'],
+                            'home_address' => $row['home_address'],
+                            'house_type' => $row['house_type'],
+                            'yard_type' => $row['yard_type'],
+                            'reason' => $row['reason'],
+                            'existing_pet' => $row['existing_pet'],
+                            'status' => $row['status']
+                        ],
+                        'pets' => []
+                    ];
+                }
+
+                $applications[$appId]['pets'][] = [
+                    'id' => $row['pet_id'],
+                    'pet_name' => $row['pet_name'],
+                    'pet_age' => $row['pet_age'],
+                    'pet_type' => $row['pet_type'],
+                    'pet_description' => $row['pet_description'],
+                    'image' => $row['pet_image']
+                ];
+            }
+
+            return $applications;
         }
 
     }

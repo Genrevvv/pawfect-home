@@ -40,6 +40,10 @@
     border-bottom-right-radius: 0.5rem;
 }
 
+#placeholder-tr td {
+    text-align: center;
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
