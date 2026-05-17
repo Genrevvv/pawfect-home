@@ -26,7 +26,7 @@
 
 #view-all-dogs,
 #view-all-cats,
-#view-all-items {
+#view-all-gadgets {
     background-color: var(--tan-ocher);
     width: 10rem;
     height: 2rem;
@@ -42,7 +42,7 @@
 
 #view-all-dogs:hover,
 #view-all-cats:hover,
-#view-all-items:hover {
+#view-all-gadgets:hover {
     cursor: pointer;
 }
 

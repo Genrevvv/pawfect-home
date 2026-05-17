@@ -8,13 +8,11 @@ export function featuredScript() {
     const featuredProducts = document.getElementById('featured-products');
 
     const adoptPet = document.getElementById('adopt-pet');
-    const petHouses = document.getElementById('pet-houses');
     const petGadgets = document.getElementById('pet-gadgets');
-    const petFoods = document.getElementById('pet-foods');
 
     const viewAllDogs = document.getElementById('view-all-dogs');
     const viewAllCats = document.getElementById('view-all-cats');
-    const ViewAllItems = document.getElementById('view-all-items');
+    const viewAllGadgets = document.getElementById('view-all-gadgets');
 
     viewAllDogs.onclick = () => {
         setPetFilter("dog");
@@ -25,6 +23,10 @@ export function featuredScript() {
         setPetFilter("cat");
         adoptPet.click();
     };
+
+    viewAllGadgets.onclick = () => {
+        petGadgets.click();
+    }
 
     fetch('/get-featured')
         .then(res => res.json())
