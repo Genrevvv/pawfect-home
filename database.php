@@ -91,11 +91,12 @@
         public function add_product($product_data) {
             $stmt = $this->db->prepare('
                 INSERT INTO products 
-                VALUES (null, :product_name, :category, :pet_type, :price, :stock, :image)
+                VALUES (null, :product_name, :description, :category, :pet_type, :price, :stock, :image)
             ');
             
             $stmt->execute([
                 'product_name' => $product_data['product_name'],
+                'description' => $product_data['description'],
                 'category' => $product_data['category'],
                 'pet_type' => $product_data['pet_type'],
                 'price' => $product_data['price'],
@@ -117,6 +118,7 @@
             $stmt = $this->db->prepare('
                 UPDATE products SET 
                     product_name = :product_name, 
+                    description = :description,
                     category = :category,
                     pet_type = :pet_type,
                     price = :price,
@@ -128,6 +130,7 @@
             $stmt->execute([
                 'product_id' => $product_data['product_id'],
                 'product_name' => $product_data['product_name'],
+                'description' => $product_data['description'],
                 'category' => $product_data['category'],
                 'pet_type' => $product_data['pet_type'],
                 'price' => $product_data['price'],

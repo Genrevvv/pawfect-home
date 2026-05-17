@@ -105,6 +105,7 @@
 
         $product_data = [
             'product_name' => $_POST['product_name'],
+            'description' => $_POST['description'],
             'category' => $_POST['category'],
             'pet_type' => $_POST['pet_type'],
             'price' => $_POST['price'],
@@ -165,6 +166,7 @@
         $product_data = [
             'product_id' => $_POST['product_id'],
             'product_name' => $_POST['product_name'],
+            'description' => $_POST['description'],
             'category' => $_POST['category'],
             'pet_type' => $_POST['pet_type'],
             'price' => $_POST['price'],

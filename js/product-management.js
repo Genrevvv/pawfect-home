@@ -4,12 +4,14 @@ export function productManagementScript() {
     const overlayContainer = document.getElementById('overlay-container');
 
     const productName = document.getElementById('product-name');
+    const description = document.getElementById('description');
     const category = document.getElementById('category');
     const petType = document.getElementById('pet-type');
     const price = document.getElementById('price');
     const stock = document.getElementById('stock');
     const uploadImageArea = document.getElementById('upload-image-area');
     const addProduct = document.getElementById('add-product');
+
     let imageFile = null;
 
     loadProducts();
@@ -21,70 +23,56 @@ export function productManagementScript() {
     addProduct.onclick = () => {
         const productData = new FormData();
         productData.append('product_name', productName.value);
+        productData.append('description', description.value);
         productData.append('category', category.value);
         productData.append('pet_type', petType.value);
         productData.append('price', price.value);
         productData.append('stock', stock.value);
-        productData.append('image', imageFile);       
+        productData.append('image', imageFile);
 
-        const options = {
+        fetch('/add-product', {
             method: 'POST',
             body: productData
-        }
-        
-        fetch('/add-product', options)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) return displayMessage(data.error);
 
-                if (data['error'] != null) {
-                    displayMessage(data['error']);
-                    return;
-                }
-
-                displayMessage('Product was added successfully');
-                addProductElement(data['product_data']);
-            });
-    }
+            displayMessage('Product was added successfully');
+            addProductElement(data.product_data);
+        });
+    };
 
     function loadProducts() {
         fetch('/get-products')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (!data.products) return;
 
-                if (data['products'] === null) {
-                    console.log('hell nah');
-                    return;
-                }
-
-                for (let i = 0; i < data['products'].length; i++) {
-                    addProductElement(data['products'][i]);
-                }
+                data.products.forEach(p => addProductElement(p));
             });
     }
 
     function addProductElement(productData) {
-        console.log('add prod element');
-
-        const status = productData['stock'] > 0 ? 'In Stock' : 'No Stock';
-        const editProductId = `edit-product-${productData['id']}`;
-        const deleteProductId = `delete-product-${productData['id']}`;
 
         const productLog = document.getElementById('product-log');
+
         const newProductRow = document.createElement('tr');
-        newProductRow.innerHTML = `<td class="product_name">${productData['product_name']}</td>
-                                    <td class="price">₱${productData['price']}</td>
-                                    <td class="stock">${productData['stock']}</td>
-                                    <td class="status">${status}</td>
-                                    <td>
-                                        <i id="${editProductId}" class="fa-regular fa-pen-to-square"></i>
-                                        <i id="${deleteProductId}" class="fa-solid fa-trash"></i>
-                                    </td>`;
+        newProductRow.innerHTML = `
+            <td class="product_name">${productData.product_name}</td>
+            <td class="price">₱${productData.price}</td>
+            <td class="stock">${productData.stock}</td>
+            <td class="status">${productData.stock > 0 ? 'In Stock' : 'No Stock'}</td>
+            <td>
+                <i id="edit-product-${productData.id}" class="fa-regular fa-pen-to-square"></i>
+                <i id="delete-product-${productData.id}" class="fa-solid fa-trash"></i>
+            </td>
+        `;
 
         productLog.append(newProductRow);
-        
-        const editButton = document.getElementById(editProductId);
+
+        const editButton = document.getElementById(`edit-product-${productData.id}`);
+
         editButton.onclick = () => {
             fetch('html/edit-product.html')
                 .then(res => res.text())
@@ -92,148 +80,128 @@ export function productManagementScript() {
                     overlayContainer.innerHTML = html;
                     overlayContainer.style.visibility = 'visible';
                     document.body.style.overflowY = 'hidden';
-                    
+
                     const editProductName = document.getElementById('edit-product-name');
+                    const editDescription = document.getElementById('edit-description');
                     const editCategory = document.getElementById('edit-category');
                     const editPetType = document.getElementById('edit-pet-type');
                     const editPrice = document.getElementById('edit-price');
-                    const editStock = document. getElementById('edit-stock');
-                    const editUploadedImageArea = document.getElementById('edit-uploaded-image-area');
+                    const editStock = document.getElementById('edit-stock');
                     const updateProduct = document.getElementById('update-product');
 
-                    editProductName.value = productData['product_name'];
-                    editCategory.value = productData['category'];
-                    editPetType.value = productData['pet_type'];
-                    editPrice.value = productData['price'];
-                    editStock.value = productData['stock'];
-                    displayImage(productData['image'], editUploadedImageArea);
+                    editProductName.value = productData.product_name;
+                    editDescription.value = productData.description;
+                    editCategory.value = productData.category;
+                    editPetType.value = productData.pet_type;
+                    editPrice.value = productData.price;
+                    editStock.value = productData.stock;
 
                     updateProduct.onclick = () => {
-                        updateProductData({
-                            product_id: productData['id'],
+                        const updatedProductData = {
+                            product_id: productData.id,
                             product_name: editProductName.value,
+                            description: editDescription.value,
                             category: editCategory.value,
                             pet_type: editPetType.value,
                             price: editPrice.value,
                             stock: editStock.value,
-                            image: imageFile || productData['image']
-                        }, newProductRow);
-                    }
-                });
-        }
+                            image: imageFile || productData.image
+                        };
 
-        const deleteButton = document.getElementById(deleteProductId);
+                        updateProductData(updatedProductData, productData, newProductRow);
+                    };
+                });
+        };
+
+        const deleteButton = document.getElementById(`delete-product-${productData.id}`);
+
         deleteButton.onclick = () => {
-            const options = {
+            fetch('/delete-product', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify({product_id: productData['id']})
-            };
-
-            fetch('/delete-product', options)
-                .then(res => res.json())
-                .then(data => {
-                    newProductRow.remove();
-                    displayMessage(`${productData['product_name']} deleted successfully`);
-                });
-        }
-
+                body: JSON.stringify({ product_id: productData.id })
+            })
+            .then(res => res.json())
+            .then(() => {
+                newProductRow.remove();
+                displayMessage(`${productData.product_name} deleted successfully`);
+            });
+        };
     }
 
-    function updateProductData(updatedProductData, productRow) {
-        const updatedData = new FormData();
-        updatedData.append('product_id', updatedProductData['product_id']);
-        updatedData.append('product_name', updatedProductData['product_name']);
-        updatedData.append('category', updatedProductData['category']);
-        updatedData.append('pet_type', updatedProductData['pet_type']);
-        updatedData.append('price', updatedProductData['price']);   
-        updatedData.append('stock', updatedProductData['stock']);
-        updatedData.append('image', updatedProductData['image']);     
+    function updateProductData(updatedProductData, productData, productRow) {
 
-        for (const [key, value] of updatedData.entries()) {
-            console.log(key, value);
-        }
+        const fd = new FormData();
 
-        const options = {
+        Object.entries(updatedProductData).forEach(([k, v]) => {
+            fd.append(k, v);
+        });
+
+        fetch('/update-product', {
             method: 'POST',
-            body: updatedData
-        }
+            body: fd
+        })
+        .then(res => res.json())
+        .then(data => {
 
-        fetch('/update-product', options)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            if (data.error) return displayMessage(data.error);
 
-                if (data['error'] != null) {
-                    displayMessage(data['error']);
-                    return;
-                }
-                
-                displayMessage('Product was updated successfully');
+            displayMessage('Product was updated successfully');
 
-                overlayContainer.innerHTML = '';
-                overlayContainer.style.visibility = 'hidden';
-                document.body.style.overflowY = 'visible';
+            overlayContainer.innerHTML = '';
+            overlayContainer.style.visibility = 'hidden';
+            document.body.style.overflowY = 'visible';
 
-                productRow.querySelector('.product_name').innerText = updatedProductData['product_name'];
-                productRow.querySelector('.price').innerText = `₱${updatedProductData['price']}`;
-                productRow.querySelector('.stock').innerText = updatedProductData['stock'];
-                productRow.querySelector('.status').innerText = updatedProductData['stock'] > 0 ? 'In Stock' : 'No Stock';
-            });
+            productRow.querySelector('.product_name').innerText = updatedProductData.product_name;
+            productRow.querySelector('.price').innerText = `₱${updatedProductData.price}`;
+            productRow.querySelector('.stock').innerText = updatedProductData.stock;
+            productRow.querySelector('.status').innerText =
+                updatedProductData.stock > 0 ? 'In Stock' : 'No Stock';
+
+            Object.assign(productData, updatedProductData);
+        });
     }
 
     function uploadImage(formDiv) {
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = 'image/*';
-            input.onchange = (e) => {
-                imageFile = e.target.files[0];
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
 
-                // I don't think this will even happen tho, lol
-                // Code: based from SocialMD's, lol
-                    // https://github.com/Genrevvv/SocialMD/blob/main/js/create-post.js
+        input.onchange = (e) => {
+            imageFile = e.target.files[0];
+            if (!imageFile) return;
 
-                // Miss na kita
+            const reader = new FileReader();
+            reader.onload = () => {
+                displayImage(reader.result, formDiv);
+            };
+            reader.readAsDataURL(imageFile);
+        };
 
-                if (!imageFile) {
-                    return;
-                }
-
-                const fileReader = new FileReader();
-                fileReader.onload = () => {
-                    const imageData = fileReader.result;
-                    displayImage(imageData, formDiv);
-                }
-
-                fileReader.readAsDataURL(imageFile);
-            }
-            input.click();
+        input.click();
     }
 
     function displayImage(imageData, formDiv) {
-        const innerSpan = formDiv.getElementsByTagName('span')[0];
+        const span = formDiv.querySelector('span');
 
-        // Display image on upload image area
         formDiv.style.backgroundImage = `url('${imageData}')`;
         formDiv.style.borderStyle = 'solid';
-        innerSpan.style.visibility = 'hidden';
-        
-        const removeImage = formDiv.querySelector('.remove-image');
-        removeImage.classList.add('holds-image');
+        span.style.visibility = 'hidden';
 
-        removeImage.onclick = (e) => {
+        const remove = formDiv.querySelector('.remove-image');
+        remove.classList.add('holds-image');
+
+        remove.onclick = (e) => {
             e.stopPropagation();
-            
-            removeImage.classList.remove('holds-image');
 
-            // Reset upload image area
+            remove.classList.remove('holds-image');
             formDiv.style.backgroundImage = 'none';
             formDiv.style.borderStyle = 'dashed';
-            innerSpan.style.visibility = 'visible';
-        }
+            span.style.visibility = 'visible';
 
-        formDiv.onclick = () => {
-            uploadImage(formDiv);
+            imageFile = null;
         };
+
+        formDiv.onclick = () => uploadImage(formDiv);
     }
 }
