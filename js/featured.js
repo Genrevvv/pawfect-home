@@ -1,10 +1,30 @@
 import { petContentPreview } from "./content-preview.js";
+import { setPetFilter } from "./state.js";
 
 export function featuredScript() {
     const featured = document.getElementById('featured');
     const featuredDogs = document.getElementById('featured-dogs');
     const featuredCats = document.getElementById('featured-cats');
     const featuredProducts = document.getElementById('featured-products');
+
+    const adoptPet = document.getElementById('adopt-pet');
+    const petHouses = document.getElementById('pet-houses');
+    const petGadgets = document.getElementById('pet-gadgets');
+    const petFoods = document.getElementById('pet-foods');
+
+    const viewAllDogs = document.getElementById('view-all-dogs');
+    const viewAllCats = document.getElementById('view-all-cats');
+    const ViewAllItems = document.getElementById('view-all-items');
+
+    viewAllDogs.onclick = () => {
+        setPetFilter("dog");
+        adoptPet.click();
+    };
+
+    viewAllCats.onclick = () => {
+        setPetFilter("cat");
+        adoptPet.click();
+    };
 
     fetch('/get-featured')
         .then(res => res.json())

@@ -1,5 +1,7 @@
+
 import { cardAnimation } from "./animations.js";
 import { petContentPreview } from "./content-preview.js";
+import { petFilter } from "./state.js";
 
 // Loads products on products section on index.html
 export function loadPets() {
@@ -30,13 +32,27 @@ export function loadPets() {
                                         </div>`;
             
                 productsContainer.append(petCard);
-                setupNavFilter();
 
                 petCard.onclick = () => {
                     petContentPreview(petData);
                 }
             }
 
+            setupNavFilter();
+
+            const pets = productsContainer.querySelectorAll('.card');
+            pets.forEach(pet => {
+                if (petFilter === "all") {
+                    pet.style.display = "";
+                }
+                else {
+                    pet.style.display = pet.classList.contains(petFilter)
+                        ? ""
+                        : "none";
+                }
+            });
+
+            syncFilterHighlight(); 
             cardAnimation();
     });
 
@@ -92,5 +108,19 @@ export function loadPets() {
                 }
             });
         }
+    }
+
+    function syncFilterHighlight() {
+        const allBtn = document.getElementById('all-btn');
+        const catBtn = document.getElementById('cats-btn');
+        const dogBtn = document.getElementById('dogs-btn');
+
+        const filters = [allBtn, catBtn, dogBtn];
+
+        filters.forEach(btn => btn.classList.remove('highlighted'));
+
+        if (petFilter === "dog") dogBtn?.classList.add("highlighted");
+        else if (petFilter === "cat") catBtn?.classList.add("highlighted");
+        else allBtn?.classList.add("highlighted");
     }
 }

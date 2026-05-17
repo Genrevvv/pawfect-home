@@ -40,6 +40,12 @@
     border: 0.2rem solid var(--deep-bronze);
 }
 
+#view-all-dogs:hover,
+#view-all-cats:hover,
+#view-all-items:hover {
+    cursor: pointer;
+}
+
 .featured-container {
     width: 100%;
     padding: 0.5rem 0;
