@@ -88,6 +88,7 @@ export function productManagementScript() {
                     const editPrice = document.getElementById('edit-price');
                     const editStock = document.getElementById('edit-stock');
                     const updateProduct = document.getElementById('update-product');
+                    const editUploadedImageArea = document.getElementById('edit-uploaded-image-area');
 
                     editProductName.value = productData.product_name;
                     editDescription.value = productData.description;
@@ -95,6 +96,7 @@ export function productManagementScript() {
                     editPetType.value = productData.pet_type;
                     editPrice.value = productData.price;
                     editStock.value = productData.stock;
+                    displayImage(productData.image, editUploadedImageArea);
 
                     updateProduct.onclick = () => {
                         const updatedProductData = {
