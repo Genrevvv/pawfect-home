@@ -1,4 +1,5 @@
 import { cardAnimation } from "./animations.js";
+import { petContentPreview } from "./content-preview.js";
 
 // Loads products on products section on index.html
 export function loadPets() {
@@ -11,25 +12,29 @@ export function loadPets() {
             console.log(productsContainer);
 
             for (let i = 0; i < data['pets'].length; i++) {
-                const pet = data['pets'][i];
+                const petData = data['pets'][i];
 
-                const petData = document.createElement('div');
-                petData.classList.add('pet-data', pet['pet_type'], 'card');
-                petData.innerHTML = `<div class="pet-image">
-                                            <img src="${pet.image}">
+                const petCard = document.createElement('div');
+                petCard.classList.add(petData['pet_type'], 'card');
+                petCard.innerHTML = `<div class="pet-image">
+                                            <img src="${petData.image}">
                                         </div>
                                         <div class="details-container">
                                             <div class="container-1">
-                                                <span class="pet-name">${pet['pet_name']}</span>
-                                                <span class="pet-description">${pet['pet_description']}</span>
+                                                <span class="pet-name">${petData['pet_name']}</span>
+                                                <span class="pet-description">${petData['pet_description']}</span>
                                             </div>
                                             <div class="container-2">
-                                                <span class="pet-age">${pet['pet_age']}</span>
+                                                <span class="pet-age">${petData['pet_age']}</span>
                                             </div>
                                         </div>`;
             
-                productsContainer.append(petData);
+                productsContainer.append(petCard);
                 setupNavFilter();
+
+                petCard.onclick = () => {
+                    petContentPreview(petData);
+                }
             }
 
             cardAnimation();
@@ -42,7 +47,7 @@ export function loadPets() {
 
         const filters = [allBtn, catBtn, dogBtn];
 
-        const pets = productsContainer.querySelectorAll('.pet-data');
+        const pets = productsContainer.querySelectorAll('.card');
         allBtn.onclick = () => {
             pets.forEach(pet => {
                 pet.style.display = '';

@@ -20,7 +20,7 @@ export function loadProducts(category) {
                 const product = data['products'][i];
 
                 const productData = document.createElement('div');
-                productData.classList.add('product-data', product['pet_type'], 'card');
+                productData.classList.add(product['pet_type'], 'card');
                 productData.innerHTML = `<div class="product-image">
                                             <img src="${product.image}">
                                         </div>
@@ -49,7 +49,7 @@ export function loadProducts(category) {
 
         const filters = [allBtn, catBtn, dogBtn];
 
-        const products = productsContainer.querySelectorAll('.product-data');
+        const products = productsContainer.querySelectorAll('.card');
         allBtn.onclick = () => {
             products.forEach(product => {
                 product.style.display = '';
