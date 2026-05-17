@@ -19,3 +19,9 @@ export function setupAdminButton() {
 
     headerOptions.prepend(adminPage);
 }
+
+export async function updateContent(htmlFilePath, parentContainer) {
+    const res = await fetch(htmlFilePath);
+    const html = await res.text();
+    parentContainer.innerHTML = html;
+}

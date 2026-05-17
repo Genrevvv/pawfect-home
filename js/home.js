@@ -1,3 +1,4 @@
+import { updateContent } from "./auxiliary.js";
 import { navBarAnimation } from "./animations.js";
 import { featuredScript } from "./featured.js";
 import { loadPets } from "./load-pets.js";
@@ -14,40 +15,40 @@ const petFoods = document.getElementById('pet-foods');
 
 
 navBarAnimation();
-await updateContent('html/featured.html');
+await updateContent('html/featured.html', content);
 featuredScript();
 
 adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
-    await updateContent('html/adopt-pet.html');
+    await updateContent('html/adopt-pet.html', content);
     loadPets();
 }
 
 petHouses.onclick = async () => {
     highlightOption('pet-houses');
-    await updateContent('html/pet-houses.html');
+    await updateContent('html/pet-houses.html', content);
     loadProducts('pet_houses');
 }
 
 petGadgets.onclick = async () => {
     highlightOption('pet-gadgets');
-    await updateContent('html/pet-gadgets.html');
+    await updateContent('html/pet-gadgets.html', content);
     loadProducts('pet_gadgets');
 }
 
 petFoods.onclick = async () => {
     highlightOption('pet-foods');
-    await updateContent('html/pet-foods.html'); 
+    await updateContent('html/pet-foods.html', content); 
     loadProducts('pet_foods');
 }
 
 // petGadgets.click();
 
-async function updateContent(htmlFilePath) {
-    const res = await fetch(htmlFilePath);
-    const html = await res.text();
-    content.innerHTML = html;
-}
+// async function updateContent(htmlFilePath) {
+//     const res = await fetch(htmlFilePath);
+//     const html = await res.text();
+//     content.innerHTML = html;
+// }
 
 function highlightOption(option) {
     const options = [adoptPet, petHouses, petGadgets, petFoods];

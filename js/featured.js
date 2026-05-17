@@ -1,3 +1,5 @@
+import { petContentPreview } from "./content-preview.js";
+
 export function featuredScript() {
     const featured = document.getElementById('featured');
     const featuredDogs = document.getElementById('featured-dogs');
@@ -32,16 +34,20 @@ export function featuredScript() {
         `;
 
         innerContainer.append(newPetCard);
+
+        newPetCard.onclick = () => {
+            petContentPreview(petData);
+        }
     }    
 
     function addFeaturedProducts(productData, featuredContainer) {
         console.log(productData);
         const innerContainer = featuredContainer.querySelector('.inner-container');
 
-        const newPetCard = document.createElement('div');
-        newPetCard.classList.add('featured-element');
+        const newProductCard = document.createElement('div');
+        newProductCard.classList.add('featured-element');
 
-        newPetCard.innerHTML = `
+        newProductCard.innerHTML = `
             <img src="${productData['image']}" alt="">
             <div class="details">
                 <span class="pet-name">${productData['product_name']}</span>
@@ -50,6 +56,6 @@ export function featuredScript() {
             <i class="fa-regular fa-heart"></i>
         `;
 
-        innerContainer.append(newPetCard);
+        innerContainer.append(newProductCard);
     }    
 }

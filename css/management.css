@@ -165,6 +165,12 @@
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 
     overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.pet-card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .pet-image {

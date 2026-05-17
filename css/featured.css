@@ -1,0 +1,131 @@
+#featured {
+    width: 100%;
+}
+
+#featured h2 {
+    text-align: center;
+}
+
+#featured-dogs,
+#featured-cats,
+#featured-pet-accessories {
+    width: 100%;
+}
+
+#featured-dogs {
+    background-color: var(--warm-honey);
+}
+
+#featured-cats {
+    background-color: var(--pale-cream);
+}
+
+#featured-products {
+    background-color: var(--warm-honey);
+}
+
+#view-all-dogs,
+#view-all-cats,
+#view-all-items {
+    background-color: var(--tan-ocher);
+    width: 10rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 0.5rem;
+    color: var(--cream);
+    border-radius: 1rem;
+    border: 0.2rem solid var(--deep-bronze);
+}
+
+.featured-container {
+    width: 100%;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.featured-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.featured-container .inner-container {
+    width: min(1200px, 95%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.featured-element {
+    background-color: var(--pale-cream);
+    display: flex;
+    flex-direction: column;
+    width: 12rem;
+    min-height: 15rem;
+    border-radius: 1rem;
+    border: 0.2rem solid var(--deep-bronze);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.featured-element:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.featured-element img {
+    width: 100%;
+    height: 7rem;
+    object-fit: cover;
+    display: block;
+}
+
+.featured-element .details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.9rem;
+}
+
+.featured-element .fa-heart {
+    font-size: 1.3rem;
+    color: var(--deep-bronze);
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.featured-element .pet-name {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.featured-element .pet-description {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.featured-element .pet-gender {
+    background-color: var(--soft-blue);
+    font-size: 1.2rem;
+
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    right: 0.5rem;
+}
