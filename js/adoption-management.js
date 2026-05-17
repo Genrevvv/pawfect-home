@@ -8,9 +8,9 @@ export function adoptionManagementScript() {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if (!data) {
+            if (!data.length) {
                 const placeholderTr = document.getElementById('placeholder-tr');
-                placeholderTr.style.display = 'block';
+                placeholderTr.style.display = 'table-row';
                 return;
             }
 
