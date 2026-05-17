@@ -49,3 +49,14 @@
     flex-direction: column;
     gap: 0.2rem;
 }
+
+.view-details-btn {
+    background-color: #C5A579;
+    border: none;
+
+    padding: 0.8rem 1.5rem;
+
+    border-radius: 0.7rem;
+
+    cursor: pointer;
+}

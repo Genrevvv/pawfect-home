@@ -1,4 +1,7 @@
+import { updateContent } from "./auxiliary.js";
+
 export function adoptionManagementScript() {
+    const overlayContainer = document.getElementById('overlay-container');
     const adoptionLog = document.getElementById('adoption-log');
 
     fetch('/get-adoption-applications')
@@ -26,10 +29,54 @@ export function adoptionManagementScript() {
                     </td>
                     <td>${appData.status}</td>
                     <td>
-                        <span>View Details</span>
+                        <span class="view-details-btn">View Details</span>
                     </td>`;
 
                 adoptionLog.append(newApplicationRow);
+
+                const viewDetailsBtn = newApplicationRow.querySelector('.view-details-btn');
+                viewDetailsBtn.onclick = async () => {
+                    await updateContent('html/rev-adoption-app.html', overlayContainer);
+                    overlayContainer.style.visibility = 'visible';
+                    document.body.style.overflowY = 'hidden';
+
+                    const closeBtn = document.getElementById('close-btn');
+                    closeBtn.onclick = () => {
+                        overlayContainer.style.visibility = 'hidden';
+                        document.body.style.overflowY = 'visible';
+                    }
+
+                    const fullName = document.getElementById('full-name');
+                    const phoneNumber = document.getElementById('phone-number');
+                    const emailAddress = document.getElementById('email-address');
+                    const homeAddress = document.getElementById('home-address');
+                    const reason = document.getElementById('reason');
+                    const existingPet = document.getElementById('existing-pet');
+
+                    fullName.innerHTML = appData.full_name;
+                    phoneNumber.innerHTML = appData.phone_number;
+                    emailAddress.innerHTML = appData.email_address;
+                    homeAddress.innerHTML = appData.home_address;
+                    reason.innerHTML = appData.reason;
+                    existingPet.innerHTML = appData.existing_pet;
+
+                    const requestedPets = document.getElementById('requested-pets');
+                    pets.forEach(pet => {
+                        const petProfile = document.createElement('pet-profile');
+                        petProfile.innerHTML = `            
+                            <div class="pet-profile">
+                                <img class="pet-image" src="${pet.image}" alt="">
+                                <div>
+                                    <div>${pet.pet_name}</div>
+                                    <div>${pet.pet_type}</div>
+                                    <div>Male • ${pet.pet_age}</div>
+                                </div>
+                            </div>`;
+                        
+                        requestedPets.append(petProfile);
+                    });
+
+                }
             });
         });
 }
