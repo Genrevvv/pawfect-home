@@ -42,10 +42,10 @@ export function loadPets() {
 
         const filters = [allBtn, catBtn, dogBtn];
 
-        const products = productsContainer.querySelectorAll('.product-data');
+        const pets = productsContainer.querySelectorAll('.pet-data');
         allBtn.onclick = () => {
-            products.forEach(product => {
-                product.style.display = '';
+            pets.forEach(pet => {
+                pet.style.display = '';
             });
 
             filters.forEach(filter => {
@@ -59,8 +59,8 @@ export function loadPets() {
         }
 
         catBtn.onclick = () => {
-            products.forEach(product => {
-                product.style.display = product.classList.contains('cat') ? '' : 'none';
+            pets.forEach(pet => {
+                pet.style.display = pet.classList.contains('cat') ? '' : 'none';
             });
 
             filters.forEach(filter => {
@@ -74,8 +74,8 @@ export function loadPets() {
         }
 
         dogBtn.onclick = () => {
-            products.forEach(product => {
-                product.style.display = product.classList.contains('dog') ? '' : 'none';
+            pets.forEach(pet => {
+                pet.style.display = pet.classList.contains('dog') ? '' : 'none';
             });
 
             filters.forEach(filter => {
