@@ -337,5 +337,16 @@
             return $applications;
         }
 
+        public function update_adoption_application($status) {
+            $stmt = $this->db->prepare('
+                UPDATE adoption_applications
+                SET status = :status
+            ');
+
+            $stmt->execute(['status' => $status]);
+
+            return $stmt->rowCount();
+        }
+
     }
 ?>

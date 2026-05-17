@@ -1,4 +1,4 @@
-import { updateContent } from "./auxiliary.js";
+import { displayMessage, updateContent } from "./auxiliary.js";
 
 export function adoptionManagementScript() {
     const overlayContainer = document.getElementById('overlay-container');
@@ -8,12 +8,12 @@ export function adoptionManagementScript() {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if (!data.length) {
+            if (data.length === 0) {
                 const placeholderTr = document.getElementById('placeholder-tr');
                 placeholderTr.style.display = 'table-row';
                 return;
             }
-
+            
             Object.entries(data).forEach(([appID, data]) => {
                 const user = data.user;
                 const pets = data.pets;
@@ -76,6 +76,39 @@ export function adoptionManagementScript() {
                         requestedPets.append(petProfile);
                     });
 
+                    const approveBtn = document.getElementById('approve-btn');
+                    const rejectBtn = document.getElementById('reject-btn');
+
+                    approveBtn.onclick = () => {
+                        fetch('/approve-adoption-application')
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.error !== null) {
+                                    displayMessage(data.error);
+                                    return;
+                                }
+
+                                displayMessage('Adoption application was approved');
+
+                                overlayContainer.style.visibility = 'hidden';
+                                document.body.style.overflowY = 'visible';
+                            });
+                    }
+
+                    rejectBtn.onclick = () => {
+                        fetch('/reject-adoption-application')
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.error !== null) {
+                                    displayMessage(data.error);
+                                    return;
+                                } 
+
+                                displayMessage('Adoption application was rejected');
+                                overlayContainer.style.visibility = 'hidden';
+                                document.body.style.overflowY = 'visible';
+                            });
+                    }
                 }
             });
         });
