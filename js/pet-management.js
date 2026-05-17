@@ -121,6 +121,7 @@ export function petManagementScript() {
                             pet_id: petData['id'],
                             pet_name: editPetName.value,
                             pet_age: editPetAge.value,
+                            pet_type: editPetType.value,
                             pet_description: editPetDescription.value,
                             image: imageFile || petData['image']
                         }, newPetCard);
