@@ -75,11 +75,35 @@
         }
 
         public function get_featured() {
-            $stmt = $this->db->prepare('SELECT * FROM pets WHERE pet_type = "dog" LIMIT 5');
+            $stmt = $this->db->prepare('                
+                SELECT p.*
+                FROM pets p
+                WHERE p.id NOT IN (
+                    SELECT a.pet_id
+                    FROM adopteds a
+                    JOIN adoption_applications ap
+                        ON ap.id = a.application_id
+                    WHERE ap.status = "approved"
+                )
+                AND p.pet_type = "dog"
+                LIMIT 5
+            ');
             $stmt->execute();
             $featured_dogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $stmt = $this->db->prepare('SELECT * FROM pets WHERE pet_type = "cat" LIMIT 5');
+            $stmt = $this->db->prepare('
+                SELECT p.*
+                FROM pets p
+                WHERE p.id NOT IN (
+                    SELECT a.pet_id
+                    FROM adopteds a
+                    JOIN adoption_applications ap
+                        ON ap.id = a.application_id
+                    WHERE ap.status = "approved"
+                )
+                AND p.pet_type = "cat"
+                LIMIT 5
+            ');
             $stmt->execute();
             $featured_cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
