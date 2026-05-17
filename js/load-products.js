@@ -27,7 +27,7 @@ export function loadProducts(category) {
                                         <div class="details-container">
                                             <div class="container-1">
                                                 <span class="product-name">${product['product_name']}</span>
-                                                <span class="product-description">Cool Shi, bruh :)</span>
+                                                <span class="product-description">${product['description']}</span>
                                             </div>
                                             <div class="container-2">
                                                 <span class="price">₱${product['price']}</span>
