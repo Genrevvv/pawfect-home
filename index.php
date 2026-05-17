@@ -75,6 +75,10 @@
         header('Location: /html/admin-page.html');
     });
 
+    $router->add('/get-featured', function () use ($db) {
+        echo json_encode($db->get_featured());
+    });
+
     $router->add('/get-products', function () use ($db) {
         $data = get_json_input();
         

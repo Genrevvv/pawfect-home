@@ -74,6 +74,26 @@
             ]);
         }
 
+        public function get_featured() {
+            $stmt = $this->db->prepare('SELECT * FROM pets WHERE pet_type = "dog" LIMIT 5');
+            $stmt->execute();
+            $featured_dogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $stmt = $this->db->prepare('SELECT * FROM pets WHERE pet_type = "cat" LIMIT 5');
+            $stmt->execute();
+            $featured_cats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $stmt = $this->db->prepare('SELECT * FROM products LIMIT 5');
+            $stmt->execute();
+            $featured_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return [
+                'featured_dogs' => $featured_dogs,
+                'featured_cats' => $featured_cats,
+                'featured_products' => $featured_products
+            ];
+        }
+
         public function get_products($category) {
             if (isset($category)) {
                 $stmt = $this->db->prepare('SELECT * FROM products WHERE category = :category');

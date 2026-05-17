@@ -1,11 +1,6 @@
 #content {
-    /* height: 400px; temp */
-
-    /* background-color: gray; */
     display: flex;
     flex-direction: column;
-
-
     margin: 0 auto;
     margin-top: 1rem;
 }
@@ -28,8 +23,18 @@
     text-align: center;
 }
 
+#featured {
+    width: 100%;
+}
+
 #featured h2 {
     text-align: center;
+}
+
+#featured-dogs,
+#featured-cats,
+#featured-pet-accessories {
+    width: 100%;
 }
 
 #featured-dogs {
@@ -40,7 +45,7 @@
     background-color: var(--pale-cream);
 }
 
-#featured-pet-accessories {
+#featured-products {
     background-color: var(--warm-honey);
 }
 
@@ -50,83 +55,89 @@
     background-color: var(--tan-ocher);
     width: 10rem;
     height: 2rem;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin: 0 auto;
     margin-top: 0.5rem;
-
     color: var(--cream);
     border-radius: 1rem;
     border: 0.2rem solid var(--deep-bronze);
 }
 
 .featured-container {
-    /* height: 10rem; */
-    padding: 1rem;
-    gap: 1rem;
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.featured-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .featured-container .inner-container {
-    width: 80%;
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    margin: 0 auto;
-    gap: 0.5rem;
+    width: min(1200px, 95%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
 }
 
-.featured-dog {
+.featured-element {
     background-color: var(--pale-cream);
     display: flex;
-    flex-direction: column;    
-    /* padding: 0.5rem; */
+    flex-direction: column;
+    width: 10rem;
+    min-height: 10rem;
     border-radius: 1rem;
     border: 0.2rem solid var(--deep-bronze);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.featured-dog img {
-    max-width: 100%;
-    height: 45%;
+.featured-element img {
+    width: 100%;
+    height: 7rem;
+    object-fit: cover;
     display: block;
-    object-fit: cover;    
-    margin-bottom: 0.5rem;
 }
 
-.featured-dog .details {
-    position: relative;
+.featured-element .details {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    padding:  0.1rem 0.5rem;
+    justify-content: space-between;
+    padding: 0.9rem;
 }
 
-.featured-dog .fa-heart {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--soft-red);  
+.featured-element .fa-heart {
+    font-size: 1.3rem;
+    color: var(--deep-bronze);
     position: absolute;
     top: 0.5rem;
-    right: 0.5rem;  
+    right: 0.5rem;
 }
 
-.featured-dog .pet-name {
+.featured-element .pet-name {
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
-.featured-dog .pet-description {
-    font-size: small;
+.featured-element .pet-description {
+    font-size: 0.9rem;
+    opacity: 0.85;
 }
 
-.featured-dog .pet-gender {
+.featured-element .pet-gender {
     background-color: var(--soft-blue);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
 
     display: flex;
     justify-content: center;
@@ -134,7 +145,6 @@
 
     border-radius: 50%;
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 0.5rem;
-    transform: translateY(-1.5rem);
 }

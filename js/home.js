@@ -1,4 +1,5 @@
 import { navBarAnimation } from "./animations.js";
+import { featuredScript } from "./featured.js";
 import { loadPets } from "./load-pets.js";
 import { loadProducts } from "./load-products.js";
 
@@ -13,7 +14,8 @@ const petFoods = document.getElementById('pet-foods');
 
 
 navBarAnimation();
-await updateContent('html/home-page.html');
+await updateContent('html/featured.html');
+featuredScript();
 
 adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
