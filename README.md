@@ -44,8 +44,9 @@ Website ata
 6. Shopping
     - Checkout
     - Order log
-11. Responsive Design
-12. Gusto ko na magbakasyon
+11. Responsive design
+12. Search bar
+13. Gusto ko na magbakasyon
 
 ### Requirements:
 1. PHP
