@@ -92,5 +92,5 @@ function updateTotalPrice() {
         total += item.price * item.quantity;
     }
 
-    totalPrice.innerHTML = total;
+    totalPrice.innerHTML = `₱${total}`;
 }
