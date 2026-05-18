@@ -23,12 +23,34 @@ export function cartScript() {
             <div class="cart-item-details">
                 <h3>${product.product_name}</h3>
                 <p>${product.description}</p>
-                <span>Quantity: ${product.quantity}</span>
+                <div class="quantity-container">
+                    <span>Quantity: </span>
+                    <span class="quantity">${product.quantity}</span>
+                    <button class="qty-btn">−</button>
+                    <button class="qty-btn">+</button>
+                </div>
             </div>
             <div class="cart-item-price">₱${product.price}</div>
         `;
 
         cartBody.append(cartItem);
+
+        const minusBtn = cartItem.querySelectorAll(".qty-btn")[0];
+        const plusBtn = cartItem.querySelectorAll(".qty-btn")[1];
+        const quantityText = cartItem.querySelector(".quantity");
+
+        plusBtn.addEventListener("click", () => {
+            product.quantity++;
+            quantityText.textContent = product.quantity;
+        });
+
+        minusBtn.addEventListener("click", () => {
+            if (product.quantity > 1) {
+                product.quantity--;
+                quantityText.textContent = product.quantity;
+            }
+        });
+
     });
 
     closeBtn.onclick = closeCartFunction;
