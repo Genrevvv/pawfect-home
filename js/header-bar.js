@@ -1,5 +1,5 @@
 import { setupAdminButton } from "./auxiliary.js";
-import { cartScript } from "./cart.js";
+import { cartScript, saveCartData } from "./cart.js";
 import { loginScript } from "./login.js";
 
 const cartBtn = document.getElementById('cart-btn');
@@ -57,11 +57,14 @@ export function logIn() {
         })
 }
 
-export function logOut() {
+export async function logOut() {
+    await saveCartData();
+
     fetch('/user-logout')
         .then(res => res.json())
         .then(data => {
             if (data['success']) {
+
                 sessionStorage.clear();
                 window.location.href = '/'
             }

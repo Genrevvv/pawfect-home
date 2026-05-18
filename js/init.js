@@ -1,16 +1,21 @@
+import { saveCartData } from "./cart.js";
+
 export let cartItems = [];
 
 window.addEventListener('beforeunload', () => {
-    localStorage.setItem(`cart_items`, JSON.stringify(cartItems));
+    localStorage.setItem('cart_items', JSON.stringify(cartItems));
     // localStorage.removeItem('cart_items');
 });
 
 window.addEventListener('load', () => {
+    if (!sessionStorage.getItem('username')) return;
+
     const raw = localStorage.getItem('cart_items');
     if (!raw) return;
 
     cartItems = JSON.parse(raw);
-    console.log(cartItems);
+
+    saveCartData();
 
     if (cartItems.length > 0) {
         const cartItemCount =document.getElementById('cart-item-count');

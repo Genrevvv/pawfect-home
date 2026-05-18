@@ -52,3 +52,12 @@ CREATE TABLE IF NOT EXISTS adopteds (
     FOREIGN KEY (pet_id) REFERENCES pets(id),
     PRIMARY KEY (application_id, pet_id)
 );
+
+CREATE TABLE IF NOT EXISTS user_carts (
+    user_id INT NOT NULL,
+    product_id INT NOT NULL, 
+    quantity INT NOT NULL,
+    PRIMARY KEY (user_id, product_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);

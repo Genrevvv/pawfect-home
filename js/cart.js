@@ -65,6 +65,35 @@ export function cartScript() {
     };
 }
 
+export function getCardData() {
+    fetch('/get-user-cart')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        });
+}
+
+export function saveCartData() {
+    const userCart = cartItems.map(item => ({
+        product_id: item.id,
+        quantity: item.quantity
+    }));
+
+    console.log(userCart);
+    
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userCart)
+    }
+
+    fetch('/save-user-cart', options)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        });
+}
+
 export function addToCart(product) {
     const cartItemCount = document.getElementById('cart-item-count');
     
