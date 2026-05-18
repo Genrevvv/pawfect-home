@@ -24,7 +24,11 @@
                     <li>Volunteer</li>
                     <li>About us</li>
                     <li>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i id="cart-btn" class="fa-solid fa-cart-shopping">
+                            <span id="cart-item-count" style="visibility: hidden;">
+                                1
+                            </span>
+                        </i>
                     </li>
                 </ul>
                 <div id="auth-btn">SIGN-IN / REGISTER</div>
@@ -47,6 +51,7 @@
         </div>
     </main>
 
+    <script src="/js/init.js" type="module"></script>
     <script src="/js/admin-page.js" type="module"></script>
     <script src="/js/header-bar.js" type="module"></script>
 </body>
