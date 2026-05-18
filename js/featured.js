@@ -60,7 +60,8 @@ export function featuredScript() {
             <img src="${petData['image']}" alt="">
             <div class="details">
                 <span class="pet-name">${petData['pet_name']}</span>
-                <span class="pet-description">${truncateString(petData['pet_description'], 30)}</span>
+                <span class="pet-age">${petData['pet_age']}</span>
+                <span class="pet-description">${truncateString(petData['pet_description'], 60)}</span>
                 ${petSexIcon}
             </div>
             <i class="fa-regular fa-heart"></i>

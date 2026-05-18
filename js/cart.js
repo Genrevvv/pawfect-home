@@ -25,7 +25,7 @@ export function cartScript() {
             <img src="${product.image}" alt="Dog Food">
             <div class="cart-item-details">
                 <h3>${product.product_name}</h3>
-                <p>${truncateString(product.description, 30)}</p>
+                <p>${truncateString(product.description, 40)}</p>
                 <div class="quantity-container">
                     <span>Quantity: </span>
                     <span class="quantity">${product.quantity}</span>
