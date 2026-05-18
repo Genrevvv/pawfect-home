@@ -42,12 +42,14 @@ export function cartScript() {
         plusBtn.addEventListener("click", () => {
             product.quantity++;
             quantityText.textContent = product.quantity;
+            updateTotalPrice();
         });
 
         minusBtn.addEventListener("click", () => {
             if (product.quantity > 1) {
                 product.quantity--;
                 quantityText.textContent = product.quantity;
+                updateTotalPrice();
             }
         });
 
@@ -55,6 +57,7 @@ export function cartScript() {
 
     closeBtn.onclick = closeCartFunction;
 
+    updateTotalPrice();
     cartOverlay.onclick = (e) => {
         if (e.target === cartOverlay) {
             closeCartFunction();
@@ -79,4 +82,15 @@ export function addToCart(product) {
 
     cartItemCount.style.visibility = 'visible';
     cartItemCount.innerHTML = cartItems.length;
+}
+
+function updateTotalPrice() {
+    const totalPrice = document.getElementById('total-price');
+
+    let total = 0;
+    for (const item of cartItems) {
+        total += item.price * item.quantity;
+    }
+
+    totalPrice.innerHTML = total;
 }
