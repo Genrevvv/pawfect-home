@@ -1,4 +1,4 @@
-import { displayMessage, updateContent } from "./auxiliary.js";
+import { toTitleCase, displayMessage, updateContent } from "./auxiliary.js";
 
 export function adoptionManagementScript() {
     const overlayContainer = document.getElementById('overlay-container');
@@ -27,7 +27,7 @@ export function adoptionManagementScript() {
                         <span>${appData.email_address}</span>
                         <span>${appData.phone_number}</span>
                     </td>
-                    <td class="status">${appData.status}</td>
+                    <td class="status">${toTitleCase(appData.status)}</td>
                     <td>
                         <span class="view-details-btn">View Details</span>
                     </td>`;
