@@ -48,12 +48,20 @@ export function featuredScript() {
         const newPetCard = document.createElement('div');
         newPetCard.classList.add('featured-element');
 
+        let petSexIcon = '';
+        if (petData['pet_sex'] === 'male') {
+            petSexIcon = '<i class="fa-solid fa-mars pet-gender"></i>';
+        }
+        else if (petData['pet_sex'] === 'female') {
+            petSexIcon = '<i class="fa-solid fa-venus pet-gender"></i>';
+        }
+
         newPetCard.innerHTML = `
             <img src="${petData['image']}" alt="">
             <div class="details">
                 <span class="pet-name">${petData['pet_name']}</span>
                 <span class="pet-description">${petData['pet_description']}</span>
-                <i class="fa-solid fa-mars pet-gender"></i>
+                ${petSexIcon}
             </div>
             <i class="fa-regular fa-heart"></i>
         `;

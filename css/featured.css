@@ -120,7 +120,6 @@
 }
 
 .featured-element .pet-gender {
-    background-color: var(--soft-blue);
     font-size: 1.2rem;
 
     width: 2rem;
@@ -134,4 +133,12 @@
     position: absolute;
     top: 40%;
     right: 0.5rem;
+}
+
+.pet-gender.fa-mars {
+    background-color: var(--soft-blue);
+}
+
+.pet-gender.fa-venus {
+    background-color: var(--soft-pink);
 }
