@@ -34,7 +34,7 @@ adoptions.onclick = async () => {
     adoptionManagementScript();
 }
 
-adoptions.click();
+pets.click();
 
 async function updateContent(htmlFilePath) {
     const res = await fetch(htmlFilePath);

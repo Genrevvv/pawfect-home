@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS products (
 CREATE TABLE IF NOT EXISTS pets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pet_name VARCHAR(100) NOT NULL,
-    pet_age VARCHAR(100) NOT NULL, 
+    pet_age VARCHAR(100) NOT NULL,
+    pet_sex VARCHAR(100) NOT NULL,
+    pet_breed VARCHAR(100) NOT NULL,
     pet_type VARCHAR(100) NOT NULL,
     pet_description VARCHAR(500) NOT NULL,
     image VARCHAR(250)

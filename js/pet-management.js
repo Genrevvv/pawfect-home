@@ -5,6 +5,8 @@ export function petManagementScript() {
 
     const petName = document.getElementById('pet-name');
     const petAge = document.getElementById('pet-age');
+    const petSex = document.getElementById('pet-sex');
+    const petBreed = document.getElementById('pet-breed');
     const petType = document.getElementById('pet-type');
     const petDescription = document.getElementById('pet-description');
     const uploadImageArea = document.getElementById('upload-image-area');
@@ -22,6 +24,8 @@ export function petManagementScript() {
         const petData = new FormData();
         petData.append('pet_name', petName.value);
         petData.append('pet_age', petAge.value);
+        petData.append('pet_sex', petSex.value);
+        petData.append('pet_breed', petBreed.value);
         petData.append('pet_type', petType.value);
         petData.append('pet_description', petDescription.value);
         petData.append('image', imageFile);
@@ -88,6 +92,8 @@ export function petManagementScript() {
 
                     const editPetName = document.getElementById('edit-pet-name');
                     const editPetAge = document.getElementById('edit-pet-age');
+                    const editPetSex = document.getElementById('edit-pet-sex');
+                    const editPetBreed = document.getElementById('edit-pet-breed');
                     const editPetType = document.getElementById('edit-pet-type');
                     const editPetDescription = document.getElementById('edit-pet-description');
                     const updatePet = document.getElementById('update-pet');
@@ -96,6 +102,8 @@ export function petManagementScript() {
                     // load current data (IMPORTANT: uses live object)
                     editPetName.value = petData.pet_name;
                     editPetAge.value = petData.pet_age;
+                    editPetSex.value = petData.pet_sex;
+                    editPetBreed.value = petData.pet_breed;
                     editPetType.value = petData.pet_type;
                     editPetDescription.value = petData.pet_description;
 
@@ -106,6 +114,8 @@ export function petManagementScript() {
                             pet_id: petData.id,
                             pet_name: editPetName.value,
                             pet_age: editPetAge.value,
+                            pet_sex: editPetSex.value,
+                            pet_breed: editPetBreed.value,
                             pet_type: editPetType.value,
                             pet_description: editPetDescription.value,
                             image: imageFile || petData.image

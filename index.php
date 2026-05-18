@@ -218,6 +218,8 @@
         $pet_data = [
             'pet_name' => $_POST['pet_name'],
             'pet_age' => $_POST['pet_age'],
+            'pet_sex' => $_POST['pet_sex'],
+            'pet_breed' => $_POST['pet_breed'],
             'pet_type' => $_POST['pet_type'],
             'pet_description' => $_POST['pet_description'],
             'image' => $path
@@ -277,6 +279,8 @@
             'pet_id' => $_POST['pet_id'],
             'pet_name' => $_POST['pet_name'],
             'pet_age' => $_POST['pet_age'],
+            'pet_sex' => $_POST['pet_sex'],
+            'pet_breed' => $_POST['pet_breed'],
             'pet_type' => $_POST['pet_type'],
             'pet_description' => $_POST['pet_description'],
             'image' => $path

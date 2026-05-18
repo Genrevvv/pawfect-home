@@ -204,13 +204,15 @@
 
         public function add_pet($pet_data) {
             $stmt = $this->db->prepare('
-                INSERT INTO pets 
-                VALUES (null, :pet_name, :pet_age, :pet_type, :pet_description, :image)
+                INSERT INTO pets (pet_name, pet_age, pet_sex, pet_breed, pet_type, pet_description, image)
+                VALUES (:pet_name, :pet_age, :pet_sex, :pet_breed, :pet_type, :pet_description, :image)
             ');
             
             $stmt->execute([
                 'pet_name' => $pet_data['pet_name'],
                 'pet_age' => $pet_data['pet_age'],
+                'pet_sex' => $pet_data['pet_sex'],
+                'pet_breed' => $pet_data['pet_breed'],
                 'pet_type' => $pet_data['pet_type'],
                 'pet_description' => $pet_data['pet_description'],
                 'image' => $pet_data['image']
@@ -231,6 +233,8 @@
                 UPDATE pets SET 
                     pet_name = :pet_name, 
                     pet_age = :pet_age,
+                    pet_sex = :pet_sex,
+                    pet_breed = :pet_breed,
                     pet_type = :pet_type,
                     pet_description = :pet_description,
                     image = :image
@@ -241,6 +245,8 @@
                 'pet_id' => $pet_data['pet_id'],
                 'pet_name' => $pet_data['pet_name'],
                 'pet_age' => $pet_data['pet_age'],
+                'pet_sex' => $pet_data['pet_sex'],
+                'pet_breed' => $pet_data['pet_breed'],
                 'pet_type' => $pet_data['pet_type'],
                 'pet_description' => $pet_data['pet_description'],
                 'image' => $pet_data['image'],
