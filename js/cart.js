@@ -28,8 +28,10 @@ export function cartScript() {
                 <div class="quantity-container">
                     <span>Quantity: </span>
                     <span class="quantity">${product.quantity}</span>
-                    <button class="qty-btn">−</button>
-                    <button class="qty-btn">+</button>
+                    <div>
+                        <button class="qty-btn">−</button>
+                        <button class="qty-btn">+</button>
+                    </div>
                 </div>
             </div>
             <div class="cart-item-price">₱${product.price}</div>
@@ -42,6 +44,8 @@ export function cartScript() {
 
             product.quantity = 0;
             cartItem.remove();
+
+            updateTotalPrice();
         }
 
         const minusBtn = cartItem.querySelectorAll(".qty-btn")[0];
