@@ -373,19 +373,33 @@
         }
 
         public function save_user_cart($user_cart, $user_id) {
-            $stmt = $this->db->prepare('
+            $inserStmt = $this->db->prepare('
                 INSERT INTO user_carts (user_id, product_id, quantity)
                 VALUES (:user_id, :product_id, :quantity)
                 ON DUPLICATE KEY UPDATE
                 quantity = VALUES(quantity)
             ');
+
+            $deleteStmt = $this->db->prepare('
+                DELETE FROM user_carts
+                WHERE user_id = :user_id
+                AND product_id = :product_id
+            ');
         
             foreach ($user_cart as $item) {
-                $stmt->execute([
-                    'user_id' => $user_id,
-                    'product_id' => $item['product_id'],
-                    'quantity' => $item['quantity']
-                ]);
+                if ($item['quantity'] == 0) {
+                    $deleteStmt->execute([
+                        'user_id' => $user_id,
+                        'product_id' => $item['product_id']
+                    ]);
+                }
+                else {
+                    $inserStmt->execute([
+                        'user_id' => $user_id,
+                        'product_id' => $item['product_id'],
+                        'quantity' => $item['quantity']
+                    ]);
+                }
             }
 
             return;

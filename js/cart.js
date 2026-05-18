@@ -16,6 +16,8 @@ export function cartScript() {
 
     const cartBody = document.getElementById('cart-body');
     cartItems.forEach((product) => {
+        if (product.quantity === 0) return;
+
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item')
         cartItem.innerHTML = `
@@ -34,6 +36,13 @@ export function cartScript() {
         `;
 
         cartBody.append(cartItem);
+
+        cartItem.onclick = (e) => {
+            e.stopPropagation();
+
+            product.quantity = 0;
+            cartItem.remove();
+        }
 
         const minusBtn = cartItem.querySelectorAll(".qty-btn")[0];
         const plusBtn = cartItem.querySelectorAll(".qty-btn")[1];
@@ -122,7 +131,7 @@ export function addToCart(product) {
     cartItemCount.innerHTML = cartItems.length;
 }
 
-function updateTotalPrice() {
+export function updateTotalPrice() {
     const totalPrice = document.getElementById('total-price');
 
     let total = 0;
@@ -131,4 +140,8 @@ function updateTotalPrice() {
     }
 
     totalPrice.innerHTML = `₱${total}`;
+}
+
+export function getCartItemsCount() {
+    return cartItems.filter(item => item.quantity !== 0).length;
 }
