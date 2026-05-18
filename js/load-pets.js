@@ -26,7 +26,7 @@ export function loadPets() {
                                             <div class="container-1">
                                                 <span class="pet-name">${petData['pet_name']}</span>
                                                 <span class="pet-description">
-                                                    ${truncateString(petData['pet_description'], 30)}
+                                                    ${truncateString(petData['pet_description'], 60)}
                                                 </span>
                                             </div>
                                             <div class="container-2">
