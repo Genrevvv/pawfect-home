@@ -10,8 +10,8 @@ Website ata
    - Delete account
 3. Home page
    - Main
-       - Featured Cats
-       - Featured Dogs
+       - Featured Cats ✅
+       - Featured Dogs ✅
        - Featured Pet Accessories
    - Nav sections
        - adopt a pet ✅
@@ -34,14 +34,19 @@ Website ata
       - Delete pet ✅
       - Edit pet ✅
     - Adoptions
-      - Load applications
-      - Approve application
-      - Reject application
+      - Load applications ✅
+      - Approve application ✅
+      - Reject application ✅
 5. Adoption section
     - Adoption form ✅
        - Select pets UI ✅
        - Submit application ✅
 6. Shopping
+    - Cart ✅
+       - Add/minus product quantity ✅
+       - Delete cart product data ✅
+       - Save user cart data to backend ✅
+       - Load user cart data from backend ✅ 
     - Checkout
     - Order log
 11. Responsive design
