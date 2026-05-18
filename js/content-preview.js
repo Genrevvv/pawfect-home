@@ -16,9 +16,9 @@ export async function petContentPreview(petData) {
 
     petImage.src = petData['image'];
     petName.innerHTML = petData['pet_name'];
-    breed.innerHTML = petData['pet_type'];
+    breed.innerHTML = petData['pet_breed'];
     age.innerHTML = petData['pet_age'];
-    sex.innerHTML = petData['sex'] ?? 'skibidi';
+    sex.innerHTML = petData['pet_sex'] ?? 'skibidi';
     description.innerHTML = petData['pet_description'];
 
     const closeBtn = document.getElementById('close-btn');
