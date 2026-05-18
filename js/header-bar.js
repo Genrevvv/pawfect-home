@@ -65,6 +65,7 @@ export async function logOut() {
         .then(data => {
             if (data['success']) {
 
+                localStorage.clear();
                 sessionStorage.clear();
                 window.location.href = '/'
             }

@@ -17,7 +17,7 @@ export async function petContentPreview(petData) {
     petImage.src = petData['image'];
     petName.innerHTML = petData['pet_name'];
     breed.innerHTML = petData['pet_type'];
-    age.innerHTML = petData['pet_age]'];
+    age.innerHTML = petData['pet_age'];
     sex.innerHTML = petData['sex'] ?? 'skibidi';
     description.innerHTML = petData['pet_description'];
 
