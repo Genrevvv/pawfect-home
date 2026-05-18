@@ -48,13 +48,17 @@ export function cartScript() {
         const plusBtn = cartItem.querySelectorAll(".qty-btn")[1];
         const quantityText = cartItem.querySelector(".quantity");
 
-        plusBtn.addEventListener("click", () => {
+        plusBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+
             product.quantity++;
             quantityText.textContent = product.quantity;
             updateTotalPrice();
         });
 
-        minusBtn.addEventListener("click", () => {
+        minusBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+
             if (product.quantity > 1) {
                 product.quantity--;
                 quantityText.textContent = product.quantity;
