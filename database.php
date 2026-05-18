@@ -391,5 +391,26 @@
             return;
         }
 
+        public function get_user_cart($user_id) {
+            $stmt = $this->db->prepare('
+                SELECT 
+                    p.id,
+                    p.product_name,
+                    p.description,
+                    p.category,
+                    p.pet_type,
+                    p.price,
+                    p.stock,
+                    p.image,
+                    uc.quantity
+                FROM user_carts uc
+                JOIN products p ON uc.product_id = p.id
+                WHERE uc.user_id = :user_id;
+            ');
+
+            $stmt->execute(['user_id' => $user_id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+ 
     }
 ?>

@@ -1,4 +1,5 @@
 import { displayMessage, setupAdminButton } from "./auxiliary.js";
+import { getCardData } from "./cart.js";
 import { logOut } from "./header-bar.js";
 import { registerScript } from "./register.js";
 
@@ -48,8 +49,10 @@ export function loginScript() {
                     if (sessionStorage.getItem('user_type') === 'admin') {
                         setupAdminButton();
                     }
-
+                    
                     displayMessage('Login Successful');
+
+                    getCardData();
                 });
         }
     });

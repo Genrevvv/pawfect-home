@@ -69,7 +69,16 @@ export function getCardData() {
     fetch('/get-user-cart')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+                if (data.length === 0 ) return;
+
+                console.log(data);
+                // cartItems = data;
+                localStorage.setItem('cart_items', JSON.stringify(data));
+                cartItems.push(...data);
+
+                const cartItemCount = document.getElementById('cart-item-count');
+                cartItemCount.style.visibility = 'visible';
+                cartItemCount.innerHTML = cartItems.length;
         });
 }
 

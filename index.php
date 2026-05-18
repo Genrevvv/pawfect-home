@@ -326,7 +326,6 @@
 
     $router->add('/save-user-cart', function () use ($db) {
         if (!isset($_SESSION['user_id'])) {
-            http_response_code(401);
             exit;
         }
 
@@ -334,6 +333,10 @@
         $db->save_user_cart($data, $_SESSION['user_id']);
 
         echo json_encode(['success' => true]);
+    });
+
+    $router->add('/get-user-cart', function () use ($db) {
+        echo json_encode($db->get_user_cart($_SESSION['user_id']));
     });
 
     $router->dispatch($path);
