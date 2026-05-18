@@ -139,3 +139,11 @@
 
 .approve-btn { background: #C5A579; }
 .reject-btn { background: #d89a9a; }
+
+#status-label {
+    width: 30%;
+    padding: 1rem;
+    background-color: var(--light-gray);
+    text-align: center;
+    border-radius: 1rem;
+}

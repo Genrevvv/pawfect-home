@@ -315,7 +315,7 @@
     });
 
     $router->add('/reject-adoption-application', function () use ($db) {
-        $result = $db->update_adoption_application('approved');
+        $result = $db->update_adoption_application('rejected');
         if ($result == 0) {
             echo json_encode(['error' => 'Unable to udpate application status']);
             return;

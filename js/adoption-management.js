@@ -95,7 +95,7 @@ export function adoptionManagementScript() {
                             });
                     }
 
-                    rejectBtn.onclick = () => {
+                    approveBtn.onclick = () => {
                         fetch('/reject-adoption-application')
                             .then(res => res.json())
                             .then(data => {
@@ -109,7 +109,27 @@ export function adoptionManagementScript() {
                                 document.body.style.overflowY = 'visible';
                             });
                     }
+
+                    console.log(appData.status);
+                    displayStatus(appData.status);
+
+                    function displayStatus(status) {
+                        const statusLabel = document.getElementById('status-label');
+                        approveBtn.remove();
+                        rejectBtn.remove();
+
+                        if (status === 'approved') {
+                            statusLabel.innerHTML = 'Approved';
+                        }
+                        
+                        if (status === 'rejected') {
+                            statusLabel.innerHTML = 'Rejected';
+                        }
+
+                        statusLabel.style.display = 'block';
+                    }
                 }
             });
         });
 }
+
