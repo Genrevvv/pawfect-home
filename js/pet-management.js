@@ -1,4 +1,4 @@
-import { displayMessage } from "./auxiliary.js";
+import { displayMessage, truncateString } from "./auxiliary.js";
 
 export function petManagementScript() {
     const overlayContainer = document.getElementById('overlay-container');
@@ -66,7 +66,9 @@ export function petManagementScript() {
             <div class="details-container">
                 <div class="container-1">
                     <span class="pet-name">${petData.pet_name}</span>
-                    <span class="pet-description">${petData.pet_description}</span>
+                    <span class="pet-description">
+                        ${truncateString(petData.pet_description, 30)}
+                    </span>
                 </div>
                 <div class="container-2">
                     <span class="pet-age">${petData.pet_age}</span>

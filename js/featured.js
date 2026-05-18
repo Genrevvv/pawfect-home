@@ -1,4 +1,4 @@
-import { updateContent } from "./auxiliary.js";
+import { truncateString, updateContent } from "./auxiliary.js";
 import { petContentPreview } from "./content-preview.js";
 import { loadProducts } from "./load-products.js";
 import { setPetFilter } from "./state.js";
@@ -60,7 +60,7 @@ export function featuredScript() {
             <img src="${petData['image']}" alt="">
             <div class="details">
                 <span class="pet-name">${petData['pet_name']}</span>
-                <span class="pet-description">${petData['pet_description']}</span>
+                <span class="pet-description">${truncateString(petData['pet_description'], 30)}</span>
                 ${petSexIcon}
             </div>
             <i class="fa-regular fa-heart"></i>

@@ -33,3 +33,7 @@ export function toTitleCase(str) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
+
+export function truncateString(str, len) {
+    return str.length > len ? str.slice(0, len) + '...' : str;
+}

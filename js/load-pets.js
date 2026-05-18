@@ -1,5 +1,6 @@
 
 import { cardAnimation } from "./animations.js";
+import { truncateString } from "./auxiliary.js";
 import { petContentPreview } from "./content-preview.js";
 import { petFilter } from "./state.js";
 
@@ -24,7 +25,9 @@ export function loadPets() {
                                         <div class="details-container">
                                             <div class="container-1">
                                                 <span class="pet-name">${petData['pet_name']}</span>
-                                                <span class="pet-description">${petData['pet_description']}</span>
+                                                <span class="pet-description">
+                                                    ${truncateString(petData['pet_description'], 30)}
+                                                </span>
                                             </div>
                                             <div class="container-2">
                                                 <span class="pet-age">${petData['pet_age']}</span>
