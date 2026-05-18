@@ -27,7 +27,7 @@ export function adoptionManagementScript() {
                         <span>${appData.email_address}</span>
                         <span>${appData.phone_number}</span>
                     </td>
-                    <td>${appData.status}</td>
+                    <td class="status">${appData.status}</td>
                     <td>
                         <span class="view-details-btn">View Details</span>
                     </td>`;
@@ -92,10 +92,14 @@ export function adoptionManagementScript() {
 
                                 overlayContainer.style.visibility = 'hidden';
                                 document.body.style.overflowY = 'visible';
+                                
+                                newApplicationRow.querySelector('.status').innerHTML = 'Approved';
+
                             });
+
                     }
 
-                    approveBtn.onclick = () => {
+                    rejectBtn.onclick = () => {
                         fetch('/reject-adoption-application')
                             .then(res => res.json())
                             .then(data => {
@@ -107,6 +111,8 @@ export function adoptionManagementScript() {
                                 displayMessage('Adoption application was rejected');
                                 overlayContainer.style.visibility = 'hidden';
                                 document.body.style.overflowY = 'visible';
+
+                                newApplicationRow.querySelector('.status').innerHTML = 'Rejected';
                             });
                     }
 
