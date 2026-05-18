@@ -33,13 +33,31 @@ header {
 }
 
 #header-options ul li i {
+    position: relative;
     color: var(--dark-charcoal);
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin: 0 1rem;
 }
 
 #header-options ul li i:hover {
     color: var(--deep-bronze);
     cursor: pointer;
+}
+
+#cart-item-count {
+    background-color: red;
+    width: 1.2rem;
+    height: 1.2rem;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: lighter;
+    text-align: center;
+    line-height: 1.2rem;
+    /* padding: 0.3rem 0.5rem; */
+    border-radius: 50%;
+    position: absolute;
+    right: -1rem;
+
 }
 
 #logo {

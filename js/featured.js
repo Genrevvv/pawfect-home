@@ -43,7 +43,6 @@ export function featuredScript() {
         });
 
     function addFeaturedPets(petData, featuredContainer) {
-        console.log(petData);
         const innerContainer = featuredContainer.querySelector('.inner-container');
 
         const newPetCard = document.createElement('div');
@@ -61,13 +60,12 @@ export function featuredScript() {
 
         innerContainer.append(newPetCard);
 
-        newPetCard.onclick = () => {
+        newPetCard.onclick = () => {    
             petContentPreview(petData);
         }
     }    
 
     function addFeaturedProducts(productData, featuredContainer) {
-        console.log(productData);
         const innerContainer = featuredContainer.querySelector('.inner-container');
 
         const newProductCard = document.createElement('div');

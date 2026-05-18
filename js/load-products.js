@@ -1,4 +1,5 @@
 import { cardAnimation } from "./animations.js";
+import { addToCart } from "./cart.js";
 
 // Loads products on products section on index.html
 export function loadProducts(category) {
@@ -37,6 +38,11 @@ export function loadProducts(category) {
             
                 productsContainer.append(productData);
                 setupNavFilter();
+
+                const addToCartBtn = productData.querySelector('.add-to-cart');
+                addToCartBtn.onclick = () => {
+                    addToCart(product);
+                }
             }
 
             cardAnimation();
