@@ -33,9 +33,11 @@ export function checkOutScript() {
     paymentMethod.onchange = updatePaymentInputs
 
     placeOrderBtn.onclick = () => {
-        const paymentInputs = Array.from(document.querySelectorAll('.payment_id'))
+        const paymentInputs = Array.from(document.querySelectorAll('.payment-id'))
             .map(input => input.value.trim())
             .filter(value => value !== '');
+
+        console.log(paymentInputs);
 
         const orderData = {
             cart: cartItems,
@@ -62,7 +64,7 @@ export function checkOutScript() {
 
                 const overlayContainer = document.getElementById('overlay-container');
                 overlayContainer.click();
-                
+
                 clearCart();
                 updateCartItemCount();
             })
