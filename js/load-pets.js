@@ -1,7 +1,7 @@
 
 import { cardAnimation } from "./animations.js";
 import { truncateString } from "./auxiliary.js";
-import { petContentPreview } from "./content-preview.js";
+import { petContentPreview } from "./pet-preview.js";
 import { petFilter } from "./state.js";
 
 // Loads products on products section on index.html

@@ -3,7 +3,7 @@ import { updateContent } from "./auxiliary.js";
 export async function petContentPreview(petData) {
     const overlayContainer = document.getElementById('overlay-container');
 
-    await updateContent('html/content-preview.html', overlayContainer);
+    await updateContent('html/pet-preview.html', overlayContainer);
     overlayContainer.style.visibility = 'visible';
     document.body.style.overflowY = 'hidden';
     

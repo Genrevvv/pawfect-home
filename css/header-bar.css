@@ -32,6 +32,11 @@ header {
     margin: 0.5rem;
 }
 
+#header-options ul li a {
+    color: var(--dark-charcoal);
+    text-decoration: none;
+}
+
 #header-options ul li i {
     position: relative;
     color: var(--dark-charcoal);

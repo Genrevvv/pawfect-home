@@ -1,5 +1,5 @@
 import { truncateString, updateContent } from "./auxiliary.js";
-import { petContentPreview } from "./content-preview.js";
+import { petContentPreview } from "./pet-preview.js";
 import { loadProducts } from "./load-products.js";
 import { setPetFilter } from "./state.js";
 
