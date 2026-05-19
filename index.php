@@ -25,6 +25,14 @@
         header('Location: /html/adoption-form.html');
     });
 
+    $router->add('/adoption-status', function () {
+        header('Location: /html/adoption-status.html');
+    });
+
+    $router->add('/order-status', function () {
+        header('Location: /html/order-status.html');
+    });
+
     $router->add('/user-login', function () use ($db) {
         $data = get_json_input();
 

@@ -1,0 +1,157 @@
+.tables {
+    padding: 1.5rem;
+}
+
+.table-section {
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-family: PlayfairDisplay;
+}
+
+.title h1 {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+}
+
+#text {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    font-family: monospace;
+}
+
+.table-container {
+    border: 2px solid #C5A579;
+    border-radius: 0.8rem;
+    background: var(--cream);
+    overflow: hidden;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.main-table thead {
+    background: #BC9566;
+    color: white;
+}
+
+.main-table th {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.main-table:first-child,
+.main-table th:last-child {
+    width: 20%;
+}
+
+.main-table td {
+    padding: 1rem;
+    background: white;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+.pet-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.pet-table thead {
+    background: #f3f3f3;
+}
+
+.pet-table th {
+    padding: 0.6rem;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.pet-table th:first-child {
+    width: 30%;
+}
+
+.pet-table th:nth-child(2) {
+    width: 30%;
+}
+
+.pet-table td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #222;
+    text-align: left;
+}
+
+.status {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 6.5rem;
+}
+
+.approved {
+    background: #D8F0D2;
+    color: #2F7D32;
+}
+
+.pending {
+    background: #FFF2CC;
+    color: #9A6B00;
+}
+
+.rejected {
+    background: #FFD6D6;
+    color: #B42318;
+}
+
+@media (max-width: 768px) {
+    .tables {
+        padding: 0.8rem;
+    }
+
+    .title h1 {
+        font-size: 1.5rem;
+    }
+
+    #text {
+        font-size: 0.8rem;
+    }
+
+    .main-table th,
+    .main-table td {
+        font-size: 0.85rem;
+        padding: 0.7rem;
+    }
+
+    .pet-table th,
+    .pet-table td {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    .status {
+        width: 100%;
+        min-width: auto;
+    }
+}

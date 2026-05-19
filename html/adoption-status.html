@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoption Status</title>
+
+    <link rel="stylesheet" href="/assets/fontawsome/css/all.min.css">
+    <link rel="stylesheet" href="/assets/fontawsome/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="/css/adoption-management.css">
+    <link rel="stylesheet" href="/css/adoption-status.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/checkout.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/header-bar.css">
+    <link rel="stylesheet" href="/css/management.css">
+    <link rel="stylesheet" href="/css/rev-adoption-app.css">
+    <link rel="stylesheet" href="/css/root.css">
+</head>
+
+<body>
+    <header>
+        <nav id="header-bar">
+            <a id="logo" href="/">Pawfect Home</a>
+
+            <div id="header-options">
+                <ul>
+                    <li><a href="/adoption-status">Adoptions</a></li>
+                    <li><a href="/order-status">Orders</a></li>
+                    <li>About us</li>
+
+                    <li>
+                        <i id="cart-btn" class="fa-solid fa-cart-shopping">
+                            <span id="cart-item-count" style="visibility: hidden;">1</span>
+                        </i>
+                    </li>
+                </ul>
+
+                <div id="auth-btn">SIGN-IN / REGISTER</div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="message-overlay"></div>
+        <div id="overlay-container"></div>
+
+        <section class="table-section">
+            <div class="tables">
+
+                <div class="title">
+                    <h1>Application Logs</h1>
+                    <p id="text">View your adoption application status.</p>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-scroll">
+                        <table class="main-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Pet Details</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>#2026-001</td>
+                                    <td>
+                                        <table class="pet-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Breed</th>
+                                                    <th>Age</th>
+                                                    <th>Sex</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Max</td>
+                                                    <td>Golden Retriever</td>
+                                                    <td>2 Years</td>
+                                                    <td>Male</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td><span class="status approved">Approved</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>#2026-002</td>
+                                    <td>
+                                        <table class="pet-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Breed</th>
+                                                    <th>Age</th>
+                                                    <th>Sex</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Luna</td>
+                                                    <td>Labrador</td>
+                                                    <td>1 Year</td>
+                                                    <td>Female</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Milo</td>
+                                                    <td>Shih Tzu</td>
+                                                    <td>2 Years</td>
+                                                    <td>Male</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>#2026-003</td>
+                                    <td>
+                                        <table class="pet-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Breed</th>
+                                                    <th>Age</th>
+                                                    <th>Sex</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Coco</td>
+                                                    <td>Persian Cat</td>
+                                                    <td>3 Years</td>
+                                                    <td>Male</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td><span class="status rejected">Rejected</span></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/init.js" type="module"></script>
+    <script src="/js/header-bar.js" type="module"></script>
+    </body>
+</html>

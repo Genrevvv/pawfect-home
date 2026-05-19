@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status</title>
+
+    <link rel="stylesheet" href="/assets/fontawsome/css/all.min.css">
+    <link rel="stylesheet" href="/assets/fontawsome/css/fontawesome.min.css">
+
+    <link rel="stylesheet" href="/css/adoption-management.css">
+    <link rel="stylesheet" href="/css/adoption-status.css">
+    <link rel="stylesheet" href="/css/animation.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/checkout.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/header-bar.css">
+    <link rel="stylesheet" href="/css/management.css">
+    <link rel="stylesheet" href="/css/rev-adoption-app.css">
+    <link rel="stylesheet" href="/css/root.css">
+
+    <link rel="stylesheet" href="/css/order-status.css">
+</head>
+
+<body>
+<header>
+    <nav id="header-bar">
+        <a id="logo" href="/">Pawfect Home</a>
+
+        <div id="header-options">
+            <ul>
+                <li><a href="/adoption-status">Adoptions</a></li>
+                <li><a href="/order-status">Orders</a></li>
+                <li>About us</li>
+
+                <li>
+                    <i id="cart-btn" class="fa-solid fa-cart-shopping">
+                        <span id="cart-item-count" style="visibility: hidden;">1</span>
+                    </i>
+                </li>
+            </ul>
+
+            <div id="auth-btn">SIGN-IN / REGISTER</div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <div id="message-overlay"></div>
+    <div id="overlay-container"></div>
+
+    <section class="order-status-section">
+    <div class="order-status-wrapper">
+
+        <div class="order-status-title">
+            <h1>Order Status</h1>
+            <p class="order-status-text">View your product order status.</p>
+        </div>
+
+        <div class="order-status-table-container">
+            <div class="order-status-scroll">
+
+                <table class="order-status-main-table">
+
+                    <thead class="order-status-head">
+                        <tr>
+                            <th>ID</th>
+                            <th>Item Details</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>#2026-001</td>
+
+                            <td>
+                                <table class="order-status-inner-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Dog Food</td>
+                                            <td>2</td>
+                                            <td>₱450</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pet Collar</td>
+                                            <td>1</td>
+                                            <td>₱200</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cat Toy</td>
+                                            <td>3</td>
+                                            <td>₱350</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+
+                            <td>₱2150</td>
+
+                            <td>
+                                <span class="order-status-badge approved">Delivered</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>#2026-002</td>
+
+                            <td>
+                                <table class="order-status-inner-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Cat Food</td>
+                                            <td>1</td>
+                                            <td>₱500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+
+                            <td>₱500</td>
+
+                            <td>
+                                <span class="order-status-badge pending">On The Way</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>#2026-003</td>
+
+                            <td>
+                                <table class="order-status-inner-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Qty</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Pet Shampoo</td>
+                                            <td>2</td>
+                                            <td>₱300</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+
+                            <td>₱600</td>
+
+                            <td>
+                                <span class="order-status-badge rejected">Cancelled</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<script src="/js/init.js" type="module"></script>
+<script src="/js/header-bar.js" type="module"></script>
+
+</body>
+</html>

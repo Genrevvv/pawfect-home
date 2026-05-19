@@ -1,0 +1,152 @@
+.order-status-wrapper {
+    padding: 1.5rem;
+}
+
+.order-status-section {
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.order-status-title {
+    text-align: center;
+    margin-bottom: 1.2rem;
+    font-family: PlayfairDisplay;
+}
+
+.order-status-title h1 {
+    font-size: 2rem;
+    margin-bottom: 0.2rem;
+}
+
+.order-status-text {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    font-family: monospace;
+}
+
+.order-status-table-container {
+    border: 2px solid #C5A579;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    background: var(--cream);
+}
+
+.order-status-scroll {
+    overflow-x: auto;
+}
+
+.order-status-main-table {
+    width: 100%;
+    min-width: 60rem;
+    border-collapse: collapse;
+}
+
+.order-status-head {
+    background: #BC9566;
+    color: white;
+}
+
+.order-status-main-table th {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.order-status-main-table th:first-child {
+    width: 15%;
+}
+
+.order-status-main-table th:nth-child(3),
+.order-status-main-table th:last-child {
+    width: 10%;
+}
+
+.order-status-main-table td {
+    padding: 1rem;
+    background: white;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.order-status-inner-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-status-inner-table thead {
+    background: #f3f3f3;
+}
+
+.order-status-inner-table th {
+    padding: 0.6rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.order-status-inner-table th:first-child {
+    width: 80%;
+}
+
+.order-status-inner-table td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #222;
+    text-align: left;
+}
+
+.order-status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 6.5rem;
+}
+
+.order-status-badge.approved {
+    background: #D8F0D2;
+    color: #2F7D32;
+}
+
+.order-status-badge.pending {
+    background: #FFF2CC;
+    color: #9A6B00;
+}
+
+.order-status-badge.rejected {
+    background: #FFD6D6;
+    color: #B42318;
+}
+
+@media (max-width: 768px) {
+
+    .order-status-wrapper {
+        padding: 0.8rem;
+    }
+
+    .order-status-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .order-status-text {
+        font-size: 0.8rem;
+    }
+
+    .order-status-main-table th,
+    .order-status-main-table td {
+        font-size: 0.85rem;
+        padding: 0.7rem;
+    }
+
+    .order-status-inner-table th,
+    .order-status-inner-table td {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+}
