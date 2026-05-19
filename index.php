@@ -343,6 +343,12 @@
         echo json_encode($db->get_user_cart($_SESSION['user_id']));
     });
 
+    $router->add('/place-order', function () use ($db) {
+        $data = get_json_input();
+        $data['user_id'] = $_SESSION['user_id'];
+        echo json_encode(['order_id' => $db->place_order($data)]);        
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

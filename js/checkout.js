@@ -1,0 +1,85 @@
+import { displayMessage } from "./auxiliary.js";
+import { updateTotalPrice } from "./cart.js";
+import { cartItems } from "./init.js";
+
+export function checkOutScript() {
+    const paymentMethod = document.getElementById('payment-method');
+    const gcashInput = document.getElementById('gcash-input');
+    const mayaInput = document.getElementById('maya-input');
+    const cardInputs = document.getElementById('card-inputs');
+    const checkoutProducts = document.getElementById('checkout-products');
+    const placeOrderBtn = document.getElementById('place-order-btn');
+
+    cartItems.forEach(item => {
+        if (item.quantity === 0) return;
+
+        const checkoutItem = document.createElement('div');
+        checkoutItem.classList.add('checkout-item');
+        checkoutItem.innerHTML = `
+            <img src="${item.image}" class="checkout-img">
+            <div class="checkout-details">
+                <h3>${item.product_name}</h3>
+                <span>Quantity: ${item.quantity}</span>
+            </div>
+            <div class="checkout-price">₱${item.price * item.quantity}</div>
+        `;
+
+        checkoutProducts.append(checkoutItem);
+    });
+
+    updatePaymentInputs();
+    const total = updateTotalPrice();
+
+    paymentMethod.onchange = updatePaymentInputs
+
+    placeOrderBtn.onclick = () => {
+        const paymentInputs = Array.from(document.querySelectorAll('.payment_id'))
+            .map(input => input.value.trim())
+            .filter(value => value !== '');
+
+        const orderData = {
+            cart: cartItems,
+            name: document.getElementById('name')?.value || '',
+            address: document.getElementById('address')?.value || '',
+            payment_method: document.getElementById('payment-method')?.value || '',
+            payment_id: paymentInputs[0] ?? null,
+            total_price: total
+        };
+
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData)
+        }
+
+        console.log(orderData);
+
+        fetch('/place-order', options)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                displayMessage('Order was placed successfully');
+
+                const overlayContainer = document.getElementById('overlay-container');
+                overlayContainer.innerHTML = '';
+                overlayContainer.style.visibility = 'visible';
+                document.body.style.overflowY = 'hidden';
+            })
+    };
+    
+    function updatePaymentInputs() {
+        gcashInput.style.display = 'none';
+        mayaInput.style.display = 'none';
+        cardInputs.style.display = 'none';
+        if (paymentMethod.value === 'gcash') {
+            gcashInput.style.display = 'block';
+        }
+        else if (paymentMethod.value === 'maya') {
+            mayaInput.style.display = 'block';
+        }
+        else if (paymentMethod.value === 'card') {
+            cardInputs.style.display = 'flex';
+        }
+    }
+}
+

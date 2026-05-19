@@ -1,0 +1,49 @@
+<section class="checkout">
+    <div class="checkout-title">
+        <h1>Checkout</h1>
+        <p>Review your order and complete your purchase.</p>
+    </div>
+
+    <div class="checkout-scroll">
+
+        <div class="checkout-section">
+            <div class="checkout-header">Order Summary</div>
+
+            <div id="checkout-products" class="checkout-products">
+            </div>
+        </div>
+
+        <div class="checkout-total">
+            <h2>Total</h2>
+            <h2 id="total-price">₱950</h2>
+        </div>
+
+        <div class="checkout-section">
+            <div class="checkout-header">Delivery Details</div>
+
+            <div class="checkout-form">
+                <input id="name" type="text" placeholder="Your Name">
+                <textarea id="address" placeholder="Your Address"></textarea>
+
+                <select id="payment-method">
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="gcash">GCash</option>
+                    <option value="maya">Maya</option>
+                    <option value="card">Credit/Debit Card</option>
+                </select>
+
+                <div class="checkout-payments">
+                    <input class="payment-id" type="text" id="gcash-input" placeholder="Enter GCash Number">
+                    <input class="payment-id" type="text" id="maya-input" placeholder="Enter Maya Number">
+
+                    <div id="card-inputs">
+                        <input class="payment-id" type="text" placeholder="Card Number">
+                    </div>
+                </div>
+
+                <button id="place-order-btn" class="checkout-btn">Place Order</button>
+            </div>
+        </div>
+
+    </div>
+</section>

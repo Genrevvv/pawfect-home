@@ -63,3 +63,23 @@ CREATE TABLE IF NOT EXISTS user_carts (
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
+
+CREATE TABLE IF NOT EXISTS orders_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    address VARCHAR(200) NOT NULL,
+    payment_method VARCHAR(100) NOT NULL,
+    payment_id VARCHAR(100),
+    total_price DECIMAL(10, 2),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS orders (
+    order_id INT NOT NULL, 
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    PRIMARY KEY (order_id, product_id),
+    FOREIGN KEY (order_id) REFERENCES orders_log(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);

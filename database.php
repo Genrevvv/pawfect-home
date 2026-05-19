@@ -431,6 +431,45 @@
             $stmt->execute(['user_id' => $user_id]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+
+        public function place_order($order_data) {
+
+            $ordersLogStmt = $this->db->prepare('
+                INSERT INTO orders_log (user_id, address, payment_method, payment_id, total_price)
+                VALUES (:user_id, :address, :payment_method, :payment_id, :total_price);
+            ');
+
+            $ordersLogStmt->execute([
+                'user_id' => $order_data['user_id'],
+                'address' => $order_data['address'],
+                'payment_method' => $order_data['payment_data'],
+                'payment_id' => $order_data['payment_id'],
+                'total_price' => $order_data['total_price']
+            ]);
+
+            $order_id = $this->db->lastInsertedId();
+
+            $ordersStmt = $this->db->prepare('
+                INSERT INTO orders (order_id, product_id, quantity)
+                VALUES (:order_id, :product_id, quantity)
+            ');
+
+            $cart = $order_data['cart'];
+            foreach ($cart as $item) {
+                $ordersStmt->execute([
+                    'order_id' => $order_id,
+                    'product_id' => $item['product_id'],
+                    'quantity' => $item['quantity']
+                ]);
+            }
+
+
+            return $order_id;
+        }
+
+        public function clear_user_cart($user_id) {
+            
+        }
  
     }
 ?>

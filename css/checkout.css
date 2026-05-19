@@ -1,0 +1,165 @@
+.checkout {
+    background-color: var(--cream);
+    width: 100%;
+    max-width: 42rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.checkout-title {
+    text-align: center;
+    margin-bottom: 0.6rem;
+}
+
+.checkout-title h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
+}
+
+.checkout-title p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.checkout-scroll {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.checkout-section {
+    border: 2px solid #C5A579;
+    border-radius: 0.9rem;
+}
+
+.checkout-header {
+    background-color: #BC9566;
+    padding: 0.6rem 0.9rem;
+    font-weight: bold;
+    font-size: 0.95rem;
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.checkout-products {
+    padding: 0.8rem;
+}
+
+.checkout-item {
+    background: white;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem;
+    border-radius: 0.7rem;
+    margin-bottom: 0.7rem;
+}
+
+.checkout-img {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    border: 2px solid #C5A579;
+}
+
+.checkout-details h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.checkout-details span {
+    font-size: 0.8rem;
+}
+
+.checkout-price {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #A98455;
+    margin-left: auto;
+}
+
+.checkout-total {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    border-radius: 0.8rem;
+}
+
+.checkout-total h2 {
+    font-size: 1.1rem;
+}
+
+.checkout-form {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select {
+    padding: 0.7rem;
+    border: 2px solid #C5A579;
+    border-radius: 0.6rem;
+    font-size: 0.9rem;
+    outline: none;
+    background: white;
+}
+
+.checkout-form textarea {
+    height: 5rem;
+    resize: none;
+}
+
+.checkout-payments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+#card-inputs {
+    display: none;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.checkout-btn {
+    background-color: #C5A579;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.checkout-btn:hover {
+    background-color: #A98455;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .checkout {
+        margin: 0.8rem;
+        height: auto;
+    }
+
+    .checkout-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}

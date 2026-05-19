@@ -1,4 +1,5 @@
-import { truncateString } from "./auxiliary.js";
+import { truncateString, updateContent } from "./auxiliary.js";
+import { checkOutScript } from "./checkout.js";
 import { cartItems } from "./init.js";
 
 export function cartScript() {
@@ -6,6 +7,7 @@ export function cartScript() {
     const cartOverlay = document.getElementById('cart-overlay');
     const cartPanel = document.getElementById('cart-panel');
     const closeBtn = document.getElementById('close-cart');
+    const checkoutBtn = document.getElementById('checkout-btn')
 
     function closeCartFunction() {
         cartPanel.style.animation = 'SlideOut 0.3s ease forwards';
@@ -81,6 +83,16 @@ export function cartScript() {
             closeCartFunction();
         }
     };
+
+    checkoutBtn.onclick = async () => {
+        const overlayContainer = document.getElementById('overlay-container');
+        await updateContent('html/checkout.html', overlayContainer);
+        
+        overlayContainer.style.visibility = 'visible';
+        document.body.style.overflowY = 'hidden';
+        checkOutScript();
+        closeCartFunction();
+    }
 }
 
 export function getCardData() {
@@ -149,6 +161,8 @@ export function updateTotalPrice() {
     }
 
     totalPrice.innerHTML = `₱${total}`;
+
+    return total;
 }
 
 export function getCartItemsCount() {
