@@ -1,5 +1,5 @@
 import { displayMessage } from "./auxiliary.js";
-import { updateTotalPrice } from "./cart.js";
+import { clearCart, updateCartItemCount, updateTotalPrice } from "./cart.js";
 import { cartItems } from "./init.js";
 
 export function checkOutScript() {
@@ -61,9 +61,10 @@ export function checkOutScript() {
                 displayMessage('Order was placed successfully');
 
                 const overlayContainer = document.getElementById('overlay-container');
-                overlayContainer.innerHTML = '';
-                overlayContainer.style.visibility = 'visible';
-                document.body.style.overflowY = 'hidden';
+                overlayContainer.click();
+                
+                clearCart();
+                updateCartItemCount();
             })
     };
     

@@ -442,33 +442,35 @@
             $ordersLogStmt->execute([
                 'user_id' => $order_data['user_id'],
                 'address' => $order_data['address'],
-                'payment_method' => $order_data['payment_data'],
+                'payment_method' => $order_data['payment_method'],
                 'payment_id' => $order_data['payment_id'],
                 'total_price' => $order_data['total_price']
             ]);
 
-            $order_id = $this->db->lastInsertedId();
+            $order_id = $this->db->lastInsertId();
 
             $ordersStmt = $this->db->prepare('
                 INSERT INTO orders (order_id, product_id, quantity)
-                VALUES (:order_id, :product_id, quantity)
+                VALUES (:order_id, :product_id, :quantity)
             ');
 
             $cart = $order_data['cart'];
             foreach ($cart as $item) {
                 $ordersStmt->execute([
                     'order_id' => $order_id,
-                    'product_id' => $item['product_id'],
+                    'product_id' => $item['id'],
                     'quantity' => $item['quantity']
                 ]);
             }
 
+            $this->clear_user_cart($order_data['user_id']);
 
             return $order_id;
         }
 
         public function clear_user_cart($user_id) {
-            
+            $stmt = $this->db->prepare('DELETE FROM user_carts WHERE user_id = :user_id');
+            $stmt->execute(['user_id' => $user_id]);
         }
  
     }

@@ -106,9 +106,7 @@ export function getCardData() {
                 localStorage.setItem('cart_items', JSON.stringify(data));
                 cartItems.push(...data);
 
-                const cartItemCount = document.getElementById('cart-item-count');
-                cartItemCount.style.visibility = 'visible';
-                cartItemCount.innerHTML = cartItems.length;
+                updateCartItemCount();
         });
 }
 
@@ -167,4 +165,20 @@ export function updateTotalPrice() {
 
 export function getCartItemsCount() {
     return cartItems.filter(item => item.quantity !== 0).length;
+}
+
+export function updateCartItemCount() {
+    const cartItemCount = document.getElementById('cart-item-count');
+
+    if (cartItems.length === 0) {
+        cartItemCount.style.visibility = 'hidden';
+        return;
+    };
+
+    cartItemCount.style.visibility = 'visible';
+    cartItemCount.innerHTML = cartItems.length;
+}
+
+export function clearCart() {
+    cartItems.length = 0;
 }
