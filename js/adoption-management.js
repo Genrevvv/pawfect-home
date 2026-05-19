@@ -7,19 +7,22 @@ export function adoptionManagementScript() {
     fetch('/get-adoption-applications')
         .then(res => res.json())
         .then(data => {
+
             console.log(data);
-            if (data.length === 0) {
+
+            if (!data || Object.keys(data).length === 0) {
                 const placeholderTr = document.getElementById('placeholder-tr');
                 placeholderTr.style.display = 'table-row';
                 return;
             }
-            
+
             Object.entries(data).forEach(([appID, data]) => {
                 const user = data.user;
                 const pets = data.pets;
                 const appData = data.adoption_application;
 
                 const newApplicationRow = document.createElement('tr');
+
                 newApplicationRow.innerHTML = `
                     <td>${appData.full_name}</td>
                     <td>${pets.length}</td>
@@ -30,112 +33,115 @@ export function adoptionManagementScript() {
                     <td class="status">${toTitleCase(appData.status)}</td>
                     <td>
                         <span class="view-details-btn">View Details</span>
-                    </td>`;
+                    </td>
+                `;
 
                 adoptionLog.append(newApplicationRow);
 
                 const viewDetailsBtn = newApplicationRow.querySelector('.view-details-btn');
+
                 viewDetailsBtn.onclick = async () => {
                     await updateContent('html/rev-adoption-app.html', overlayContainer);
+
                     overlayContainer.style.visibility = 'visible';
                     document.body.style.overflowY = 'hidden';
 
                     const closeBtn = document.getElementById('close-btn');
+
                     closeBtn.onclick = () => {
                         overlayContainer.style.visibility = 'hidden';
                         document.body.style.overflowY = 'visible';
-                    }
+                    };
 
-                    const fullName = document.getElementById('full-name');
-                    const phoneNumber = document.getElementById('phone-number');
-                    const emailAddress = document.getElementById('email-address');
-                    const homeAddress = document.getElementById('home-address');
-                    const reason = document.getElementById('reason');
-                    const existingPet = document.getElementById('existing-pet');
+                    const statusLabel = document.getElementById('status-label');
+                    const approveBtn = document.getElementById('approve-btn');
+                    const rejectBtn = document.getElementById('reject-btn');
 
-                    fullName.innerHTML = appData.full_name;
-                    phoneNumber.innerHTML = appData.phone_number;
-                    emailAddress.innerHTML = appData.email_address;
-                    homeAddress.innerHTML = appData.home_address;
-                    reason.innerHTML = appData.reason;
-                    existingPet.innerHTML = appData.existing_pet;
+                    statusLabel.style.display = 'none';
+                    statusLabel.innerHTML = '';
+
+                    approveBtn.style.display = 'inline-block';
+                    rejectBtn.style.display = 'inline-block';
+
+                    document.getElementById('full-name').innerHTML = appData.full_name;
+                    document.getElementById('phone-number').innerHTML = appData.phone_number;
+                    document.getElementById('email-address').innerHTML = appData.email_address;
+                    document.getElementById('home-address').innerHTML = appData.home_address;
+                    document.getElementById('reason').innerHTML = appData.reason;
+                    document.getElementById('existing-pet').innerHTML = appData.existing_pet;
 
                     const requestedPets = document.getElementById('requested-pets');
+                    requestedPets.innerHTML = ""; 
+
                     pets.forEach(pet => {
-                        const petProfile = document.createElement('pet-profile');
-                        petProfile.innerHTML = `            
+                        const petProfile = document.createElement('div');
+
+                        petProfile.innerHTML = `
                             <div class="pet-profile">
                                 <img class="pet-image" src="${pet.image}" alt="">
                                 <div>
                                     <div>${pet.pet_name}</div>
                                     <div>${pet.pet_type}</div>
-                                    <div>Male • ${pet.pet_age}</div>
+                                    <div>${pet.pet_sex} • ${pet.pet_age}</div>
                                 </div>
-                            </div>`;
-                        
-                        requestedPets.append(petProfile);
+                            </div>
+                        `;
+
+                        requestedPets.appendChild(petProfile);
                     });
 
-                    const approveBtn = document.getElementById('approve-btn');
-                    const rejectBtn = document.getElementById('reject-btn');
+                    function applyStatus(status) {
+                        const statusLabel = document.getElementById('status-label');
+
+                        if (!status || status === 'pending') return;
+
+                        approveBtn.style.display = 'none';
+                        rejectBtn.style.display = 'none';
+
+                        statusLabel.style.display = 'block';
+                        statusLabel.innerHTML = toTitleCase(status);
+                    }
+
+                    applyStatus(appData.status);
 
                     approveBtn.onclick = () => {
                         fetch('/approve-adoption-application')
                             .then(res => res.json())
                             .then(data => {
-                                if (data.error !== null) {
+
+                                if (data.error) {
                                     displayMessage(data.error);
                                     return;
                                 }
 
-                                displayMessage('Adoption application was approved');
+                                displayMessage('Application approved');
+
+                                newApplicationRow.querySelector('.status').innerHTML = 'Approved';
 
                                 overlayContainer.style.visibility = 'hidden';
                                 document.body.style.overflowY = 'visible';
-                                
-                                newApplicationRow.querySelector('.status').innerHTML = 'Approved';
-
                             });
-
-                    }
+                    };
 
                     rejectBtn.onclick = () => {
                         fetch('/reject-adoption-application')
                             .then(res => res.json())
                             .then(data => {
-                                if (data.error !== null) {
+
+                                if (data.error) {
                                     displayMessage(data.error);
                                     return;
-                                } 
+                                }
 
-                                displayMessage('Adoption application was rejected');
-                                overlayContainer.style.visibility = 'hidden';
-                                document.body.style.overflowY = 'visible';
+                                displayMessage('Application rejected');
 
                                 newApplicationRow.querySelector('.status').innerHTML = 'Rejected';
+
+                                overlayContainer.style.visibility = 'hidden';
+                                document.body.style.overflowY = 'visible';
                             });
-                    }
-
-                    console.log(appData.status);
-                    displayStatus(appData.status);
-
-                    function displayStatus(status) {
-                        const statusLabel = document.getElementById('status-label');
-                        approveBtn.remove();
-                        rejectBtn.remove();
-
-                        if (status === 'approved') {
-                            statusLabel.innerHTML = 'Approved';
-                        }
-                        
-                        if (status === 'rejected') {
-                            statusLabel.innerHTML = 'Rejected';
-                        }
-
-                        statusLabel.style.display = 'block';
-                    }
-                }
+                    };
+                };
             });
         });
 }
-
