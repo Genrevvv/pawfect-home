@@ -1,5 +1,4 @@
 <?php
-
     class Database {
         private $db = null;
 
@@ -291,8 +290,8 @@
             return $application_id;
         }
 
-        public function get_adoption_applications() {
-            $stmt = $this->db->prepare('
+        public function get_adoption_applications($user_id = null) {
+            $sql = '
                 SELECT 
                     aa.id AS application_id,
                     aa.user_id,
@@ -306,13 +305,14 @@
                     aa.existing_pet,
                     aa.status,
 
-                    u.id AS user_id,
                     u.username,
                     u.user_type,
 
                     p.id AS pet_id,
                     p.pet_name,
                     p.pet_age,
+                    p.pet_sex,
+                    p.pet_breed,
                     p.pet_type,
                     p.pet_description,
                     p.image AS pet_image
@@ -320,15 +320,23 @@
                 FROM adoption_applications aa
                 JOIN users u ON aa.user_id = u.id
                 JOIN adopteds a ON aa.id = a.application_id
-                JOIN pets p ON a.pet_id = p.id;
-            ');
-            $stmt->execute();
+                JOIN pets p ON a.pet_id = p.id
+            ';
 
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (!empty($user_id)) {
+                $sql .= ' WHERE u.id = :user_id';
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute(['user_id' => $user_id]);
+            } else {
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute();
+            }
+
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $applications = [];
 
-            foreach ($result as $row) {
+            foreach ($rows as $row) {
                 $appId = $row['application_id'];
 
                 if (!isset($applications[$appId])) {
@@ -358,6 +366,8 @@
                     'id' => $row['pet_id'],
                     'pet_name' => $row['pet_name'],
                     'pet_age' => $row['pet_age'],
+                    'pet_sex' => $row['pet_sex'],
+                    'pet_breed' => $row['pet_breed'],
                     'pet_type' => $row['pet_type'],
                     'pet_description' => $row['pet_description'],
                     'image' => $row['pet_image']
@@ -472,6 +482,6 @@
             $stmt = $this->db->prepare('DELETE FROM user_carts WHERE user_id = :user_id');
             $stmt->execute(['user_id' => $user_id]);
         }
- 
+
     }
 ?>

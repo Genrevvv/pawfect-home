@@ -357,6 +357,10 @@
         echo json_encode(['order_id' => $db->place_order($data)]);        
     });
 
+    $router->add('/get-adoption-applications', function () use ($db) {
+        echo json_encode($db->get_adoption_applications($_SESSION['user_id']));
+    });
+
     $router->dispatch($path);
 
     // Auxilliary
