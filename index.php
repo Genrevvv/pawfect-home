@@ -361,6 +361,10 @@
         echo json_encode($db->get_adoption_applications($_SESSION['user_id']));
     });
 
+    $router->add('/get-order-by-user', function () use ($db) {
+        echo json_encode($db->get_orders($_SESSION['user_id']));
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

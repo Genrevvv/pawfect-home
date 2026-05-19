@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS orders_log (
     payment_method VARCHAR(100) NOT NULL,
     payment_id VARCHAR(100),
     total_price DECIMAL(10, 2),
+    status VARCHAR(50) NOT NULL, -- to ship, shipped, delivered, cancelled
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );

@@ -442,11 +442,84 @@
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function place_order($order_data) {
+        public function get_orders($user_id = null) {
+            $sql = '
+                SELECT 
+                    ol.id AS order_id,
+                    ol.user_id,
+                    ol.address,
+                    ol.payment_method,
+                    ol.payment_id,
+                    ol.total_price,
+                    ol.status,
+                    ol.created_at,
 
+                    p.id AS product_id,
+                    p.product_name,
+                    p.description,
+                    p.category,
+                    p.pet_type,
+                    p.price,
+                    p.image,
+
+                    o.quantity
+
+                FROM orders_log ol
+                JOIN orders o ON ol.id = o.order_id
+                JOIN products p ON o.product_id = p.id
+            ';
+
+            if (!empty($user_id)) {
+                $sql .= ' WHERE ol.user_id = :user_id';
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute(['user_id' => $user_id]);
+            } else {
+                $stmt = $this->db->prepare($sql);
+                $stmt->execute();
+            }
+
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $orders = [];
+
+            foreach ($rows as $row) {
+                $orderId = $row['order_id'];
+
+                if (!isset($orders[$orderId])) {
+                    $orders[$orderId] = [
+                        'order' => [
+                            'id' => $row['order_id'],
+                            'user_id' => $row['user_id'],
+                            'address' => $row['address'],
+                            'payment_method' => $row['payment_method'],
+                            'payment_id' => $row['payment_id'],
+                            'total_price' => $row['total_price'],
+                            'status' => $row['status'],
+                            'created_at' => $row['created_at'],
+                        ],
+                        'products' => []
+                    ];
+                }
+
+                $orders[$orderId]['products'][] = [
+                    'id' => $row['product_id'],
+                    'product_name' => $row['product_name'],
+                    'description' => $row['description'],
+                    'category' => $row['category'],
+                    'pet_type' => $row['pet_type'],
+                    'price' => $row['price'],
+                    'image' => $row['image'],
+                    'quantity' => $row['quantity']
+                ];
+            }
+
+            return $orders;
+        }
+
+        public function place_order($order_data) {  
             $ordersLogStmt = $this->db->prepare('
-                INSERT INTO orders_log (user_id, address, payment_method, payment_id, total_price)
-                VALUES (:user_id, :address, :payment_method, :payment_id, :total_price);
+                INSERT INTO orders_log (user_id, address, payment_method, payment_id, total_price, status)
+                VALUES (:user_id, :address, :payment_method, :payment_id, :total_price, :status);
             ');
 
             $ordersLogStmt->execute([
@@ -454,7 +527,8 @@
                 'address' => $order_data['address'],
                 'payment_method' => $order_data['payment_method'],
                 'payment_id' => $order_data['payment_id'],
-                'total_price' => $order_data['total_price']
+                'total_price' => $order_data['total_price'],
+                'status' => 'to ship'
             ]);
 
             $order_id = $this->db->lastInsertId();
