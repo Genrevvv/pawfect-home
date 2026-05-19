@@ -22,6 +22,7 @@ Website ata
     - Dashboard
       - Overview
       - Order log
+          - Update order status
       - Data graphs or something (tentative)
     - Products (Note: add input validation later)
       - Load products ✅
@@ -47,11 +48,13 @@ Website ata
        - Delete cart product data ✅
        - Save user cart data to backend ✅
        - Load user cart data from backend ✅ 
-    - Checkout
-    - Order log
-11. Responsive design
-12. Search bar
-13. Gusto ko na magbakasyon
+    - Place Order ✅
+7. Adoption status ✅
+8. Order status ✅
+9. About us
+10. Responsive design
+11. Search bar
+12. Gusto ko na magbakasyon
 
 ### Requirements:
 1. PHP
