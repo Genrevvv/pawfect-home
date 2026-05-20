@@ -20,9 +20,9 @@ Website ata
        - pet foods ✅
 4. Admin page
     - Dashboard
-      - Overview
-      - Order log
-          - Update order status
+      - Overview ✅
+      - Order log ✅
+          - Update order status ✅
       - Data graphs or something (tentative)
     - Products (Note: add input validation later)
       - Load products ✅
@@ -49,6 +49,7 @@ Website ata
        - Save user cart data to backend ✅
        - Load user cart data from backend ✅ 
     - Place Order ✅
+    - Cancel Order ✅
 7. Adoption status ✅
 8. Order status ✅
 9. About us
