@@ -1,8 +1,11 @@
 import { displayMessage } from "./auxiliary.js";
+import { loginScript } from "./login.js";
 
 export function registerScript() {
     const form = document.getElementById('form');
     const overlayContainer = document.getElementById('overlay-container');
+
+    const toLogin = document.getElementById('overlay-container');
 
     const input = {
         username: document.getElementById('username'),
@@ -43,4 +46,19 @@ export function registerScript() {
                 });
         }
     });
+
+    if (toLogin) {
+        toLogin.onclick = () => {
+            fetch('html/login.html')
+                .then(res => res.text())
+                .then(html => {
+                    overlayContainer.innerHTML = html;
+                    loginScript();
+                })
+        }
+    }
+
+    
+
+
 }

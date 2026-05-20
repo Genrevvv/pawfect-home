@@ -21,8 +21,11 @@
 #loginCatElement{
     height: 8rem;
     width: 8rem;
-    
-    
+}
+
+#regdogcat {
+    height: 8rem;
+    width: 14rem;
 }
 
 #form-container {
