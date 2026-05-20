@@ -9,6 +9,32 @@ export function dashBoardScript() {
             displayAllOrders(data);
         })
 
+
+    fetch('/fetch-overview-data')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            displayOverviewContent(data);
+        });
+}
+
+function displayOverviewContent(overviewData) {
+    const weeklySales = document.getElementById('weekly-sales');
+    const totalOrders = document.getElementById('total-orders');
+    const pendingApplications = document.getElementById('pending-applications');
+    const topProducts = document.getElementById('top-products');
+
+    weeklySales.innerHTML = `₱${overviewData.weekly_sales}`;
+    totalOrders.innerHTML = `${overviewData.total_orders} Order this week`;
+    pendingApplications.innerHTML = `${overviewData.pending_applications} Pending`;
+
+    const topProductsData = overviewData.top_products;
+    Object.values(topProductsData).forEach(productData => {
+        const li = document.createElement('li');
+        li.innerHTML = `${productData.product_name}`;
+        
+        topProducts.append(li);
+    });
 }
 
 function displayAllOrders(orders) {

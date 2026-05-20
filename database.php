@@ -256,14 +256,16 @@
 
         public function setup_adoption_application($form_data) {
             $stmt = $this->db->prepare('
-                INSERT INTO adoption_applications
-                VALUES (null, :user_id, :full_name, :email, :phone_number, :home_address, :house_type, :yard_type, :reason, :existing_pet, :status)
+                INSERT INTO adoption_applications 
+                (user_id, full_name, email_address, phone_number, home_address, house_type, yard_type, reason, existing_pet, status)
+                VALUES 
+                (:user_id, :full_name, :email_address, :phone_number, :home_address, :house_type, :yard_type, :reason, :existing_pet, :status)
             ');
 
             $stmt->execute([
                 'user_id' => $form_data['user_id'],
                 'full_name' => $form_data['full_name'],
-                'email' => $form_data['email_address'],
+                'email_address' => $form_data['email_address'],
                 'phone_number' => $form_data['phone_number'],
                 'home_address' => $form_data['home_address'],
                 'house_type' => $form_data['house_type'],
@@ -275,12 +277,12 @@
 
             $application_id = $this->db->lastInsertId();
 
-            foreach ($form_data['selected_pets'] as $pet_id) {
-                $stmt = $this->db->prepare('
-                    INSERT INTO adopteds
-                    VALUES (:application_id, :pet_id)
-                ');
+            $stmt = $this->db->prepare('
+                INSERT INTO adopteds (application_id, pet_id)
+                VALUES (:application_id, :pet_id)
+            ');
 
+            foreach ($form_data['selected_pets'] as $pet_id) {
                 $stmt->execute([
                     'application_id' => $application_id,
                     'pet_id' => $pet_id
@@ -577,6 +579,60 @@
             ]);
 
             return $stmt->rowCount();
+        }
+
+        public function get_overview_data() {
+
+            $stmt1 = $this->db->prepare('
+                SELECT 
+                    YEARWEEK(created_at, 1) AS week,
+                    COUNT(*) AS total_orders,
+                    SUM(total_price) AS weekly_sales
+                FROM orders_log
+                GROUP BY YEARWEEK(created_at, 1)
+                ORDER BY week DESC
+            ');
+
+            $stmt2 = $this->db->prepare('
+                SELECT 
+                    DATE_FORMAT(created_at, "%Y-%u") AS week,
+                    COUNT(*) AS pending_applications
+                FROM adoption_applications
+                WHERE status = "pending"
+                GROUP BY week
+                ORDER BY week DESC
+            ');
+
+            $stmt3 = $this->db->prepare('
+                SELECT 
+                    p.id,
+                    p.product_name,
+                    SUM(o.quantity) AS total_sold
+                FROM orders o
+                JOIN products p ON p.id = o.product_id
+                GROUP BY o.product_id
+                ORDER BY total_sold DESC
+                LIMIT 5;
+            ');
+
+            $stmt1->execute();
+            $stmt2->execute();
+            $stmt3->execute();
+
+            $orders = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+            $applications = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            $top_products = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
+            $weekly_sales = array_sum(array_column($orders, 'weekly_sales'));
+            $total_orders = array_sum(array_column($orders, 'total_orders'));
+            $pending_applications = array_sum(array_column($applications, 'pending_applications'));
+
+            return [
+                'weekly_sales' => $weekly_sales,
+                'total_orders' => $total_orders,
+                'pending_applications' => $pending_applications,
+                'top_products' => $top_products
+            ];
         }
     }
 ?>

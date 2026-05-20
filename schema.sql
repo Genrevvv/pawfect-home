@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS adoption_applications (
     yard_type VARCHAR(100) NOT NULL,
     reason VARCHAR(200) NOT NULL,
     existing_pet VARCHAR(200) NOT NULL,
-    status VARCHAR(50) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(50) NOT NULL,    -- pending, approved, rejected
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS orders_log (
     payment_method VARCHAR(100) NOT NULL,
     payment_id VARCHAR(100),
     total_price DECIMAL(10, 2),
-    status VARCHAR(50) NOT NULL, -- preparing, to ship, shipped, delivered, cancelled
+    status VARCHAR(50) NOT NULL,    -- preparing, to ship, shipped, delivered, cancelled
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );

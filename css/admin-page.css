@@ -75,10 +75,3 @@ main {
 tr td, tr th {
     padding: 0.5rem;
 }
-
-#top-products {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
-}
