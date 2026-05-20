@@ -5,6 +5,7 @@ header {
 }
 
 #header-bar {
+
     background-color: var(--pale-cream);
     height: 13svh;
     display: flex;
@@ -12,6 +13,7 @@ header {
     align-items: center;
     padding: 0 1rem;
     box-shadow: 0 2px 8px rgba(196, 155, 102, 0.5);
+    
 }
 
 #header-options {
@@ -65,11 +67,10 @@ header {
 
 }
 
-#logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--dark-charcoal);
-    text-decoration: none;
+#logo img{
+    height: 6rem;
+    width: 11rem;
+    
 }
 
 #logo:hover {
