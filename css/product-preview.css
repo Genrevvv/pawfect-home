@@ -1,0 +1,123 @@
+.preview-modal {
+    background-color: #FFFDF6;
+    width: 650px;
+    max-width: 95%;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    column-gap: 1.5rem;
+}
+
+.preview-modal h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 1rem;
+}
+    
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+
+.close-btn {
+    background-color: #C5A579;
+    border: none;
+    width: 2.3rem;
+    height: 2.3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image-container {
+    margin-bottom: 1.5rem;
+    grid-column: 1;
+    grid-row: 2;
+    height: 18rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.product-details {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem; 
+    margin-bottom: 1.5rem;
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.description-container {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    grid-column: 1 / 3;
+    grid-row: 3;
+}
+
+.description-container h3 {
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+}
+
+.description-container p {
+    margin: 0;
+    padding: 0 0.5rem;
+    line-height: 1.5;
+}
+
+.btn-container {
+    text-align: center;
+    grid-column: 1 / 3;
+    grid-row: 4;
+    margin-top: 0.5rem;
+}
+
+.cart-btn {
+    background-color: #C5A579;
+    color: #2D2824;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    cursor: pointer;
+}
