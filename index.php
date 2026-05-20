@@ -380,6 +380,11 @@
         echo json_encode([$db->update_order_status($data['order_id'], $data['status'])]);
     });
 
+    $router->add('/cancel-order', function () use ($db) {
+        $data = get_json_input();
+        echo json_encode([$db->update_order_status($data['order_id'], 'cancelled')]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary

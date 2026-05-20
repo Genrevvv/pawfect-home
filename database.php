@@ -535,7 +535,7 @@
                 'payment_method' => $order_data['payment_method'],
                 'payment_id' => $order_data['payment_id'],
                 'total_price' => $order_data['total_price'],
-                'status' => 'to ship'
+                'status' => 'pending'
             ]);
 
             $order_id = $this->db->lastInsertId();

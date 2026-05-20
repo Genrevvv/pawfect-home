@@ -67,17 +67,17 @@
 }
 
 
-.pet-table {
+.inner-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9rem;
 }
 
-.pet-table thead {
+.inner-table thead {
     background: #f3f3f3;
 }
 
-.pet-table th {
+.inner-table th {
     padding: 0.6rem;
     text-align: left;
     font-size: 0.8rem;
@@ -85,15 +85,15 @@
     color: #333;
 }
 
-.pet-table th:first-child {
+.inner-table th:first-child {
     width: 30%;
 }
 
-.pet-table th:nth-child(2) {
+.inner-table th:nth-child(2) {
     width: 30%;
 }
 
-.pet-table td {
+.inner-table td {
     padding: 0.6rem;
     border-bottom: 1px solid #eee;
     font-size: 0.85rem;

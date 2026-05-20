@@ -100,28 +100,17 @@
     text-align: left;
 }
 
-.order-status-badge {
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    display: inline-block;
-    min-width: 6.5rem;
+.cancel-btn {
+    font-size: 0.85rem;
+    margin-top: 0.7rem;
+    padding: 0.4rem 1.5rem;
+    border-radius: 1.2rem;
+    border: none;
 }
 
-.order-status-badge.approved {
-    background: #D8F0D2;
-    color: #2F7D32;
-}
-
-.order-status-badge.pending {
-    background: #FFF2CC;
-    color: #9A6B00;
-}
-
-.order-status-badge.rejected {
-    background: #FFD6D6;
-    color: #B42318;
+.cancel-btn:hover {
+    background-color: var(--soft-red);
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

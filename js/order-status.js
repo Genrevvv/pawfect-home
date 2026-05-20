@@ -20,7 +20,7 @@ function displyOrderLogs(orders) {
         tableRow.innerHTML = `
             <td>${order.id}</td>
             <td>
-                <table class="pet-table">
+                <table class="inner-table">
                     <thead>
                         <tr>
                             <th>Product</th>
@@ -32,7 +32,7 @@ function displyOrderLogs(orders) {
                 </table>
             </td>
             <td>₱${order.total_price}</td>
-            <td>
+            <td class="last-column">
                 <span class="status">
                     ${toTitleCase(order.status)}
                 </span>
@@ -40,6 +40,33 @@ function displyOrderLogs(orders) {
         `;
         
         tableBody.append(tableRow);
+
+        if (order.status === 'pending' || order.status === 'to ship') {
+            const lastColumn = tableRow.querySelector('.last-column');
+
+            const cancelBtn = document.createElement('button');
+            cancelBtn.classList.add('cancel-btn');
+            cancelBtn.innerHTML = 'Cancel Order';
+
+            lastColumn.append(cancelBtn);
+
+            cancelBtn.onclick = () => {
+                const options = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({'order_id': order.id})
+                }
+
+                fetch('/cancel-order', options)
+                    .then(res => res.json())
+                    .then(data => {
+                        const statusSpan = tableRow.querySelector('.status');
+                        statusSpan.innerHTML = 'Cancelled';
+                        statusSpan.className = 'status rejected';
+                        cancelBtn.remove();
+                    });
+            }
+        }
 
         const productTableBody = tableRow.querySelector('.pet-table-body');
         const status = tableRow.querySelector('.status');
