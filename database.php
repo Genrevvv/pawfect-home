@@ -377,13 +377,17 @@
             return $applications;
         }
 
-        public function update_adoption_application($status) {
+        public function update_adoption_application($status, $application_id) {
             $stmt = $this->db->prepare('
                 UPDATE adoption_applications
                 SET status = :status
+                WHERE id = :id
             ');
 
-            $stmt->execute(['status' => $status]);
+            $stmt->execute([
+                'status' => $status,
+                'id' => $application_id
+            ]);
 
             return $stmt->rowCount();
         }

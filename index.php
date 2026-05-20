@@ -317,7 +317,10 @@
     });
 
     $router->add('/approve-adoption-application', function () use ($db) {
-        $result = $db->update_adoption_application('approved');
+        $data = get_json_input();
+
+        $result = $db->update_adoption_application('approved', $data['application_id']);
+
         if ($result == 0) {
             echo json_encode(['error' => 'Unable to udpate application status']);
             return;
@@ -327,7 +330,10 @@
     });
 
     $router->add('/reject-adoption-application', function () use ($db) {
-        $result = $db->update_adoption_application('rejected');
+        $data = get_json_input();
+    
+        $result = $db->update_adoption_application('rejected', $data['application_id']);
+
         if ($result == 0) {
             echo json_encode(['error' => 'Unable to udpate application status']);
             return;

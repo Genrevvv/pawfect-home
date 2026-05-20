@@ -104,8 +104,14 @@ export function adoptionManagementScript() {
 
                     applyStatus(appData.status);
 
+                    const options = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({application_id: appID})
+                    }
+
                     approveBtn.onclick = () => {
-                        fetch('/approve-adoption-application')
+                        fetch('/approve-adoption-application', options)
                             .then(res => res.json())
                             .then(data => {
 
@@ -120,11 +126,13 @@ export function adoptionManagementScript() {
 
                                 overlayContainer.style.visibility = 'hidden';
                                 document.body.style.overflowY = 'visible';
+
+                                appData.status = 'approved'
                             });
                     };
 
                     rejectBtn.onclick = () => {
-                        fetch('/reject-adoption-application')
+                        fetch('/reject-adoption-application', options)
                             .then(res => res.json())
                             .then(data => {
 
@@ -139,6 +147,8 @@ export function adoptionManagementScript() {
 
                                 overlayContainer.style.visibility = 'hidden';
                                 document.body.style.overflowY = 'visible';
+
+                                appData.status = 'rejected';
                             });
                     };
                 };
