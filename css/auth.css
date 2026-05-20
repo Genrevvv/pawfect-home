@@ -71,14 +71,16 @@
 
 #form div span {
     font-size: 1.2rem;
-    font-weight: lighter;
+    font-weight: bold;
     margin-bottom: 0.3rem;
+
 }
 
 #form div input {
     padding: 0.8rem 0.4rem;
     border: 1px solid var(--dark-charcoal);
     border-radius: 2rem;
+    padding-left: 1rem;
 }
 
 #submit button {
@@ -90,11 +92,14 @@
     border-radius: 2rem;
     cursor: pointer;
     color: white;
-    font-size: large;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: Quicksand;
 }
 
 #message {
     font-size: 1.3rem;
+    font-weight: bold;
 }
 
 #submit button:hover {
