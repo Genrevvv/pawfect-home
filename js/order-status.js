@@ -4,7 +4,7 @@ window.history.pushState(null, "", "/order-status");
 
 const tableBody = document.getElementById('table-body');
 
-fetch('/get-order-by-user')
+fetch('/get-user-order')
     .then(res => res.json())
     .then(data => {
         console.log(data);
