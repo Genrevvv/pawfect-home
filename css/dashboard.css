@@ -45,3 +45,8 @@
     display: flex;
     flex-direction: column;
 }
+
+#order-log select {
+    padding: 0.2rem 0.3rem;
+    border-radius: 1rem;
+}

@@ -564,5 +564,19 @@
             $stmt->execute(['user_id' => $user_id]);
         }
 
+        public function update_order_status($order_id, $status) {
+            $stmt = $this->db->prepare('
+                UPDATE orders_log 
+                SET status = :status
+                WHERE id = :order_id
+            ');
+
+            $stmt->execute([
+                'order_id' => $order_id,
+                'status' => $status
+            ]);
+
+            return $stmt->rowCount();
+        }
     }
 ?>

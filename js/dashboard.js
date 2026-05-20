@@ -26,11 +26,42 @@ function displayAllOrders(orders) {
             </td>
             <td>${order.total_price}</td>
             <td>${order.created_at.split(' ')[0]}</td>
-            <td>${toTitleCase(order.status)}</td>
+            <td>
+                <select>
+                    <option value="to ship">To Ship</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </td>
         `;
 
         orderLog.append(tableRow);
+        
+        const selection = tableRow.querySelector('select');
+        selection.value = order.status;
 
+        selection.onchange = (e) => {
+            const status = e.target.value;
+            console.log(status);
+
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    order_id: order.id,
+                    status: status
+                })
+            };
+
+            fetch('/update-order-status', options)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    order.status = status;
+                });
+        }
+        
         products.forEach(product => {
             const productDetails = tableRow.querySelector('.product-details');
             const div = document.createElement('div');

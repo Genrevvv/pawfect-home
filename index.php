@@ -375,6 +375,11 @@
         echo json_encode($db->get_orders($_SESSION['user_id']));
     });
 
+    $router->add('/update-order-status', function () use ($db) {
+        $data = get_json_input();
+        echo json_encode([$db->update_order_status($data['order_id'], $data['status'])]);
+    });
+
     $router->dispatch($path);
 
     // Auxilliary
