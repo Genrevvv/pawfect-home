@@ -28,6 +28,7 @@ function displayAllOrders(orders) {
             <td>${order.created_at.split(' ')[0]}</td>
             <td>
                 <select>
+                    <option value="pending">Pending</option>
                     <option value="to ship">To Ship</option>
                     <option value="shipped">Shipped</option>
                     <option value="delivered">Delivered</option>
