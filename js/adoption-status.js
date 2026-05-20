@@ -4,7 +4,7 @@ window.history.pushState(null, "", "/adoption-status");
 
 const tableBody = document.getElementById('table-body');
 
-fetch('/get-user-order')
+fetch('/get-adoption-applications')
     .then(res => res.json())
     .then(data => {
         console.log(data);
@@ -20,7 +20,7 @@ function displayAdoptionLogs(applications) {
         tableRow.innerHTML = `
             <td>${adoptionApplication.id}</td>
             <td>
-                <table class="pet-table">
+                <table class="inner-table">
                     <thead>
                         <tr>
                             <th>Name</th>
