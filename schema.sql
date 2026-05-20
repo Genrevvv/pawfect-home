@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS user_carts (
 CREATE TABLE IF NOT EXISTS orders_log (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
+    name VARCHAR(200) NOT NULL,
     address VARCHAR(200) NOT NULL,
     payment_method VARCHAR(100) NOT NULL,
     payment_id VARCHAR(100),

@@ -4,7 +4,7 @@ window.history.pushState(null, "", "/adoption-status");
 
 const tableBody = document.getElementById('table-body');
 
-fetch('/get-adoption-applications')
+fetch('/get-user-order')
     .then(res => res.json())
     .then(data => {
         console.log(data);

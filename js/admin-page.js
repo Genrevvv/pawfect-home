@@ -1,4 +1,5 @@
 import { adoptionManagementScript } from "./adoption-management.js";
+import { dashBoardScript } from "./dashboard.js";
 import { petManagementScript } from "./pet-management.js";
 import { productManagementScript } from "./product-management.js";
 
@@ -13,7 +14,8 @@ const adoptions = document.getElementById('adoptions');
 
 dashboard.onclick = async () => {
     highlightOption('dashboard');
-    updateContent('html/dashboard.html');
+    await updateContent('html/dashboard.html');
+    dashBoardScript();
 }
 
 products.onclick = async () => {
@@ -34,7 +36,7 @@ adoptions.onclick = async () => {
     adoptionManagementScript();
 }
 
-pets.click();
+dashboard.click();
 
 async function updateContent(htmlFilePath) {
     const res = await fetch(htmlFilePath);

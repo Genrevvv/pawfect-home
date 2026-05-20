@@ -451,6 +451,7 @@
                 SELECT 
                     ol.id AS order_id,
                     ol.user_id,
+                    ol.name,
                     ol.address,
                     ol.payment_method,
                     ol.payment_id,
@@ -494,6 +495,7 @@
                         'order' => [
                             'id' => $row['order_id'],
                             'user_id' => $row['user_id'],
+                            'name' => $row['name'],
                             'address' => $row['address'],
                             'payment_method' => $row['payment_method'],
                             'payment_id' => $row['payment_id'],
@@ -522,12 +524,13 @@
 
         public function place_order($order_data) {  
             $ordersLogStmt = $this->db->prepare('
-                INSERT INTO orders_log (user_id, address, payment_method, payment_id, total_price, status)
-                VALUES (:user_id, :address, :payment_method, :payment_id, :total_price, :status);
+                INSERT INTO orders_log (user_id, name, address, payment_method, payment_id, total_price, status)
+                VALUES (:user_id, :name, :address, :payment_method, :payment_id, :total_price, :status);
             ');
 
             $ordersLogStmt->execute([
                 'user_id' => $order_data['user_id'],
+                'name' => $order_data['name'],
                 'address' => $order_data['address'],
                 'payment_method' => $order_data['payment_method'],
                 'payment_id' => $order_data['payment_id'],
