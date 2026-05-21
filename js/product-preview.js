@@ -25,9 +25,8 @@ export async function productContentPreview(productData) {
     document.getElementById('description').innerText = productData.description;
 
     document.getElementById('close-btn').onclick = () => {
-        overlayContainer.style.display = "none";
         overlayContainer.style.visibility = "hidden";
-        document.body.style.overflow = "auto";
+        document.body.style.overflowY = "visible";
     };
 
     document.getElementById('add-cart').onclick = () => {
