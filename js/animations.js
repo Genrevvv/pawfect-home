@@ -1,32 +1,39 @@
 export function navBarAnimation() {
     const navOptions = document.querySelectorAll(".nav-option");
-    window.addEventListener("scroll", () => {
+    const navImages = document.querySelectorAll(".nav-option img");
 
+    window.addEventListener("scroll", () => {
         const scrollY = window.scrollY;
 
         const startScroll = 120;
         const endScroll = 220;
 
-        const startHeight = 80;     // 5rem
-        const endHeight = 32;       // 2rem 
+        const startHeight = 80;
+        const endHeight = 32;
+
+        const imgStart = 48;
+        const imgEnd = 8;
 
         let progress = 0;
 
         if (scrollY > startScroll) {
-            progress =
-                Math.min(
-                    (scrollY - startScroll) /
-                    (endScroll - startScroll),
-                    1
-                );
+            progress = (scrollY - startScroll) / (endScroll - startScroll);
         }
 
-        const currentHeight = startHeight - (startHeight - endHeight) * progress;
+        progress = Math.min(Math.max(progress, 0), 1);
+
+        const newHeight = startHeight - progress * (startHeight - endHeight);
+        const newImgSize = imgStart - progress * (imgStart - imgEnd);
 
         navOptions.forEach(option => {
-            option.style.height = currentHeight + "px";
+            option.style.height = newHeight + "px";
         });
 
+        navImages.forEach(img => {
+            img.style.height = newImgSize + "px";
+            img.style.width = newImgSize + "px";
+            img.style.opacity = 1 - progress;
+        });
     });
 }
 
