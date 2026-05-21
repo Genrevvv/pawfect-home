@@ -23,6 +23,7 @@
 
     $router->add('/adoption-form', function () {
         if (!isLoggedIn()) {
+            header('Location: /html/login-required.html');
             return;
         }
 
@@ -31,6 +32,7 @@
 
     $router->add('/adoption-status', function () {
         if (!isLoggedIn()) {
+            header('Location: /html/login-required.html');
             return;
         }
 
@@ -39,6 +41,7 @@
 
     $router->add('/order-status', function () {
         if (!isLoggedIn()) {
+            header('Location: /html/login-required.html');
             return;
         }
 
@@ -93,8 +96,8 @@
 
     $router->add('/admin-page', function () {
         if ($_SESSION['user_type'] != 'admin') {
-            echo '401: Unauthorized access';
-            exit();
+            header('Location: /html/401.html');
+            return;
         }
 
         header('Location: /html/admin-page.html');
@@ -377,7 +380,7 @@
     $router->add('/place-order', function () use ($db) {
         $data = get_json_input();
         $data['user_id'] = $_SESSION['user_id'];
-        
+
         echo json_encode($db->place_order($data));        
     });
 

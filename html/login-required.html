@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Error</title>
+        <link rel="stylesheet" href="/css/auth.css">
+        <link rel="stylesheet" href="/css/header-bar.css">
+        <link rel="stylesheet" href="/css/login-required.css">
+        <link rel="stylesheet" href="/css/root.css">
+    </head>
+    <body>
+        <header style="display: none;">
+            <nav id="header-bar">
+                <a id="logo" href="/"><img src="../assets/images/Logo.png" alt="Logo"></a>
+                <div id="header-options">
+                    <ul>
+                        <li>
+                            <a id="adoption-status">Adoptions</a>
+                        </li>
+                        <li>
+                            <a id="order-status">Orders</a>
+                        </li>
+                        <li><a id="about-us">About us</a></li>
+                        <li>
+                            <i id="cart-btn" class="fa-solid fa-cart-shopping">
+                                <span id="cart-item-count" style="visibility: hidden;">
+                                </span>
+                            </i>
+                        </li>
+                    </ul>
+                    <div id="auth-btn">LOGIN / REGISTER</div>
+                </div>
+            </nav>
+        </header>
+
+        <div id="overlay-container"></div>
+        <div class="error-container">
+            <div class="error-image">
+                <img id="mog" src="../assets/images/mogging-cat.gif" alt="error image">
+            </div>
+            <div class="error-message">
+                <h1>Login Required</h1>
+                <p>You must be logged in to access this page.</p>
+                <button id="login-button">Login</button>
+            </div>
+        </div>
+    </body>
+
+    <script src="/js/login-required.js" type="module"></script>
+</html>

@@ -39,7 +39,7 @@
 }
 
 html, body {
-    font-family: Quicksand;
+    font-family: Quicksand !important;
     font-size: 14px;
     color: var(--dark-charcoal);
     

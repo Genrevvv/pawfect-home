@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F9F4EA;
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: QuickSand;
+    gap: 20px;
+}
+
+.error-message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #333;
+}
+
+#login-button {
+    padding: 10px 20px;
+    background-color: #c9974e;
+    border: 1px solid #c9974e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+#login-button:hover {
+    background-color: #b8860b;
+    border-color: #b8860b;
+}
+
+#mog {
+    border-radius: 10px;
+}
