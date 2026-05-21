@@ -5,7 +5,6 @@ header {
 }
 
 #header-bar {
-
     background-color: var(--pale-cream);
     height: 13svh;
     display: flex;
@@ -79,6 +78,7 @@ header {
 
 #auth-btn, #admin-page {
     background-color: var(--warm-honey);
+    font-family: Quicksand;
     font-weight: bold;
     text-decoration: none;
     color: var(--white);

@@ -47,16 +47,7 @@ export function registerScript() {
         }
     });
 
-    if (toLogin) {
-        toLogin.onclick = () => {
-            fetch('html/login.html')
-                .then(res => res.text())
-                .then(html => {
-                    overlayContainer.innerHTML = html;
-                    loginScript();
-                })
-        }
-    }
+    
 
     
 

@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/assets/fontawsome/css/all.min.css">
     <link rel="stylesheet" href="/assets/fontawsome/css/fontawesome.min.css">
-
+    <link rel="stylesheet" href="/css/auth.css">
     <link rel="stylesheet" href="/css/adoption-management.css">
     <link rel="stylesheet" href="/css/animation.css">
     <link rel="stylesheet" href="/css/cart.css">
@@ -23,19 +23,24 @@
 <body>
     <header>
         <nav id="header-bar">
-            <a id="logo" href="/"><img src="/assets/images/Logo.png" alt="Logo"></a>
+            <a id="logo" href="/"><img src="../assets/images/Logo.png" alt="Logo"></a>
             <div id="header-options">
                 <ul>
-                    <li><a href="/adoption-status">Adoptions</a></li>
-                    <li><a href="/order-status">Orders</a></li>
+                    <li>
+                        <a href="/adoption-status">Adoptions</a>
+                    </li>
+                    <li>
+                        <a href="/order-status">Orders</a>
+                    </li>
                     <li>About us</li>
                     <li>
                         <i id="cart-btn" class="fa-solid fa-cart-shopping">
-                            <span id="cart-item-count" style="visibility: hidden;">1</span>
+                            <span id="cart-item-count" style="visibility: hidden;">
+                            </span>
                         </i>
                     </li>
                 </ul>
-                <div id="auth-btn">SIGN-IN / REGISTER</div>
+                <div id="auth-btn">LOGIN / REGISTER</div>
             </div>
         </nav>
     </header>
