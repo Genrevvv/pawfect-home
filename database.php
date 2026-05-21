@@ -525,40 +525,74 @@
         }
 
         public function place_order($order_data) {  
-            $ordersLogStmt = $this->db->prepare('
-                INSERT INTO orders_log (user_id, name, address, payment_method, payment_id, total_price, status)
-                VALUES (:user_id, :name, :address, :payment_method, :payment_id, :total_price, :status);
-            ');
+            try {
+                $this->db->beginTransaction();
 
-            $ordersLogStmt->execute([
-                'user_id' => $order_data['user_id'],
-                'name' => $order_data['name'],
-                'address' => $order_data['address'],
-                'payment_method' => $order_data['payment_method'],
-                'payment_id' => $order_data['payment_id'],
-                'total_price' => $order_data['total_price'],
-                'status' => 'pending'
-            ]);
+                $orders_log_stmt = $this->db->prepare('
+                    INSERT INTO orders_log 
+                    (user_id, name, address, payment_method, payment_id, total_price, status)
+                    VALUES 
+                    (:user_id, :name, :address, :payment_method, :payment_id, :total_price, :status)
+                ');
 
-            $order_id = $this->db->lastInsertId();
-
-            $ordersStmt = $this->db->prepare('
-                INSERT INTO orders (order_id, product_id, quantity)
-                VALUES (:order_id, :product_id, :quantity)
-            ');
-
-            $cart = $order_data['cart'];
-            foreach ($cart as $item) {
-                $ordersStmt->execute([
-                    'order_id' => $order_id,
-                    'product_id' => $item['id'],
-                    'quantity' => $item['quantity']
+                $orders_log_stmt->execute([
+                    'user_id' => $order_data['user_id'],
+                    'name' => $order_data['name'],
+                    'address' => $order_data['address'],
+                    'payment_method' => $order_data['payment_method'],
+                    'payment_id' => $order_data['payment_id'],
+                    'total_price' => $order_data['total_price'],
+                    'status' => 'pending'
                 ]);
+
+                $order_id = $this->db->lastInsertId();
+
+                $orders_stmt= $this->db->prepare('
+                    INSERT INTO orders (order_id, product_id, quantity)
+                    VALUES (:order_id, :product_id, :quantity)
+                ');
+
+                $stock_stmt = $this->db->prepare('
+                    UPDATE products
+                    SET stock = stock - :quantity
+                    WHERE id = :product_id 
+                    AND stock >= :quantity
+                ');
+
+                foreach ($order_data['cart'] as $item) {
+                    $orders_stmt->execute([
+                        'order_id' => $order_id,
+                        'product_id' => $item['id'],
+                        'quantity' => $item['quantity']
+                    ]);
+
+                    $stock_stmt->execute([
+                        'product_id' => $item['id'],
+                        'quantity' => $item['quantity']
+                    ]);
+
+                    if ($stock_stmt->rowCount() === 0) {
+                        throw new Exception("Purchase failed. Insufficient stock for " . $item['product_name']);
+                    }
+                }
+
+                $this->clear_user_cart($order_data['user_id']);
+
+                $this->db->commit();
+
+                return [
+                    'success' => true,
+                    'order_id' => $order_id
+                ];
+
+            } 
+            catch (Exception $e) {
+                $this->db->rollBack();
+                return [
+                    'success' => false,
+                    'error' => $e->getMessage()
+                ];
             }
-
-            $this->clear_user_cart($order_data['user_id']);
-
-            return $order_id;
         }
 
         public function clear_user_cart($user_id) {

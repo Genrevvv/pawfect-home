@@ -60,10 +60,16 @@ export function checkOutScript() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                displayMessage('Order was placed successfully');
 
                 const overlayContainer = document.getElementById('overlay-container');
                 overlayContainer.click();
+
+                if (!data['success']) {
+                    displayMessage(data['error'], 4000);
+                    return;
+                }
+
+                displayMessage('Order was placed successfully');
 
                 clearCart();
                 updateCartItemCount();

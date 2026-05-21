@@ -23,7 +23,7 @@
 
     $router->add('/adoption-form', function () {
         if (!isLoggedIn()) {
-            exit();
+            return;
         }
 
         header('Location: /html/adoption-form.html');
@@ -31,7 +31,7 @@
 
     $router->add('/adoption-status', function () {
         if (!isLoggedIn()) {
-            exit();
+            return;
         }
 
         header('Location: /html/adoption-status.html');
@@ -39,7 +39,7 @@
 
     $router->add('/order-status', function () {
         if (!isLoggedIn()) {
-            exit();
+            return;
         }
 
         header('Location: /html/order-status.html');
@@ -377,7 +377,8 @@
     $router->add('/place-order', function () use ($db) {
         $data = get_json_input();
         $data['user_id'] = $_SESSION['user_id'];
-        echo json_encode(['order_id' => $db->place_order($data)]);        
+        
+        echo json_encode($db->place_order($data));        
     });
 
     $router->add('/get-adoption-applications', function () use ($db) {
