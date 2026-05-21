@@ -2,6 +2,7 @@ import { truncateString, updateContent } from "./auxiliary.js";
 import { petContentPreview } from "./pet-preview.js";
 import { loadProducts } from "./load-products.js";
 import { setPetFilter } from "./state.js";
+import { productContentPreview } from "./product-preview.js";
 
 export function featuredScript() {
     const featured = document.getElementById('featured');
@@ -90,5 +91,9 @@ export function featuredScript() {
         `;
 
         innerContainer.append(newProductCard);
+        
+        newProductCard.onclick = () => {
+            productContentPreview(productData);
+        }
     }    
 }

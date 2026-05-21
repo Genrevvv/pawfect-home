@@ -1,11 +1,11 @@
-export function displayMessage(message) {
+export function displayMessage(message, time = 3000) {
     const messageOverlay = document.getElementById('message-overlay');
     messageOverlay.style.visibility = 'visible';
     messageOverlay.innerText = message;
 
     setTimeout(() => {
         messageOverlay.style.visibility = 'hidden';
-    }, 3000);
+    }, time);
 }
 
 export function setupAdminButton() {

@@ -1,4 +1,5 @@
 import { updateContent } from "./auxiliary.js";
+import { logIn } from "./header-bar.js";
 
 export async function petContentPreview(petData) {
     const overlayContainer = document.getElementById('overlay-container');
@@ -38,7 +39,11 @@ export async function petContentPreview(petData) {
 
         localStorage.setItem('form_data', JSON.stringify(updatedData));
 
+        if (sessionStorage.getItem('username') === null) {
+            logIn();
+            return;
+        }
+        
         window.location.href = '/adoption-form';
     };
-
 }

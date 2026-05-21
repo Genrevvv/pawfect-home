@@ -3,6 +3,7 @@ import { navBarAnimation } from "./animations.js";
 import { featuredScript } from "./featured.js";
 import { loadPets } from "./load-pets.js";
 import { loadProducts } from "./load-products.js";
+import { logIn } from "./header-bar.js";
 
 window.history.pushState(null, "", "/");
 
@@ -22,6 +23,15 @@ adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
     await updateContent('html/adopt-pet.html', content);
     loadPets();
+
+    document.getElementById('adopt-pet-btn').onclick = () => {
+        if (sessionStorage.getItem('username') === null) {
+            logIn();
+            return;
+        }
+        
+        window.location.href = '/adoption-form';
+    }
 }
 
 petHouses.onclick = async () => {
