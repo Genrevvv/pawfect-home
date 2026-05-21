@@ -12,7 +12,7 @@ Website ata
    - Main
        - Featured Cats ✅
        - Featured Dogs ✅
-       - Featured Pet Accessories
+       - Featured Pet Accessories ✅
    - Nav sections
        - adopt a pet ✅
        - pet houses ✅
@@ -24,12 +24,12 @@ Website ata
       - Order log ✅
           - Update order status ✅
       - Data graphs or something (tentative)
-    - Products (Note: add input validation later)
+    - Products
       - Load products ✅
       - Add product ✅
       - Delete product ✅
       - Edit product ✅
-    - Pets (Note: add input validation later)
+    - Pets
       - Load pets ✅
       - Add pet ✅
       - Delete pet ✅
@@ -53,8 +53,8 @@ Website ata
 7. Adoption status ✅
 8. Order status ✅
 9. About us
-10. Responsive design
-11. Search bar
+10. Search bar ✅
+11. Responsive design
 12. Gusto ko na magbakasyon
 
 ### Requirements:
