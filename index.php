@@ -22,14 +22,26 @@
     });
 
     $router->add('/adoption-form', function () {
+        if (!isLoggedIn()) {
+            exit();
+        }
+
         header('Location: /html/adoption-form.html');
     });
 
     $router->add('/adoption-status', function () {
+        if (!isLoggedIn()) {
+            exit();
+        }
+
         header('Location: /html/adoption-status.html');
     });
 
     $router->add('/order-status', function () {
+        if (!isLoggedIn()) {
+            exit();
+        }
+
         header('Location: /html/order-status.html');
     });
 
@@ -403,7 +415,7 @@
     }
 
     function isLoggedIn() {
-        if (!isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
             return true;
         }
 

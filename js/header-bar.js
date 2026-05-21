@@ -9,7 +9,6 @@ const orderStatus = document.getElementById('order-status');
 const overlayContainer = document.getElementById('overlay-container');
 
 adoptionStatus.onclick = () => {
-    console.log('dwadaw');
     if (sessionStorage.getItem('username') === null) {
         logIn();
         return;
