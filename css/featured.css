@@ -143,3 +143,29 @@
 .pet-gender.fa-venus {
     background-color: var(--soft-pink);
 }
+
+.description p{
+    font-family: Quicksand;
+    font-weight: 600;
+}
+
+.paw-left{
+    color: hsl(29, 53%, 36%);
+    transform: rotate(-30deg) translateY(-15px);
+    font-size: 1.4rem;
+    margin-left: 0.5rem;
+    display: inline-block;
+}
+
+.paw-right{
+    color: hsl(29, 53%, 36%);
+    transform: rotate(15deg);
+    font-size: 1.4rem;
+    margin-left: -0.7rem;
+    margin-right: 0.3rem;
+    display: inline-block;
+}
+
+.home-emoji{
+    font-size: 2.5rem;
+}
