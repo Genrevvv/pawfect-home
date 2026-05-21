@@ -1,3 +1,4 @@
+
 header {
     position: sticky;
     top: 0;
@@ -19,6 +20,9 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Quicksand;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 #header-options ul {
@@ -67,8 +71,8 @@ header {
 }
 
 #logo img{
-    height: 5rem;
-    width: 11rem;
+    height: 4.5rem;
+    width: 11.5rem;
     
 }
 
