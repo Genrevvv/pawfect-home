@@ -5,7 +5,7 @@ export function registerScript() {
     const form = document.getElementById('form');
     const overlayContainer = document.getElementById('overlay-container');
 
-    const toLogin = document.getElementById('overlay-container');
+    const toLogin = document.getElementById('to-login');
 
     const input = {
         username: document.getElementById('username'),
@@ -45,11 +45,15 @@ export function registerScript() {
                     displayMessage('Register Successful');
                 });
         }
+        
     });
 
-    
-
-    
-
-
+    toLogin.onclick = () => {
+        fetch('html/login.html')
+            .then(res => res.text())
+            .then(html => {
+                overlayContainer.innerHTML = html;
+                loginScript();
+            })
+    }
 }
