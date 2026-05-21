@@ -67,7 +67,7 @@ header {
 }
 
 #logo img{
-    height: 6rem;
+    height: 5rem;
     width: 11rem;
     
 }
@@ -84,6 +84,7 @@ header {
     color: var(--white);
     padding: 1rem;
     border-radius: 0.7rem;
+    margin-bottom: 0.5rem;
 }
 
 #auth-btn:hover, #admin-page:hover {

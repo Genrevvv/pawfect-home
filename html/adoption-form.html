@@ -47,7 +47,7 @@
         <section class="form-section">
             <div class="title">
                 <h1>Adoption Application Form</h1>
-                <p>
+                <p id="adoption-message">
                     Thank you for considering giving a forever home.<br>
                     Please complete this form to begin the adoption process.
                 </p>
@@ -56,7 +56,7 @@
                 <div class="section-header">Adopter Information</div>
                 <div class="form-grid">
                     <div class="input-group">
-                        <label>Full Name</label>
+                        <label >Full Name</label>
                         <input id="full-name" type="text">
                     </div>
                     <div class="input-group">
@@ -84,7 +84,10 @@
                         Select a Pet
                     </div>
                     <div class="input-group">
-                        <label>Reason for wanting to adopt</label>
+                        <label>Reason for wanting to adopt
+                            <i class="fa-solid fa-paw paw-left"></i>
+                            <i class="fa-solid fa-paw paw-right"></i>
+                        </label>
                         <textarea id="reason"></textarea>
                     </div>                    
                 </div>
@@ -93,7 +96,7 @@
                 <div class="section-header">Home Assessment</div>
                 <div class="radio-grid">
                     <div class="radio-group">
-                        <label class="main-label">Housing Type</label>
+                        <label class="main-label" >Housing Type <i class="fa-solid fa-paw tilted-paw"></i></label>
                         <label><input type="radio" name="house" value="house"> House</label>
                         <label><input type="radio" name="house" value="apartment"> Apartment</label>
                         <label><input type="radio" name="house" value="townhouse"> Townhouse</label>
@@ -101,7 +104,7 @@
                         <label><input type="radio" name="house" value="etc"> etc.</label>
                     </div>
                     <div class="radio-group">
-                        <label class="main-label">Yard Availability</label>
+                        <label class="main-label">Yard Availability <i class="fa-solid fa-paw tilted-paw"></i></label>
                         <label><input type="radio" name="yard" value="fenced"> Yes - Fenced</label>
                         <label><input type="radio" name="yard" value="unfenced"> Yes - Unfenced</label>
                         <label><input type="radio" name="yard" value="no"> No</label>
