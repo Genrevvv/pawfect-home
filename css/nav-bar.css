@@ -90,12 +90,29 @@
         background-color 0.2s ease;
 
     flex-shrink: 0;
+
+    font-family: Quicksand;
+    font-weight: 800;
 }
 
 #adopt-pet img{
-    height: 2rem;
-    width: 2rem;
-    margin: 0;
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+#pet-houses img{
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+#pet-gadgets img{
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+#pet-foods img{
+    height: 3.5rem;
+    width: 3.5rem;
 }
 
 #nav-options .nav-option:hover {
