@@ -31,7 +31,7 @@ export function cartScript() {
                 <div class="quantity-container">
                     <span>Quantity: </span>
                     <span class="quantity">${product.quantity}</span>
-                    <div>
+                    <div class="qty-btn-container">
                         <button class="qty-btn">−</button>
                         <button class="qty-btn">+</button>
                     </div>
