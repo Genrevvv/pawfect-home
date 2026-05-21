@@ -410,6 +410,10 @@
         echo json_encode($db->get_overview_data());
     });
 
+    $router->add('/fetch-all-data', function () use ($db) {
+        echo json_encode($db->get_all_data());
+    });
+
     $router->dispatch($path);
 
     // Auxilliary
