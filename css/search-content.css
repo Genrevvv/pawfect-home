@@ -1,0 +1,16 @@
+#results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#results-container h2 {
+    margin-top: 1rem;
+}
+
+#pet-cards,
+#product-cards {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}

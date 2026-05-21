@@ -10,6 +10,7 @@
 }
 
 #filter-content {
+    min-width: 30rem;
     width: 60%;
     background-color: var(--sandy-brown);
     display: flex;

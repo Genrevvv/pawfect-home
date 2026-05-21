@@ -39,7 +39,7 @@
     border: none;
 }
 
-#search::placeholder {
+#search-input::placeholder {
     font-family: Quicksand;
     font-weight: bold;
 }
@@ -60,7 +60,7 @@
     color: var(--deep-bronze);
 }
 
-#search {
+#search-input {
     flex: 1;
     padding: 0.5rem 1rem;
 }
