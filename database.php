@@ -616,7 +616,6 @@
         }
 
         public function get_overview_data() {
-
             $stmt1 = $this->db->prepare('
                 SELECT 
                     YEARWEEK(created_at, 1) AS week,
@@ -668,5 +667,21 @@
                 'top_products' => $top_products
             ];
         }
+
+        public function get_all_data() {
+            $stmt1 = $this->db->prepare('SELECT * FROM pets');
+            $stmt1->execute();
+            $pets = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+
+            $stmt2 = $this->db->prepare('SELECT * FROM products');
+            $stmt2->execute();
+            $products = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
+            return [
+                'pets' => $pets,
+                'products' => $products
+            ];
+        }
+
     }
 ?>
