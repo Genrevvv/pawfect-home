@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(/assets/fontawsome/Quicksand/Quicksand-VariableFont_wght.ttf);
+}
+
 :root {
     --light-color: #f0f0f0;
 
