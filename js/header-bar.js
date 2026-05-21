@@ -2,9 +2,30 @@ import { setupAdminButton } from "./auxiliary.js";
 import { cartScript, saveCartData } from "./cart.js";
 import { loginScript } from "./login.js";
 
-const cartBtn = document.getElementById('cart-btn');
+const adoptionStatus = document.getElementById('adoption-status');
 const authBtn = document.getElementById('auth-btn');
+const cartBtn = document.getElementById('cart-btn');
+const orderStatus = document.getElementById('order-status');
 const overlayContainer = document.getElementById('overlay-container');
+
+adoptionStatus.onclick = () => {
+    console.log('dwadaw');
+    if (sessionStorage.getItem('username') === null) {
+        logIn();
+        return;
+    }
+    
+    window.location.href = '/adoption-status';
+}
+
+orderStatus.onclick = () => {
+    if (sessionStorage.getItem('username') === null) {
+        logIn();
+        return;
+    }
+    
+    window.location.href = '/order-status';
+}
 
 overlayContainer.onclick = (e) => {
     if (e.target != overlayContainer) {

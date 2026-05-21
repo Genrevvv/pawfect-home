@@ -90,3 +90,9 @@ header {
     background-color: var(--sandy-tan);
     cursor: pointer;
 }
+
+#adoption-status,
+#order-status,
+#about-us {
+    cursor: pointer;
+}

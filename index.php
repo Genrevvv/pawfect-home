@@ -80,6 +80,11 @@
     });
 
     $router->add('/admin-page', function () {
+        if ($_SESSION['user_type'] != 'admin') {
+            echo '401: Unauthorized access';
+            exit();
+        }
+
         header('Location: /html/admin-page.html');
     });
 
@@ -395,5 +400,13 @@
     function get_json_input() {
         $input = file_get_contents('php://input');
         return json_decode($input, true);
+    }
+
+    function isLoggedIn() {
+        if (!isset($_SESSION['user_id'])) {
+            return true;
+        }
+
+        return false;
     }
 ?>
