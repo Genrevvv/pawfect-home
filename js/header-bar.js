@@ -61,7 +61,6 @@ export function cart() {
             cartContainer.innerHTML = html;
             document.querySelector('main').append(cartContainer);
             cartScript();
-            console.log('gfdsfdw');
         })
 }
 
@@ -74,7 +73,7 @@ export function logIn() {
         .then(html => {
             overlayContainer.innerHTML = html;
             loginScript();
-        })
+        });
 }
 
 export async function logOut() {

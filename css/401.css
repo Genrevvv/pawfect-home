@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F9F4EA;
+}
+
+@font-face {
+    font-family: QuickSand;
+    src: url('./Quicksand-VariableFont_wght.ttf');
+}
+
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: QuickSand;
+}
+
+.error-message {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #333;
+}
+
+#return-button {
+    padding: 10px 20px;
+    background-color: #c9974e;
+    border: 1px solid #c9974e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+#return-button:hover {
+    background-color: #b8860b;
+    border-color: #b8860b;
+}
