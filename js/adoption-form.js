@@ -25,18 +25,6 @@ submitApplication.onclick = () => {
         yard_type: document.querySelector('input[name="yard"]:checked')?.value ?? ""
     };
 
-    // let isValidData = true;
-    // formData.forEach(data => {
-    //     if (data === '' || data === [] || data === null) {
-    //         isValidData = false;
-    //     }
-    // });
-
-    // if (!isValidData) {
-    //     return;
-    // }
-
-    // validation
     for (const value of Object.values(formData)) {
         if (value == null || value.toString().trim() === "") {
             displayMessage('Please fill up all fields.');
@@ -51,6 +39,11 @@ submitApplication.onclick = () => {
     })
     .then(res => res.json())
     .then(data => {
+        if (!data['successs']) {
+            displayMessage(data['error'], 4000);
+            return;
+        }
+        
         console.log(data)
         window.location.href = '/';
     });

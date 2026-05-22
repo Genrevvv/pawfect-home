@@ -341,6 +341,11 @@
         $data = get_json_input();
         $data['user_id'] = $_SESSION['user_id'];
 
+        if (!isValidApplication($data)) {
+            echo json_encode(['success' => false, 'error' => 'Invalid form data']);
+            exit();
+        }
+
         $result = $db->setup_adoption_application($data);
 
         echo json_encode(['success' => true, 'application_id' => $result]);
