@@ -79,8 +79,6 @@ main {
     font-weight: bold;
     color: white;
 
-    z-index: 200;
-
     padding: 0 1rem;
     border-radius: 1rem;
     position: fixed;
@@ -91,6 +89,7 @@ main {
     margin: 0 auto;
 
     visibility: hidden;
+    z-index: 600;
 }
 
 #overlay-container {
@@ -102,9 +101,9 @@ main {
     align-items: center;
 
     background-color: rgb(102, 102, 102, 0.7);
-    z-index: 1000;
     position: fixed;
     top: 0;
 
     visibility: hidden;
+    z-index: 500;
 }

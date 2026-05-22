@@ -53,6 +53,16 @@ export function checkOutScript() {
             total_price: total
         };
 
+        if (orderData.name === '' || orderData.address === '') {
+            displayMessage('Please fill up all fields');
+            return;
+        }
+
+        if (orderData.payment_method !== 'cod' && orderData.payment_id === null) {
+            displayMessage('Please input a account ID/Number');
+            return;
+        }
+
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
