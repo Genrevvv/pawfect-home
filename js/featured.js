@@ -84,7 +84,7 @@ export function featuredScript() {
         newProductCard.innerHTML = `
             <img src="${productData['image']}" alt="">
             <div class="details">
-                <span class="pet-name">${productData['product_name']}</span>
+                <span class="pet-name">${truncateString(productData['product_name'], 25)}</span>
                 <span class="pet-description">${truncateString(productData['description'], 50)}</span>
             </div>
             <i class="fa-regular fa-heart"></i>

@@ -103,7 +103,7 @@ function createProductCard(productData, parentContainer) {
 
         <div class="details-container">
             <div class="container-1">
-                <span class="product-name">${productData.product_name}</span>
+                <span class="product-name">${truncateString(productData.product_name, 25)}</span>
                 <span class="product-description">
                     ${truncateString(productData.description, 50)}
                 </span>
