@@ -4,7 +4,7 @@ export function adoptionManagementScript() {
     const overlayContainer = document.getElementById('overlay-container');
     const adoptionLog = document.getElementById('adoption-log');
 
-    fetch('/get-adoption-applications')
+    fetch('/get-all-adoption-applications')
         .then(res => res.json())
         .then(data => {
 

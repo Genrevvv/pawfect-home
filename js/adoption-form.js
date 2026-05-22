@@ -9,7 +9,6 @@ const submitApplication = document.getElementById('submit-application');
 let pets = [];
 let selectedPets = [];
 
-
 submitApplication.onclick = () => {
 
     const formData = {
@@ -26,6 +25,17 @@ submitApplication.onclick = () => {
         yard_type: document.querySelector('input[name="yard"]:checked')?.value ?? ""
     };
 
+    // let isValidData = true;
+    // formData.forEach(data => {
+    //     if (data === '' || data === [] || data === null) {
+    //         isValidData = false;
+    //     }
+    // });
+
+    // if (!isValidData) {
+    //     return;
+    // }
+
     // validation
     for (const value of Object.values(formData)) {
         if (value == null || value.toString().trim() === "") {
@@ -40,7 +50,10 @@ submitApplication.onclick = () => {
         body: JSON.stringify(formData)
     })
     .then(res => res.json())
-    .then(data => console.log(data));
+    .then(data => {
+        console.log(data)
+        window.location.href = '/';
+    });
 };
 
 window.addEventListener("load", () => {

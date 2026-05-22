@@ -346,8 +346,12 @@
         echo json_encode(['success' => true, 'application_id' => $result]);
     });
 
-    $router->add('/get-adoption-applications', function () use ($db) {
+    $router->add('/get-all-adoption-applications', function () use ($db) {
         echo json_encode($db->get_adoption_applications());
+    });
+
+    $router->add('/get-adoption-applications', function () use ($db) {
+        echo json_encode($db->get_adoption_applications($_SESSION['user_id']));
     });
 
     $router->add('/approve-adoption-application', function () use ($db) {
@@ -429,10 +433,6 @@
 
         $data['user_id'] = $_SESSION['user_id'];
         echo json_encode($db->place_order($data));
-    });
-
-    $router->add('/get-adoption-applications', function () use ($db) {
-        echo json_encode($db->get_adoption_applications($_SESSION['user_id']));
     });
 
     $router->add('/get-all-orders', function () use ($db) {
