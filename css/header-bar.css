@@ -3,6 +3,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
+    user-select: none;
 }
 
 #header-bar {
@@ -80,7 +81,7 @@ header {
     color: var(--deep-bronze);
 }
 
-#auth-btn, #admin-page {
+.auth-btn, #admin-page {
     background-color: var(--warm-honey);
     font-family: Quicksand;
     font-weight: bold;
@@ -91,7 +92,7 @@ header {
     margin-bottom: 0.5rem;
 }
 
-#auth-btn:hover, #admin-page:hover {
+.auth-btn:hover, #admin-page:hover {
     background-color: var(--sandy-tan);
     cursor: pointer;
 }
@@ -100,4 +101,30 @@ header {
 #order-status,
 #about-us {
     cursor: pointer;
+}
+
+#account-options {
+    background-color: var(--warm-honey);
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    position: fixed;
+    top: 4.7rem;
+    right: 1.5rem;
+    overflow: hidden;
+    z-index: 200;
+}
+
+#delete-account,
+#logout {
+    padding: 1rem;
+    border-bottom: solid 0.1rem var(--pale-cream);
+}
+
+#delete-account:hover,
+#logout:hover {
+    cursor: pointer;
+    color: var(--pale-cream);
+    background-color: var(--sandy-tan);
 }

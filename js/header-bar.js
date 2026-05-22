@@ -45,8 +45,14 @@ if (sessionStorage.getItem('user_type') === 'admin') {
 }
 
 if (sessionStorage.getItem('username')) {
-    authBtn.innerText = 'LOG OUT';
-    authBtn.onclick = logOut;
+    authBtn.innerText = 'My Account';
+    authBtn.onclick = displayAccountOptions;
+
+    const deleteAccountBtn = document.getElementById('delete-account');
+    const loginBtn = document.getElementById('logout');
+    
+    loginBtn.onclick = logOut;
+    deleteAccountBtn.onclick = deleteAccount;
 }
 else {
     authBtn.onclick = logIn;
@@ -64,6 +70,17 @@ export function cart() {
         })
 }
 
+export function displayAccountOptions() {
+    const accountOptions = document.getElementById('account-options');
+
+    if (accountOptions.style.display === '') {
+        accountOptions.style.display = 'none';
+        return;
+    }
+
+    accountOptions.style.display = '';
+}
+
 export function logIn() {
     overlayContainer.style.visibility = 'visible';
     document.body.style.overflowY = 'hidden';
@@ -73,6 +90,28 @@ export function logIn() {
         .then(html => {
             overlayContainer.innerHTML = html;
             loginScript();
+
+            const deleteAccountBtn = document.getElementById('delete-account');
+            const loginBtn = document.getElementById('logout');
+            
+            loginBtn.onclick = logOut;
+            deleteAccountBtn.onclick = deleteAccount;
+        });
+}
+
+export function deleteAccount() {
+    return;
+
+    // const confirmation = document.createElement('')
+    fetch('/delete-account')
+        .then(res => res.json())
+        .then(data => {
+            if (data['success']) {
+
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = '/'
+            }
         });
 }
 

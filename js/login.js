@@ -1,6 +1,6 @@
 import { displayMessage, setupAdminButton } from "./auxiliary.js";
 import { getCardData } from "./cart.js";
-import { logOut } from "./header-bar.js";
+import { displayAccountOptions, logOut } from "./header-bar.js";
 import { registerScript } from "./register.js";
 
 export function loginScript() {
@@ -41,8 +41,8 @@ export function loginScript() {
                     sessionStorage.setItem('username', data['username']);
                     sessionStorage.setItem('user_type', data['user_type']);
 
-                    authBtn.innerText = 'LOG OUT';
-                    authBtn.onclick = logOut;
+                    authBtn.innerText = 'My Account';
+                    authBtn.onclick = displayAccountOptions;
                     overlayContainer.style.visibility = 'hidden';
                     document.body.style.overflowY = 'visible';
 
