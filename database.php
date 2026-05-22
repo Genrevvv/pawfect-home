@@ -677,17 +677,17 @@
         }
 
         public function get_all_data() {
-            $stmt1 = $this->db->prepare('SELECT * FROM pets');
-            $stmt1->execute();
-            $pets = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+            // $stmt1 = $this->db->prepare('SELECT * FROM pets');
+            // $stmt1->execute();
+            // $pets = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
-            $stmt2 = $this->db->prepare('SELECT * FROM products');
-            $stmt2->execute();
-            $products = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            // $stmt2 = $this->db->prepare('SELECT * FROM products');
+            // $stmt2->execute();
+            // $products = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
             return [
-                'pets' => $pets,
-                'products' => $products
+                'pets' => $this->get_pets(),
+                'products' => $this->get_products()
             ];
         }
 

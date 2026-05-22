@@ -49,7 +49,7 @@ async function searchScript() {
     });
 
     allData.products.forEach(product => {
-        if (!product.product_name.toLowerCase().startsWith(query)) {
+        if (!product.product_name.toLowerCase().includes(query)) {
             return;
         }
 
