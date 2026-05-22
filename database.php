@@ -125,7 +125,7 @@
             ];
         }
 
-        public function get_products($category) {
+        public function get_products($category = null) {
             if (isset($category)) {
                 $stmt = $this->db->prepare('SELECT * FROM products WHERE category = :category');
                 $stmt->execute(['category' => $category]);
