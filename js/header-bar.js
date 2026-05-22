@@ -1,4 +1,4 @@
-import { setupAdminButton } from "./auxiliary.js";
+import { setupAdminButton, updateContent } from "./auxiliary.js";
 import { cartScript, saveCartData } from "./cart.js";
 import { loginScript } from "./login.js";
 
@@ -79,6 +79,12 @@ export function displayAccountOptions() {
     }
 
     accountOptions.style.display = '';
+
+    const deleteAccountBtn = document.getElementById('delete-account');
+    const loginBtn = document.getElementById('logout');
+    
+    loginBtn.onclick = logOut;
+    deleteAccountBtn.onclick = deleteAccount;
 }
 
 export function logIn() {
@@ -90,29 +96,36 @@ export function logIn() {
         .then(html => {
             overlayContainer.innerHTML = html;
             loginScript();
-
-            const deleteAccountBtn = document.getElementById('delete-account');
-            const loginBtn = document.getElementById('logout');
-            
-            loginBtn.onclick = logOut;
-            deleteAccountBtn.onclick = deleteAccount;
         });
 }
 
-export function deleteAccount() {
-    return;
+export async function deleteAccount() {
+    await updateContent('html/delete-account.html', overlayContainer);
+    overlayContainer.style.visibility = 'visible';
+    document.body.style.overflowY = 'hidden';
 
-    // const confirmation = document.createElement('')
+    const deleteAccountYes = document.getElementById('delete-account-yes');
+    const deleteAccountNo = document.getElementById('delete-account-no');
+
+    deleteAccountYes.onclick = () => {
     fetch('/delete-account')
         .then(res => res.json())
-        .then(data => {
+        .then(async data  => {
             if (data['success']) {
+                await updateContent('html/goodbye.html', overlayContainer);
 
                 localStorage.clear();
                 sessionStorage.clear();
-                window.location.href = '/'
             }
         });
+    }
+
+    deleteAccountNo.onclick = () => {
+        overlayContainer.innerHTML = '';
+        overlayContainer.style.visibility = 'hidden';
+        document.body.style.overflowY = 'visible';
+    }
+
 }
 
 export async function logOut() {

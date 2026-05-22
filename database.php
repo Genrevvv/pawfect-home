@@ -73,6 +73,14 @@
             ]);
         }
 
+        public function delete_user($user_id) {
+            $stmt = $this->db->prepare('DELETE FROM users WHERE id = :user_id');
+            $stmt->execute(['user_id' => $user_id]);
+
+            return $stmt->rowCount();
+        }
+
+
         public function get_featured() {
             $stmt = $this->db->prepare('                
                 SELECT p.*
