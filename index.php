@@ -94,19 +94,17 @@
         echo json_encode(['success' => true]);
     });
 
-    $router->add('/delete-account', function () use ($db) { 
-        echo json_encode(['success' => true]); // for testing only
-               
-        // $result = $db->delete_user($_SESSION['user_id']);
+    $router->add('/delete-account', function () use ($db) {                
+        $result = $db->delete_user($_SESSION['user_id']);
 
-        // if ($result == 0) {
-        //     echo json_encode(['error' => 'Unable to delete user']);
-        //     exit();
-        // }
+        if ($result == 0) {
+            echo json_encode(['error' => 'Unable to delete user']);
+            exit();
+        }
 
-        // session_unset();
+        session_unset();
 
-        // echo json_encode(['success' => true, 'message' => 'Account deletion successful']);
+        echo json_encode(['success' => true, 'message' => 'Account deletion successful']);
     });
 
     $router->add('/admin-page', function () {

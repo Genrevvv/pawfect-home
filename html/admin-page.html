@@ -17,11 +17,14 @@
     <link rel="stylesheet" href="/css/management.css">
     <link rel="stylesheet" href="/css/rev-adoption-app.css">
     <link rel="stylesheet" href="/css/root.css">
+    
+    <link rel="stylesheet" href="/css/delete-account.css">
+    <link rel="stylesheet" href="/css/goodbye.css">
 </head>
 <body>
     <header>
         <nav id="header-bar">
-            <a id="logo" href="/"><img src="../assets/images/Logo.png" alt="Logo"></a>
+            <a id="logo" href="/"><img src="assets/images/Logo.png" alt="Logo"></a>
             <div id="header-options">
                 <ul>
                     <li>
@@ -30,9 +33,7 @@
                     <li>
                         <a id="order-status">Orders</a>
                     </li>
-                    <li>
-                        <a id="about-us">About us</a>
-                    </li>
+                    <li><a id="about-us">About us</a></li>
                     <li>
                         <i id="cart-btn" class="fa-solid fa-cart-shopping">
                             <span id="cart-item-count" style="visibility: hidden;">
@@ -40,10 +41,14 @@
                         </i>
                     </li>
                 </ul>
-                <div id="auth-btn">LOGIN / REGISTER</div>
+                <div class="auth-btn" id="auth-btn">LOGIN / REGISTER</div>
             </div>
         </nav>
     </header>
+    <div id="account-options" style="display: none;">
+        <span id="delete-account">DELETE ACCOUNT</span>
+        <span id="logout">LOG OUT</span>
+    </div>
 
     <main>
         <div id="message-overlay"></div>
