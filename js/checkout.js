@@ -33,6 +33,11 @@ export function checkOutScript() {
     paymentMethod.onchange = updatePaymentInputs
 
     placeOrderBtn.onclick = () => {
+        if (sessionStorage.getItem('username') === null) {
+            logIn();
+            return;
+        }
+
         const paymentInputs = Array.from(document.querySelectorAll('.payment-id'))
             .map(input => input.value.trim())
             .filter(value => value !== '');

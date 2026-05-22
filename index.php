@@ -378,6 +378,11 @@
     });
 
     $router->add('/place-order', function () use ($db) {
+        if (!isLoggedIn()) {
+            header('Location: /html/login-required.html');
+            return;
+        }
+        
         $data = get_json_input();
         $data['user_id'] = $_SESSION['user_id'];
 

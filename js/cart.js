@@ -1,5 +1,6 @@
 import { truncateString, updateContent } from "./auxiliary.js";
 import { checkOutScript } from "./checkout.js";
+import { logIn } from "./header-bar.js";
 import { cartItems } from "./init.js";
 
 export function cartScript() {
@@ -85,6 +86,12 @@ export function cartScript() {
     };
 
     checkoutBtn.onclick = async () => {
+        if (sessionStorage.getItem('username') === null) {
+            closeCartFunction();
+            logIn();
+            return;
+        }
+
         const overlayContainer = document.getElementById('overlay-container');
         await updateContent('html/checkout.html', overlayContainer);
         
