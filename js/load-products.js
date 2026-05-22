@@ -1,4 +1,5 @@
 import { cardAnimation } from "./animations.js";
+import { displayMessage } from "./auxiliary.js";
 import { addToCart } from "./cart.js";
 import { logIn } from "./header-bar.js";
 import { productContentPreview } from "./product-preview.js";
@@ -53,6 +54,7 @@ export function loadProducts(category) {
 
                     e.stopPropagation();
                     addToCart(product);
+                    displayMessage("Added to cart");
                 };
 
                 productCard.onclick = (e) => {
