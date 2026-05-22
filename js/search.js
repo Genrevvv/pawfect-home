@@ -16,7 +16,14 @@ fetch('/fetch-all-data')
         allData = data;
     });
 
-searchBtn.onclick = async () => {
+searchBtn.onclick = searchScript;
+searchInput.onkeydown = (e) => {
+    if (e.key === "Enter") {
+        searchScript();
+    }
+}
+
+async function searchScript() {
     if (!allData) return;
 
     await updateContent('html/search-content.html', content);
@@ -29,7 +36,7 @@ searchBtn.onclick = async () => {
 
     const query = searchInput.value.toLowerCase();
     allData.pets.forEach(pet => {
-        if (!pet.pet_name.toLowerCase().startsWith(query)) {
+        if (!pet.pet_name.toLowerCase().includes(query)) {
             return;
         }
 
@@ -55,7 +62,7 @@ searchBtn.onclick = async () => {
     });
 
     cardAnimation();
-};
+}
 
 function createPetCard(petData, parentContainer) {
     const petCard = document.createElement('div');
