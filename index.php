@@ -363,8 +363,8 @@
     });
 
     $router->add('/save-user-cart', function () use ($db) {
-        if (!isset($_SESSION['user_id'])) {
-            exit;
+        if (!isLoggedIn()) {
+            exit();
         }
 
         $data = get_json_input();

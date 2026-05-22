@@ -1,5 +1,6 @@
 import { cardAnimation } from "./animations.js";
 import { addToCart } from "./cart.js";
+import { logIn } from "./header-bar.js";
 import { productContentPreview } from "./product-preview.js";
 
 export function loadProducts(category) {
@@ -45,11 +46,18 @@ export function loadProducts(category) {
                 const addToCartBtn = productCard.querySelector('.add-to-cart');
 
                 addToCartBtn.onclick = (e) => {
+                    if (sessionStorage.getItem('username') === null) {
+                        logIn();
+                        return;
+                    }
+
                     e.stopPropagation();
                     addToCart(product);
                 };
 
-                productCard.onclick = () => {
+                productCard.onclick = (e) => {
+                    e.stopPropagation();
+                    
                     productContentPreview(product);
                 };
 

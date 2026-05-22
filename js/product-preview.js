@@ -1,5 +1,6 @@
 import { updateContent, displayMessage } from "./auxiliary.js";
 import { addToCart } from "./cart.js";
+import { logIn } from "./header-bar.js";
 
 export async function productContentPreview(productData) {
 
@@ -26,6 +27,11 @@ export async function productContentPreview(productData) {
     closeBtn.onclick = closeProductPreview;
 
     document.getElementById('add-cart').onclick = () => {
+        if (sessionStorage.getItem('username') === null) {
+            logIn();
+            return;
+        }
+
         addToCart(productData);
         closeProductPreview();
 
