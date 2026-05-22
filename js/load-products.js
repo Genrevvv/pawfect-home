@@ -1,5 +1,5 @@
 import { cardAnimation } from "./animations.js";
-import { displayMessage } from "./auxiliary.js";
+import { displayMessage, truncateString } from "./auxiliary.js";
 import { addToCart } from "./cart.js";
 import { logIn } from "./header-bar.js";
 import { productContentPreview } from "./product-preview.js";
@@ -34,7 +34,7 @@ export function loadProducts(category) {
                     <div class="details-container">
                         <div class="container-1">
                             <span class="product-name">${product.product_name}</span>
-                            <span class="product-description">${product.description}</span>
+                            <span class="product-description">${truncateString(product.description, 60)}</span>
                         </div>
 
                         <div class="container-2">
