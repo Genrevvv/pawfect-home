@@ -149,6 +149,11 @@ export function saveCartData() {
 }
 
 export function addToCart(product) {
+    if (product.stock === 0) {
+        displayMessage('Product is out of stock', 4000);
+        return;
+    }
+
     const existingItem = cartItems.find(item => item.id === product.id);
 
     if (existingItem) {
@@ -158,6 +163,7 @@ export function addToCart(product) {
     }
 
     updateCartItemCount();
+    displayMessage("Added to cart");
 }
 
 export function updateTotalPrice() {

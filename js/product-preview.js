@@ -34,8 +34,6 @@ export async function productContentPreview(productData) {
 
         addToCart(productData);
         closeProductPreview();
-
-        displayMessage("Added to cart");
     };
 
     function closeProductPreview() {

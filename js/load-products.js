@@ -54,7 +54,6 @@ export function loadProducts(category) {
 
                     e.stopPropagation();
                     addToCart(product);
-                    displayMessage("Added to cart");
                 };
 
                 productCard.onclick = (e) => {
