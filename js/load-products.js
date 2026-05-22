@@ -34,7 +34,7 @@ export function loadProducts(category) {
                     <div class="details-container">
                         <div class="container-1">
                             <span class="product-name">${product.product_name}</span>
-                            <span class="product-description">${truncateString(product.description, 60)}</span>
+                            <span class="product-description">${truncateString(product.description, 50)}</span>
                         </div>
 
                         <div class="container-2">
