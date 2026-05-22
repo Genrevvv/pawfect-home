@@ -85,7 +85,7 @@ export function featuredScript() {
             <img src="${productData['image']}" alt="">
             <div class="details">
                 <span class="pet-name">${productData['product_name']}</span>
-                <span class="pet-description">${productData['description']}</span>
+                <span class="pet-description">${truncateString(productData['description'], 50)}</span>
             </div>
             <i class="fa-regular fa-heart"></i>
         `;

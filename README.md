@@ -7,7 +7,7 @@ Website ata
     - Logout ✅
 2. Account Management System
    - Register ✅
-   - Delete account
+   - Delete account ✅
 3. Home page
    - Main
        - Featured Cats ✅
