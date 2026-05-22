@@ -17,6 +17,14 @@ export function loadPets() {
             for (let i = 0; i < data['pets'].length; i++) {
                 const petData = data['pets'][i];
 
+                let petSexIcon = '';
+                if (petData['pet_sex'] === 'male') {
+                    petSexIcon = '<i class="fa-solid fa-mars pet-gender"></i>';
+                }
+                else if (petData['pet_sex'] === 'female') {
+                    petSexIcon = '<i class="fa-solid fa-venus pet-gender"></i>';
+                }
+                
                 const petCard = document.createElement('div');
                 petCard.classList.add(petData['pet_type'], 'card');
                 petCard.innerHTML = `<div class="pet-image">
@@ -32,6 +40,7 @@ export function loadPets() {
                                             <div class="container-2">
                                                 <span class="pet-age">${petData['pet_age']}</span>
                                             </div>
+                                            ${petSexIcon}
                                         </div>`;
             
                 productsContainer.append(petCard);

@@ -129,7 +129,8 @@
     opacity: 0.85;
 }
 
-.featured-element .pet-gender {
+.featured-element .pet-gender,
+.pet-gender {
     font-size: 1.2rem;
 
     width: 2rem;
@@ -143,6 +144,14 @@
     position: absolute;
     top: 40%;
     right: 0.5rem;
+}
+
+.card .pet-gender {
+    width: 2.7rem;
+    height: 2.7rem;
+    font-size: 1.5rem;
+    top: 45%;
+    right: 0.7rem;
 }
 
 .pet-gender.fa-mars {
