@@ -40,9 +40,9 @@ async function searchScript() {
             return;
         }
 
-        const span = petCards.querySelector('span');
-        if (span) {
-            span.remove();
+        const placeholder = petCards.querySelector('.placeholder');
+        if (placeholder) {
+            placeholder.remove();
         }
 
         createPetCard(pet, petCards);
@@ -53,9 +53,9 @@ async function searchScript() {
             return;
         }
 
-        const span = productCards.querySelector('span');
-        if (span) {
-            span.remove();
+        const placeholder = productCards.querySelector('.placeholder');
+        if (placeholder) {
+            placeholder.remove();
         }
 
         createProductCard(product, productCards);
