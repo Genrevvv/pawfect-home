@@ -1,6 +1,7 @@
 <?php   
     session_start();
 
+    require 'auxiliary.php';
     require 'database.php';
     require 'router.php';
 
@@ -391,15 +392,43 @@
     });
 
     $router->add('/place-order', function () use ($db) {
-        if (!isLoggedIn()) {
+        if (!isLoggedIn()) { 
             header('Location: /html/login-required.html');
-            return;
+            return; 
         }
-        
-        $data = get_json_input();
-        $data['user_id'] = $_SESSION['user_id'];
 
-        echo json_encode($db->place_order($data));        
+        $data = get_json_input();
+
+        $name = trim($data['name'] ?? '');
+        $address = trim($data['address'] ?? '');
+        $payment_method = $data['payment_method'] ?? null;
+        $payment_id = $data['payment_id'] ?? null;
+
+        if ($name == '' || $address == '') {
+            echo json_encode(['success' => false, 'error' => 'Empty details field']);
+            exit();
+        }
+
+        if ($payment_method != 'cod' && empty($payment_id)) {
+            echo json_encode(['success' => false, 'error' => 'Empty payment ID']);
+            exit();
+        }
+
+        if ($payment_method == 'gcash' || $payment_method == 'maya') {
+            if (!isValidPhoneNumber($payment_id)) {
+                echo json_encode(['success' => false, 'error' => 'Invalid phone number']);
+                exit();
+            }
+        }
+        else if ($payment_method == 'card') {
+            if (!isValidCard($payment_id)) {
+                echo json_encode(['success' => false, 'error' => 'Invalid card number']);
+                exit();
+            }
+        }
+
+        $data['user_id'] = $_SESSION['user_id'];
+        echo json_encode($db->place_order($data));
     });
 
     $router->add('/get-adoption-applications', function () use ($db) {
