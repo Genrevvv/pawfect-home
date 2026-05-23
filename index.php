@@ -128,8 +128,13 @@
     });
 
     $router->add('/add-product', function () use ($db) {
+        if (!isset($_FILES['image'])) {
+            echo json_encode(['error' => 'Please upload an image']);
+            exit();
+        }
+        
         $file = $_FILES['image'];
-
+        
         $uploadDir = 'uploads/';
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0755, true);
@@ -158,6 +163,11 @@
             'stock' => $_POST['stock'],
             'image' => $path
         ];
+
+        if (!isValidProduct($product_data)) {
+            echo json_encode(['error' => 'Please fill up all fields']);
+            exit();
+        }
 
         $result = $db->add_product($product_data);
         if ($result['changes'] == 0) {
@@ -220,6 +230,11 @@
             'image' => $path
         ];
 
+        if (!isValidProduct($product_data)) {
+            echo json_encode(['error' => 'Please fill up all fields']);
+            exit();
+        }
+
         $result = $db->update_product($product_data);
         if ($result == 0) {
             echo json_encode(['error' => 'Unable to update a product']);
@@ -236,6 +251,11 @@
     });
 
     $router->add('/add-pet', function () use ($db) {
+        if (!isset($_FILES['image'])) {
+            echo json_encode(['error' => 'Please upload an image']);
+            exit();
+        }
+        
         $file = $_FILES['image'];
 
         $uploadDir = 'uploads/';
@@ -266,6 +286,11 @@
             'pet_description' => $_POST['pet_description'],
             'image' => $path
         ];
+
+        if (!isValidPet($pet_data)) {
+            echo json_encode(['error' => 'Please fill up all fields']);
+            exit();
+        }
 
         $result = $db->add_pet($pet_data);
         if ($result['changes'] == 0) {
@@ -327,6 +352,11 @@
             'pet_description' => $_POST['pet_description'],
             'image' => $path
         ];
+
+        if (!isValidPet($pet_data)) {
+            echo json_encode(['error' => 'Please fill up all fields']);
+            exit();
+        }
 
         $result = $db->update_pet($pet_data);
         if ($result == 0) {
