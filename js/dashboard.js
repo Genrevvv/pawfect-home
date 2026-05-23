@@ -67,6 +67,10 @@ function displayAllOrders(orders) {
         
         const selection = tableRow.querySelector('select');
         selection.value = order.status;
+        
+        if (selection.value === 'cancelled') {
+            selection.disabled = true;
+        }
 
         selection.onchange = (e) => {
             const status = e.target.value;
