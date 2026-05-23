@@ -84,6 +84,11 @@
     font-weight: bold;
 }
 
+#product-name{
+    text-align:justify;
+    margin-left: 2rem;
+}
+
 .description-container {
     background-color: white;
     border-radius: 1rem;
