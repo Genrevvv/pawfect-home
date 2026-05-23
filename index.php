@@ -1,9 +1,9 @@
 <?php   
     session_start();
 
-    require 'auxiliary.php';
     require 'database.php';
     require 'router.php';
+    require 'validator.php';
 
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $router = new Router;
@@ -52,6 +52,12 @@
     $router->add('/user-login', function () use ($db) {
         $data = get_json_input();
 
+        $auth = isValidAuthInput($data['username'], $data['password']);
+        if ($auth['valid']) {
+            echo json_encode(['error' => $auth['error']]);
+            exit();
+        }
+
         $result = $db->verify_user($data['username'], $data['password']);
         if (!$result['success']) {
             echo json_encode($result);
@@ -79,6 +85,12 @@
 
     $router->add('/user-register', function () use ($db) {
         $data = get_json_input();
+
+        $auth = isValidAuthInput($data['username'], $data['password']);
+        if ($auth['valid']) {
+            echo json_encode(['error' => $auth['error']]);
+            exit();
+        }
 
         $result = $db->get_user($data['username']);
         if ($result != false) {

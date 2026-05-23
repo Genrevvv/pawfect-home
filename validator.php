@@ -1,4 +1,24 @@
 <?php
+    function isValidAuthInput($username, $password, $confirm = null) {
+        if (trim($username) === '' || trim($password) === '') {
+            return ['valid' => false, 'error' => 'Please fill up all fields'];
+        }
+
+        if (strlen(trim($username)) < 3) {
+            return ['valid' => false, 'error' => 'Please input at least 3 character for username'];
+        }
+
+        if (strlen($password) < 8) {
+            return ['valid' => false, 'error' => 'Please input at least 8 characters for password'];
+        }
+
+        if ($confirm !== null && $password !== $confirm) {
+            return ['valid' => false, 'error' => 'Password and confirm doesn\'t match'];
+        }
+
+        return true;
+    }
+
     function isValidPhoneNumber($number) {
         return preg_match('/^(09\d{9}|\+639\d{9})$/', trim($number));
     }
