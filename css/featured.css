@@ -125,6 +125,7 @@
 }
 
 .featured-element .pet-description {
+    word-break: break-all;
     font-size: 0.9rem;
     opacity: 0.85;
 }
@@ -165,6 +166,7 @@
 .description p{
     font-family: Quicksand;
     font-weight: 600;
+    word-break: break-all;
 }
 
 .paw-left{

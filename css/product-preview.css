@@ -99,6 +99,7 @@
 }
 
 .description-container p {
+    word-break: break-all;
     margin: 0;
     padding: 0 0.5rem;
     line-height: 1.5;
