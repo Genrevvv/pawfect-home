@@ -87,7 +87,7 @@
         $data = get_json_input();
 
         $auth = isValidAuthInput($data['username'], $data['password']);
-        if ($auth['valid']) {
+        if (!auth['valid']) {
             echo json_encode(['error' => $auth['error']]);
             exit();
         }
@@ -176,8 +176,9 @@
             'image' => $path
         ];
 
-        if (!isValidProduct($product_data)) {
-            echo json_encode(['error' => 'Please fill up all fields']);
+        $product_validation = isValidProduct($product_data);
+        if (!$product_validation['valid']) {
+            echo json_encode(['error' => $product_validation['valid']]);
             exit();
         }
 
