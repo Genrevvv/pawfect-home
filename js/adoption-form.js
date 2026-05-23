@@ -45,8 +45,10 @@ submitApplication.onclick = () => {
         }
         
         console.log(data)
-        window.location.href = '/';
+        sessionStorage.setItem('onloadMessage', 'Adoption application was sent successfully');
         localStorage.removeItem('form_data');
+
+        window.location.href = '/';
     });
 };
 

@@ -1,4 +1,4 @@
-import { setupAdminButton, updateContent } from "./auxiliary.js";
+import { displayMessage, setupAdminButton, updateContent } from "./auxiliary.js";
 import { cartScript, saveCartData } from "./cart.js";
 import { loginScript } from "./login.js";
 
@@ -7,6 +7,13 @@ const authBtn = document.getElementById('auth-btn');
 const cartBtn = document.getElementById('cart-btn');
 const orderStatus = document.getElementById('order-status');
 const overlayContainer = document.getElementById('overlay-container');
+
+const onloadMessage = sessionStorage.getItem('onloadMessage');
+
+if (onloadMessage) {
+    displayMessage(onloadMessage, 4000);
+    sessionStorage.removeItem('onloadMessage');
+}
 
 adoptionStatus.onclick = () => {
     if (sessionStorage.getItem('username') === null) {
