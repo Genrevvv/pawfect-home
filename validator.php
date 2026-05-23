@@ -28,6 +28,61 @@
         return preg_match('/^\d{16}$/', $number);
     }
 
+    function isValidProduct($data) {
+        $requiredStrings = [
+            'product_name',
+            'description',
+            'category',
+            'pet_type'
+        ];
+
+        foreach ($requiredStrings as $field) {
+            if (!isset($data[$field]) || trim($data[$field]) === '') {
+                return ['valid' => false, 'error' => 'Please fill up all fields'];
+            }
+        }
+
+        if (!isset($data['price']) || !is_numeric($data['price']) || $data['price'] < 0) {
+            return ['valid' => false, 'error' => 'Please input a valid amount for price'];
+        }
+
+        if (!isset($data['stock']) || !is_numeric($data['stock']) ||  $data['stock'] < 0) {
+            return ['valid' => false, 'error' => 'Please input a valid amount for price'];
+        }
+
+        if (!isset($data['image']) || trim($data['image']) === '') {
+            return ['valid' => false, 'error' => 'Please add an image'];
+        }
+
+        return ['valid' => true];
+    }
+
+    function isValidPet($data) {
+        $requiredStrings = [
+            'pet_name',
+            'pet_sex',
+            'pet_breed',
+            'pet_type',
+            'pet_description'
+        ];
+
+        foreach ($requiredStrings as $field) {
+            if (!isset($data[$field]) || trim($data[$field]) === '') {
+                return ['valid' => false, 'error' => 'Please fill up all fields'];
+            }
+        }
+
+        if (!isset($data['pet_age'])) {
+            return ['valid' => false, 'error' => 'Please input a valid value for pet age'];
+        }
+
+        if (!isset($data['image']) || trim($data['image']) === '') {
+            return ['valid' => false, 'error' => 'Please add an image'];
+        }
+
+        return ['valid' => true];
+    }
+    
     function isValidApplication($data) {
         $requiredStrings = [
             'full_name',
@@ -42,71 +97,15 @@
 
         foreach ($requiredStrings as $field) {
             if (!isset($data[$field]) || trim($data[$field]) === '') {
-                return false;
+                return ['valid' => false, 'error' => 'Please fill up all fields'];
             }
         }
 
         if (!isset($data['selected_pets']) || !is_array($data['selected_pets']) || count($data['selected_pets']) === 0) {
-            return false;
+            return ['valid' => false, 'error' => 'Please add a pet to adopt'];
         }
 
-        return true;
-    }
-
-    function isValidProduct($data) {
-        $requiredStrings = [
-            'product_name',
-            'description',
-            'category',
-            'pet_type'
-        ];
-
-        foreach ($requiredStrings as $field) {
-            if (!isset($data[$field]) || trim($data[$field]) === '') {
-                return false;
-            }
-        }
-
-        if (!isset($data['price']) || !is_numeric($data['price']) || $data['price'] < 0) {
-            return false;
-        }
-
-        if (!isset($data['stock']) || !is_numeric($data['stock']) ||  $data['stock'] < 0) {
-            return false;
-        }
-
-        if (!isset($data['image']) || trim($data['image']) === '') {
-            return false;
-        }
-
-        return true;
-    }
-
-    function isValidPet($data) {
-        $requiredStrings = [
-            'pet_id',
-            'pet_name',
-            'pet_sex',
-            'pet_breed',
-            'pet_type',
-            'pet_description'
-        ];
-
-        foreach ($requiredStrings as $field) {
-            if (!isset($data[$field]) || trim($data[$field]) === '') {
-                return false;
-            }
-        }
-
-        if (!isset($data['pet_age']) || !is_numeric($data['pet_age']) || $data['pet_age'] < 0) {
-            return false;
-        }
-
-        if (!isset($data['image']) || trim($data['image']) === '') {
-            return false;
-        }
-
-        return true;
+        return ['valid' => true];
     }
 
 ?>

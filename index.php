@@ -243,8 +243,9 @@
             'image' => $path
         ];
 
-        if (!isValidProduct($product_data)) {
-            echo json_encode(['error' => 'Please fill up all fields']);
+        $product_validation = isValidProduct($product_data);
+        if (!$product_validation['valid']) {
+            echo json_encode(['error' => $product_validation['valid']]);
             exit();
         }
 
@@ -300,8 +301,9 @@
             'image' => $path
         ];
 
-        if (!isValidPet($pet_data)) {
-            echo json_encode(['error' => 'Please fill up all fields']);
+        $pet_validation = isValidPet($pet_data);
+        if (!$pet_validation['valid']) {
+            echo json_encode(['error' => $pet_validation['error']]);
             exit();
         }
 
@@ -366,8 +368,9 @@
             'image' => $path
         ];
 
-        if (!isValidPet($pet_data)) {
-            echo json_encode(['error' => 'Please fill up all fields']);
+        $pet_validation = isValidPet($pet_data);
+        if (!$pet_validation['valid']) {
+            echo json_encode(['error' => $pet_validation['error']]);
             exit();
         }
 
@@ -384,8 +387,9 @@
         $data = get_json_input();
         $data['user_id'] = $_SESSION['user_id'];
 
-        if (!isValidApplication($data)) {
-            echo json_encode(['success' => false, 'error' => 'Invalid form data']);
+        $application_validation = isValidApplication($data);
+        if (!$application_validation['valid']) {
+            echo json_encode(['error' => $application_validation['error']]);
             exit();
         }
 

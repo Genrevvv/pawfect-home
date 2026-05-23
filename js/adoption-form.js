@@ -39,7 +39,7 @@ submitApplication.onclick = () => {
     })
     .then(res => res.json())
     .then(data => {
-        if (!data['successs']) {
+        if (!data['success']) {
             displayMessage(data['error'], 4000);
             return;
         }
