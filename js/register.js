@@ -20,6 +20,11 @@ export function registerScript() {
         const password = input.password.value;
         const confirm = input.confirm.value;
 
+        if (!username.trim() || !password.trim() || !confirm.trim()) {
+            displayMessage('Please fill up all fields');
+            return;
+        }
+
         if (username.length > 0 && password.length > 0 && confirm.length > 0) {
             const data = { username, password, confirm }
             const options = {
@@ -34,7 +39,7 @@ export function registerScript() {
                     console.log(data);
 
                     if (!data['success']) {
-                        document.getElementById('message').innerHTML = data['error'];
+                        displayMessage(data['error']);
                         return;
                     }
 

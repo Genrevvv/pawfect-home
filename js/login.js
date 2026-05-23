@@ -20,6 +20,11 @@ export function loginScript() {
         const username = input.username.value;
         const password = input.password.value;
 
+        if (!username.trim() || !password.trim()) {
+            displayMessage('Please fill up all fields');
+            return;
+        }
+
         if (username.length > 0 && password.length > 0) {
             const data = { username, password };
             const options = {
@@ -34,7 +39,7 @@ export function loginScript() {
                     console.log(data);
 
                     if (!data['success']) {
-                        document.getElementById('message').innerHTML = data['error'];
+                        displayMessage(data['error']);
                         return;
                     }
 
@@ -51,7 +56,6 @@ export function loginScript() {
                     }
                     
                     displayMessage('Login Successful');
-
                     getCardData();
                 });
         }
