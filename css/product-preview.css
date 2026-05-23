@@ -85,8 +85,8 @@
 }
 
 #product-name{
-    text-align: right;
-    margin: 0 1rem;
+    text-align:justify;
+    margin-left: 2rem;
 }
 
 .description-container {
