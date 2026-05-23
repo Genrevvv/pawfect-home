@@ -46,6 +46,7 @@ submitApplication.onclick = () => {
         
         console.log(data)
         window.location.href = '/';
+        localStorage.removeItem('form_data');
     });
 };
 
