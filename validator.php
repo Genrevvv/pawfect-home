@@ -16,7 +16,7 @@
             return ['valid' => false, 'error' => 'Password and confirm doesn\'t match'];
         }
 
-        return true;
+        return ['valid' => true];
     }
 
     function isValidPhoneNumber($number) {

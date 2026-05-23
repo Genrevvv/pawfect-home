@@ -87,7 +87,7 @@
         $data = get_json_input();
 
         $auth = isValidAuthInput($data['username'], $data['password']);
-        if (!auth['valid']) {
+        if (!$auth['valid']) {
             echo json_encode(['error' => $auth['error']]);
             exit();
         }
