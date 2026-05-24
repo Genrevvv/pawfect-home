@@ -18,6 +18,8 @@
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     border: 0.2rem solid var(--dark-charcoal);
+    font-family: Quicksand;
+    font-weight: bold;
 }
 
 .filter-button {

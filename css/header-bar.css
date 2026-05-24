@@ -32,6 +32,7 @@ header {
     margin: 0;
     padding: 0;
     list-style: none;
+    margin-left: 0.5rem;
 }
 
 #header-options ul li {
@@ -47,7 +48,7 @@ header {
     position: relative;
     color: var(--dark-charcoal);
     font-size: 1.7rem;
-    margin: 0 1rem;
+    margin-right: 1rem;
 }
 
 #header-options ul li i:hover {
@@ -67,9 +68,11 @@ header {
     /* padding: 0.3rem 0.5rem; */
     border-radius: 50%;
     position: absolute;
-    right: -1rem;
+    right: -0.8rem;
+    top: -0.7rem;
 
 }
+
 
 #logo img{
     height: 4.5rem;
@@ -78,7 +81,8 @@ header {
 }
 
 #logo:hover {
-    color: var(--deep-bronze);
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
 }
 
 .auth-btn, #admin-page {
@@ -127,4 +131,11 @@ header {
     cursor: pointer;
     color: var(--pale-cream);
     background-color: var(--sandy-tan);
+}
+
+#account-options{
+    margin-top: 0.5rem;
+    transform: translateX(0.5rem);
+    font-family: Quicksand ;
+    font-weight: bold;
 }

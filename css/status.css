@@ -21,7 +21,7 @@
 #text {
     font-size: 0.9rem;
     opacity: 0.75;
-    font-family: monospace;
+    font-family: Quicksand;
 }
 
 .table-container {
@@ -64,6 +64,8 @@
     vertical-align: top;
     font-size: 0.9rem;
     text-align: center;
+    font-family: Quicksand;
+    font-weight: bold;
 }
 
 
@@ -83,6 +85,7 @@
     font-size: 0.8rem;
     font-weight: 600;
     color: #333;
+    font-weight: bold;
 }
 
 .inner-table th:first-child {
@@ -99,6 +102,8 @@
     font-size: 0.85rem;
     color: #222;
     text-align: left;
+    font-family: Quicksand;
+    font-weight: 600;
 }
 
 .status {

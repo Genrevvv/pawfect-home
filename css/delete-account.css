@@ -19,8 +19,8 @@
 }
 
 #delete-account-container img {
-    width: 8rem;
-    height: 8rem;
+    width: 15rem;
+    height: 15rem;
     object-fit: cover;
     border-radius: 10px;
 }

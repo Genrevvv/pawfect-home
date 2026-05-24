@@ -58,7 +58,7 @@
 }
 
 .product-details {
-    background-color: white;
+    background-color: hsl(0, 0%, 91%);
     border-radius: 1rem;
     padding: 1rem; 
     margin-bottom: 1.5rem;
@@ -90,7 +90,7 @@
 }
 
 .description-container {
-    background-color: white;
+    background-color: hsl(0, 0%, 91%);
     border-radius: 1rem;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -106,7 +106,7 @@
 .description-container p {
     word-break: break-all;
     margin: 0;
-    padding: 0 0.5rem;
+    padding: 0 0.1rem;
     line-height: 1.5;
 }
 
@@ -115,6 +115,14 @@
     grid-column: 1 / 3;
     grid-row: 4;
     margin-top: 0.5rem;
+    font-family: Quicksand;
+    font-weight: bold;
+}
+
+.adopt-btn:hover{
+    background-color: hsl(35, 40%, 45%);
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
 }
 
 .cart-btn {
@@ -126,4 +134,10 @@
     border-radius: 0.7rem;
     font-weight: bold;
     cursor: pointer;
+}
+
+.cart-btn:hover{
+    background-color: hsl(35, 40%, 45%);
+    transform: scale(1.1);
+    transition: transform 0.1s ease;
 }
