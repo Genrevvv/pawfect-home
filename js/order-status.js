@@ -54,7 +54,7 @@ function displyOrderLogs(orders) {
                 const options = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({'order_id': order.id})
+                    body: JSON.stringify({'order_id': order.id, 'products': products})
                 }
 
                 fetch('/cancel-order', options)

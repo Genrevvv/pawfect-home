@@ -502,7 +502,7 @@
 
     $router->add('/cancel-order', function () use ($db) {
         $data = get_json_input();
-        echo json_encode([$db->update_order_status($data['order_id'], 'cancelled')]);
+        echo json_encode([$db->update_order_status($data['order_id'], 'cancelled', $data['products'])]);
     });
 
     $router->add('/fetch-overview-data', function () use ($db) {

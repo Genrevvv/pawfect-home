@@ -608,7 +608,7 @@
             $stmt->execute(['user_id' => $user_id]);
         }
 
-        public function update_order_status($order_id, $status) {
+        public function update_order_status($order_id, $status, $products = null) {
             $stmt = $this->db->prepare('
                 UPDATE orders_log 
                 SET status = :status
@@ -619,6 +619,23 @@
                 'order_id' => $order_id,
                 'status' => $status
             ]);
+
+            if ($products === null) {
+                return $stmt->rowCount();
+            }
+
+            $product_stmt = $this->db->prepare('
+                UPDATE products 
+                SET stock = stock + :quantity
+                WHERE id = :product_id
+            ');
+
+            foreach ($products as $product) {
+                $product_stmt->execute([
+                    'product_id' => $product['id'],
+                    'quantity' => $product['quantity']
+                ]);
+            }
 
             return $stmt->rowCount();
         }
