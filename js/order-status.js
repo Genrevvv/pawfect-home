@@ -85,16 +85,12 @@ function displyOrderLogs(orders) {
                             cancelBtn.remove();
 
                             displayMessage('Order has been cancelled');
-                            overlayContainer.innerHTML = '';
-                            overlayContainer.style.visibility = 'hidden';
-                            document.body.style.overflowY = 'visible';          
+                            overlayContainer.click();
                         });
                 }
                 
                 noCancel.onclick = () => {
-                    overlayContainer.innerHTML = '';
-                    overlayContainer.style.visibility = 'hidden';
-                    document.body.style.overflowY = 'visible';   
+                    overlayContainer.click();
                 }
             }
         }
