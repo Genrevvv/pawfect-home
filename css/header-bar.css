@@ -42,7 +42,8 @@ header {
 #header-options ul li a {
     text-decoration:none;
     color:#2f241d;
-    font-weight:500;
+    font-family: Quicksand;
+    font-weight: bold;
     transition:.3s;
     position:relative;
 }
@@ -130,7 +131,6 @@ header {
     border-radius: 0.7rem;
     margin-bottom: 0.5rem;
     transition:.3s;
-    font-weight:500;
 }
 
 .auth-btn:hover, #admin-page:hover {
