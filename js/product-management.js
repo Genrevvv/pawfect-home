@@ -41,7 +41,7 @@ export function productManagementScript() {
             displayMessage('Product was added successfully');
             addProductElement(data.product_data);
 
-            // Clear product form
+            // Clear add product form
             productName.value = '';
             description.value = '';
             category.value = '';
