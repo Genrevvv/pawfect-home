@@ -647,6 +647,7 @@
                     COUNT(*) AS total_orders,
                     SUM(total_price) AS weekly_sales
                 FROM orders_log
+                WHERE status = "delivered"
                 GROUP BY YEARWEEK(created_at, 1)
                 ORDER BY week DESC
             ');
