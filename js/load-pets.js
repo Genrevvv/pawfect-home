@@ -51,20 +51,6 @@ export function loadPets() {
             }
 
             setupNavFilter();
-
-            const pets = productsContainer.querySelectorAll('.card');
-            pets.forEach(pet => {
-                if (petFilter === "all") {
-                    pet.style.display = "";
-                }
-                else {
-                    pet.style.display = pet.classList.contains(petFilter)
-                        ? ""
-                        : "none";
-                }
-            });
-
-            syncFilterHighlight(); 
             cardAnimation();
     });
 
@@ -75,64 +61,21 @@ export function loadPets() {
 
         const filters = [allBtn, catBtn, dogBtn];
 
-        const pets = productsContainer.querySelectorAll('.card');
-        allBtn.onclick = () => {
-            pets.forEach(pet => {
-                pet.style.display = '';
-            });
+        const products = productsContainer.querySelectorAll('.card');
 
-            filters.forEach(filter => {
-                if (filter.id === 'all-btn') {
-                    filter.classList.add('highlighted');
-                }
-                else {
-                    filter.classList.remove('highlighted');
-                }
-            });
-        }
+        allBtn.onclick = () => {
+            products.forEach(p => p.style.display = '');
+            filters.forEach(f => f.classList.toggle('highlighted', f.id === 'all-btn'));
+        };
 
         catBtn.onclick = () => {
-            pets.forEach(pet => {
-                pet.style.display = pet.classList.contains('cat') ? '' : 'none';
-            });
-
-            filters.forEach(filter => {
-                if (filter.id === 'cats-btn') {
-                    filter.classList.add('highlighted');
-                }
-                else {
-                    filter.classList.remove('highlighted');
-                }
-            });
-        }
+            products.forEach(p => p.style.display = p.classList.contains('cat') ? '' : 'none');
+            filters.forEach(f => f.classList.toggle('highlighted', f.id === 'cats-btn'));
+        };
 
         dogBtn.onclick = () => {
-            pets.forEach(pet => {
-                pet.style.display = pet.classList.contains('dog') ? '' : 'none';
-            });
-
-            filters.forEach(filter => {
-                if (filter.id === 'dogs-btn') {
-                        filter.classList.add('highlighted');
-                }
-                else {
-                    filter.classList.remove('highlighted');
-                }
-            });
-        }
-    }
-
-    function syncFilterHighlight() {
-        const allBtn = document.getElementById('all-btn');
-        const catBtn = document.getElementById('cats-btn');
-        const dogBtn = document.getElementById('dogs-btn');
-
-        const filters = [allBtn, catBtn, dogBtn];
-
-        filters.forEach(btn => btn.classList.remove('highlighted'));
-
-        if (petFilter === "dog") dogBtn?.classList.add("highlighted");
-        else if (petFilter === "cat") catBtn?.classList.add("highlighted");
-        else allBtn?.classList.add("highlighted");
+            products.forEach(p => p.style.display = p.classList.contains('dog') ? '' : 'none');
+            filters.forEach(f => f.classList.toggle('highlighted', f.id === 'dogs-btn'));
+        };
     }
 }

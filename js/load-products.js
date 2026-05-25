@@ -22,7 +22,6 @@ export function loadProducts(category) {
             const products = data.products;
 
             products.forEach(product => {
-
                 const productCard = document.createElement('div');
                 productCard.classList.add(product.pet_type, 'card');
 
@@ -44,8 +43,15 @@ export function loadProducts(category) {
                     </div>
                 `;
 
-                const addToCartBtn = productCard.querySelector('.add-to-cart');
+                productsContainer.appendChild(productCard);
 
+                productCard.onclick = (e) => {
+                    e.stopPropagation();
+                    
+                    productContentPreview(product);
+                };
+
+                const addToCartBtn = productCard.querySelector('.add-to-cart');
                 addToCartBtn.onclick = (e) => {
                     if (sessionStorage.getItem('username') === null) {
                         logIn();
@@ -56,13 +62,6 @@ export function loadProducts(category) {
                     addToCart(product);
                 };
 
-                productCard.onclick = (e) => {
-                    e.stopPropagation();
-                    
-                    productContentPreview(product);
-                };
-
-                productsContainer.appendChild(productCard);
             });
 
             setupNavFilter();

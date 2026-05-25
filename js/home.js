@@ -46,7 +46,7 @@ petHouses.onclick = async () => {
 petGadgets.onclick = async () => {
     highlightOption('pet-gadgets');
     await updateContent('html/pet-gadgets.html', content);
-    loadProducts('pet_gadgets');
+    await loadProducts('pet_gadgets');
 }
 
 petFoods.onclick = async () => {

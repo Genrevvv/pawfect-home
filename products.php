@@ -136,7 +136,7 @@
             'name' => 'All-Weather Plastic Dog House',
             'description' => 'A durable plastic dog house designed to withstand different weather conditions while keeping pets safe, dry, and comfortable outdoors.',
             'category' => 'pet_houses',
-            'type' => '',
+            'type' => 'dog',
             'price' => 67,
             'stock' => 67,
             'image' => 'products/pet_houses/dog_houses/dog_house_1.jpg'
