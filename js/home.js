@@ -14,10 +14,13 @@ const petHouses = document.getElementById('pet-houses');
 const petGadgets = document.getElementById('pet-gadgets');
 const petFoods = document.getElementById('pet-foods');
 
+const homepageRedirectNav = sessionStorage.getItem('homepage-redirect-nav');
+if (homepageRedirectNav === null) {
+    await updateContent('html/featured.html', content);
+    featuredScript();
+}
 
 navBarAnimation();
-await updateContent('html/featured.html', content);
-featuredScript();
 
 adoptPet.onclick = async () => {
     highlightOption('adopt-pet');
@@ -52,13 +55,22 @@ petFoods.onclick = async () => {
     loadProducts('pet_foods');
 }
 
-// petGadgets.click();
-
-// async function updateContent(htmlFilePath) {
-//     const res = await fetch(htmlFilePath);
-//     const html = await res.text();
-//     content.innerHTML = html;
-// }
+if (homepageRedirectNav === 'adopt-a-pet') {
+    adoptPet.click();
+    sessionStorage.removeItem('homepage-redirect-nav');
+}
+else if (homepageRedirectNav === 'pet-houses') {
+    petHouses.click();
+    sessionStorage.removeItem('homepage-redirect-nav');
+}
+else if (homepageRedirectNav === 'pet-gadgets') {
+    petGadgets.click();
+    sessionStorage.removeItem('homepage-redirect-nav');
+}
+else if (homepageRedirectNav === 'pet-foods') {
+    petFoods.click();
+    sessionStorage.removeItem('homepage-redirect-nav');
+}
 
 function highlightOption(option) {
     const options = [adoptPet, petHouses, petGadgets, petFoods];
