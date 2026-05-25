@@ -1,16 +1,16 @@
-DROP DATABASE pawfect_home;
+DROP DATABASE IF EXISTS pawfect_home;
 
-CREATE DATABASE IF NOT EXISTS pawfect_home;
+CREATE DATABASE pawfect_home;
 USE pawfect_home;
 
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     user_type VARCHAR(20) CHECK (user_type IN ('user', 'admin'))
 );
 
-CREATE TABLE IF NOT EXISTS products (
+CREATE TABLE products (
     id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(100) NOT NULL,
     description VARCHAR(250) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS products (
     image VARCHAR(250)
 );
 
-CREATE TABLE IF NOT EXISTS pets (
+CREATE TABLE pets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pet_name VARCHAR(100) NOT NULL,
     pet_age VARCHAR(100) NOT NULL,
@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS pets (
     image VARCHAR(250)
 );
 
-CREATE TABLE IF NOT EXISTS adoption_applications (
+CREATE TABLE adoption_applications (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    user_id INT NULL,
     full_name VARCHAR(100) NOT NULL,
     email_address VARCHAR(100) NOT NULL,
     phone_number VARCHAR(100) NOT NULL,
@@ -44,45 +44,45 @@ CREATE TABLE IF NOT EXISTS adoption_applications (
     reason VARCHAR(200) NOT NULL,
     existing_pet VARCHAR(200) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) NOT NULL,    -- pending, approved, rejected, cancelled
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE NULL
+    status VARCHAR(50) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
-CREATE TABLE IF NOT EXISTS adopteds (
+CREATE TABLE adopteds (
     application_id INT NOT NULL,
     pet_id INT NOT NULL,
-    FOREIGN KEY (application_id) REFERENCES adoption_applications(id),
-    FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE NULL,
-    PRIMARY KEY (application_id, pet_id) ON DELETE NULL
+    PRIMARY KEY (application_id, pet_id),
+    FOREIGN KEY (application_id) REFERENCES adoption_applications(id) ON DELETE CASCADE,
+    FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS user_carts (
+CREATE TABLE user_carts (
     user_id INT NOT NULL,
-    product_id INT NOT NULL, 
+    product_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (user_id, product_id),
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE NULL,
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE NULL
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS orders_log (
+CREATE TABLE orders_log (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    user_id INT NULL,
     name VARCHAR(200) NOT NULL,
     address VARCHAR(200) NOT NULL,
     payment_method VARCHAR(100) NOT NULL,
     payment_id VARCHAR(100),
     total_price DECIMAL(10, 2),
-    status VARCHAR(50) NOT NULL,    -- preparing, to ship, shipped, delivered, cancelled
+    status VARCHAR(50) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE NULL
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
-CREATE TABLE IF NOT EXISTS orders (
-    order_id INT NOT NULL, 
+CREATE TABLE orders (
+    order_id INT NOT NULL,
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (order_id, product_id),
-    FOREIGN KEY (order_id) REFERENCES orders_log(id) ON DELETE NULL,
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE NULL
+    FOREIGN KEY (order_id) REFERENCES orders_log(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );

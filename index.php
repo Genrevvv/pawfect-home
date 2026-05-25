@@ -5,9 +5,13 @@
     require 'router.php';
     require 'validator.php';
 
+    
     $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $router = new Router;
     $db = new Database('pawfect_home.db');
+
+    // Content loader, run only once when loading base content
+    // require 'load-content-script.php';
 
     // Path redirection
     $router->add('/', function () {
