@@ -49,6 +49,10 @@
         header('Location: /html/order-status.html');
     });
 
+    $router->add('/about-us', function () {
+        header('Location: /html/about-us.html');
+    });
+
     $router->add('/user-login', function () use ($db) {
         $data = get_json_input();
 
@@ -406,6 +410,19 @@
         echo json_encode($db->get_adoption_applications($_SESSION['user_id']));
     });
 
+    $router->add('/cancel-adoption-application', function () use ($db) {
+        $data = get_json_input();
+
+        $result = $db->update_adoption_application('cancelled', $data['application_id']);
+
+        if ($result == 0) {
+            echo json_encode(['error' => 'Unable to udpate application status']);
+            return;
+        }
+
+        echo json_encode(['success' => true]);
+    });
+
     $router->add('/approve-adoption-application', function () use ($db) {
         $data = get_json_input();
 
@@ -502,7 +519,7 @@
 
     $router->add('/cancel-order', function () use ($db) {
         $data = get_json_input();
-        echo json_encode([$db->update_order_status($data['order_id'], 'cancelled')]);
+        echo json_encode([$db->update_order_status($data['order_id'], 'cancelled', $data['products'])]);
     });
 
     $router->add('/fetch-overview-data', function () use ($db) {
@@ -511,6 +528,21 @@
 
     $router->add('/fetch-all-data', function () use ($db) {
         echo json_encode($db->get_all_data());
+    });
+
+    $router->add('/send-message', function () use ($db) {
+        $data = get_json_input();
+
+        $to = 'genrev.aguilar.1@gmail.com';
+        $subject = $data['subject'];
+        $message = $data['message'];
+        $headers = 'From: ' . $data['email'];
+
+        if (mail($to, $subject, $message, $headers)) {
+            echo json_encode(['success' => 'true', 'message' => 'Email sent']);
+        } else {
+            echo json_encode(['success' => 'false', 'message' => 'Failed to send email']);
+        }
     });
 
     $router->dispatch($path);

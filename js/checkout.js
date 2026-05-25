@@ -76,9 +76,6 @@ export function checkOutScript() {
             .then(data => {
                 console.log(data);
 
-                const overlayContainer = document.getElementById('overlay-container');
-                overlayContainer.click();
-
                 if (!data['success']) {
                     displayMessage(data['error'], 4000);
                     return;
@@ -88,6 +85,9 @@ export function checkOutScript() {
 
                 clearCart();
                 updateCartItemCount();
+
+                const overlayContainer = document.getElementById('overlay-container');
+                overlayContainer.click();
             })
     };
     

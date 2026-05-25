@@ -8,7 +8,7 @@ export function navBarAnimation() {
         const startScroll = 120;
         const endScroll = 220;
 
-        const startHeight = 80;
+        const startHeight = 72;
         const endHeight = 32;
 
         const imgStart = 48;

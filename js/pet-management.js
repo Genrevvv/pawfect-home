@@ -40,6 +40,24 @@ export function petManagementScript() {
 
             displayMessage('Pet was added successfully');
             addPetElement(data.pet_data);
+            
+            // Clear add pet form
+            petName.value = '';
+            petAge.value = '';
+            petSex.value = '';
+            petBreed.value = '';
+            petType.value = '';
+            petDescription.value = '';
+
+            imageFile = null;
+
+            uploadImageArea.style.backgroundImage = 'none';
+            uploadImageArea.style.borderStyle = 'dashed';
+
+            uploadImageArea.querySelector('span').style.visibility = 'visible';
+
+            const removeImage = uploadImageArea.querySelector('.remove-image');
+            removeImage.classList.remove('holds-image');
         });
     };
 

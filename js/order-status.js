@@ -1,7 +1,8 @@
-import { toTitleCase } from "./auxiliary.js";
+import { displayMessage, toTitleCase } from "./auxiliary.js";
 
 window.history.pushState(null, "", "/order-status");
 
+const overlayContainer = document.getElementById('overlay-container');
 const tableBody = document.getElementById('table-body');
 
 fetch('/get-user-order')
@@ -51,20 +52,46 @@ function displyOrderLogs(orders) {
             lastColumn.append(cancelBtn);
 
             cancelBtn.onclick = () => {
-                const options = {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({'order_id': order.id})
-                }
+                const confirmCancelUI = document.createElement('div');
+                confirmCancelUI.id = 'confirm-cancel-ui';
+                confirmCancelUI.innerHTML = `
+                    <span>Are you sure you want to cancel your order?</span>
+                    <div class="cancel-options">
+                        <button class="yes-cancel">Yes</button>
+                        <button class="no-cancel">No</button>
+                    </div>
+                `;
 
-                fetch('/cancel-order', options)
-                    .then(res => res.json())
-                    .then(data => {
-                        const statusSpan = tableRow.querySelector('.status');
-                        statusSpan.innerHTML = 'Cancelled';
-                        statusSpan.className = 'status rejected';
-                        cancelBtn.remove();
-                    });
+                overlayContainer.append(confirmCancelUI);
+                overlayContainer.style.visibility = 'visible';
+                document.body.style.overflowY = 'hidden';                
+                
+                const yesCancel = confirmCancelUI.querySelector('.yes-cancel');
+                const noCancel = confirmCancelUI.querySelector('.no-cancel');
+
+                yesCancel.onclick = () => {
+                    const options = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({'order_id': order.id, 'products': products})
+                    }
+
+                    fetch('/cancel-order', options)
+                        .then(res => res.json())
+                        .then(data => {
+                            const statusSpan = tableRow.querySelector('.status');
+                            statusSpan.innerHTML = 'Cancelled';
+                            statusSpan.className = 'status rejected';
+                            cancelBtn.remove();
+
+                            displayMessage('Order has been cancelled');
+                            overlayContainer.click();
+                        });
+                }
+                
+                noCancel.onclick = () => {
+                    overlayContainer.click();
+                }
             }
         }
 

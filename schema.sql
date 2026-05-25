@@ -44,16 +44,16 @@ CREATE TABLE IF NOT EXISTS adoption_applications (
     reason VARCHAR(200) NOT NULL,
     existing_pet VARCHAR(200) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) NOT NULL,    -- pending, approved, rejected
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    status VARCHAR(50) NOT NULL,    -- pending, approved, rejected, cancelled
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE NULL
 );
 
 CREATE TABLE IF NOT EXISTS adopteds (
     application_id INT NOT NULL,
     pet_id INT NOT NULL,
     FOREIGN KEY (application_id) REFERENCES adoption_applications(id),
-    FOREIGN KEY (pet_id) REFERENCES pets(id),
-    PRIMARY KEY (application_id, pet_id)
+    FOREIGN KEY (pet_id) REFERENCES pets(id) ON DELETE NULL,
+    PRIMARY KEY (application_id, pet_id) ON DELETE NULL
 );
 
 CREATE TABLE IF NOT EXISTS user_carts (
@@ -61,8 +61,8 @@ CREATE TABLE IF NOT EXISTS user_carts (
     product_id INT NOT NULL, 
     quantity INT NOT NULL,
     PRIMARY KEY (user_id, product_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (product_id) REFERENCES products(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE NULL
 );
 
 CREATE TABLE IF NOT EXISTS orders_log (
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS orders_log (
     total_price DECIMAL(10, 2),
     status VARCHAR(50) NOT NULL,    -- preparing, to ship, shipped, delivered, cancelled
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE NULL
 );
 
 CREATE TABLE IF NOT EXISTS orders (
@@ -83,6 +83,6 @@ CREATE TABLE IF NOT EXISTS orders (
     product_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (order_id, product_id),
-    FOREIGN KEY (order_id) REFERENCES orders_log(id),
-    FOREIGN KEY (product_id) REFERENCES products(id)
+    FOREIGN KEY (order_id) REFERENCES orders_log(id) ON DELETE NULL,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE NULL
 );

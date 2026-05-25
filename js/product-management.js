@@ -40,6 +40,24 @@ export function productManagementScript() {
 
             displayMessage('Product was added successfully');
             addProductElement(data.product_data);
+
+            // Clear add product form
+            productName.value = '';
+            description.value = '';
+            category.value = '';
+            petType.value = '';
+            price.value = '';
+            stock.value = '';
+
+            imageFile = null;
+
+            uploadImageArea.style.backgroundImage = 'none';
+            uploadImageArea.style.borderStyle = 'dashed';
+
+            uploadImageArea.querySelector('span').style.visibility = 'visible';
+
+            const remove = uploadImageArea.querySelector('.remove-image');
+            remove.classList.remove('holds-image');
         });
     };
 

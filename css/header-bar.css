@@ -40,8 +40,34 @@ header {
 }
 
 #header-options ul li a {
-    color: var(--dark-charcoal);
-    text-decoration: none;
+    text-decoration:none;
+    color:#2f241d;
+    font-weight:500;
+    transition:.3s;
+    position:relative;
+}
+
+#header-options ul li a:hover::after {
+    width:100%;
+}
+
+#header-options ul li a::after {
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:#c89a4d;
+    transition:.3s;
+}
+
+#header-options ul li a:hover {
+    color:#c89a4d;
+}
+
+#header-options .active {
+    color:#c89a4d;
 }
 
 #header-options ul li i {
@@ -54,6 +80,16 @@ header {
 #header-options ul li i:hover {
     color: var(--deep-bronze);
     cursor: pointer;
+}
+
+#cart-btn {
+    cursor:pointer;
+    transition:.3s;
+}
+
+#cart-btn:hover {
+    color:#c89a4d;
+    transform:scale(1.1);
 }
 
 #cart-item-count {
@@ -73,20 +109,19 @@ header {
 
 }
 
-
 #logo img{
     height: 4.5rem;
     width: 11.5rem;
-    
+    transition: 0.3s;
 }
 
 #logo:hover {
-    transform: scale(1.1);
+    transform:scale(1.03);
     transition: transform 0.1s ease;
 }
 
 .auth-btn, #admin-page {
-    background-color: var(--warm-honey);
+    background-color: #c89a4d;
     font-family: Quicksand;
     font-weight: bold;
     text-decoration: none;
@@ -94,12 +129,17 @@ header {
     padding: 1rem;
     border-radius: 0.7rem;
     margin-bottom: 0.5rem;
+    transition:.3s;
+    font-weight:500;
 }
 
 .auth-btn:hover, #admin-page:hover {
     background-color: var(--sandy-tan);
     cursor: pointer;
+     background:#b07f37;
+    transform:translateY(-2px);
 }
+
 
 #adoption-status,
 #order-status,
