@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS adoption_applications (
     reason VARCHAR(200) NOT NULL,
     existing_pet VARCHAR(200) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) NOT NULL,    -- pending, approved, rejected
+    status VARCHAR(50) NOT NULL,    -- pending, approved, rejected, cancelled
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

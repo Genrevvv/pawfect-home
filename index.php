@@ -406,6 +406,19 @@
         echo json_encode($db->get_adoption_applications($_SESSION['user_id']));
     });
 
+    $router->add('/cancel-adoption-application', function () use ($db) {
+        $data = get_json_input();
+
+        $result = $db->update_adoption_application('cancelled', $data['application_id']);
+
+        if ($result == 0) {
+            echo json_encode(['error' => 'Unable to udpate application status']);
+            return;
+        }
+
+        echo json_encode(['success' => true]);
+    });
+
     $router->add('/approve-adoption-application', function () use ($db) {
         $data = get_json_input();
 

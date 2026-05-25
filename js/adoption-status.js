@@ -1,7 +1,8 @@
-import { toTitleCase } from "./auxiliary.js";
+import { displayMessage, toTitleCase } from "./auxiliary.js";
 
 window.history.pushState(null, "", "/adoption-status");
 
+const overlayContainer = document.getElementById('overlay-container');
 const tableBody = document.getElementById('table-body');
 
 fetch('/get-adoption-applications')
@@ -32,7 +33,7 @@ function displayAdoptionLogs(applications) {
                     <tbody class="pet-table-body"></tbody>
                 </table>
             </td>
-            <td>
+            <td class="last-column">
                 <span class="status">
                     ${toTitleCase(adoptionApplication.status)}
                 </span>
@@ -41,10 +42,75 @@ function displayAdoptionLogs(applications) {
         
         tableBody.append(tableRow);
 
+        if (adoptionApplication.status === 'pending') {
+                const lastColumn = tableRow.querySelector('.last-column');
+    
+                const cancelBtn = document.createElement('button');
+                cancelBtn.classList.add('cancel-btn');
+                cancelBtn.innerHTML = 'Cancel Order';
+    
+                lastColumn.append(cancelBtn);
+    
+                cancelBtn.onclick = () => {
+                    const confirmCancelUI = document.createElement('div');
+                    confirmCancelUI.id = 'confirm-cancel-ui';
+                    confirmCancelUI.innerHTML = `
+                        <span>Are you sure you want to cancel your order?</span>
+                        <div class="cancel-options">
+                            <button class="yes-cancel">Yes</button>
+                            <button class="no-cancel">No</button>
+                        </div>
+                    `;
+    
+                    overlayContainer.append(confirmCancelUI);
+                    overlayContainer.style.visibility = 'visible';
+                    document.body.style.overflowY = 'hidden';                
+                    
+                    const yesCancel = confirmCancelUI.querySelector('.yes-cancel');
+                    const noCancel = confirmCancelUI.querySelector('.no-cancel');
+    
+                    yesCancel.onclick = () => {
+                        const options = {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ 'application_id': adoptionApplication.id })
+                        }
+    
+                        fetch('/cancel-adoption-application', options)
+                            .then(res => res.json())
+                            .then(data => {
+                                const statusSpan = tableRow.querySelector('.status');
+                                statusSpan.innerHTML = 'Cancelled';
+                                statusSpan.className = 'status rejected';
+                                cancelBtn.remove();
+    
+                                displayMessage('Order has been cancelled');
+                                overlayContainer.innerHTML = '';
+                                overlayContainer.style.visibility = 'hidden';
+                                document.body.style.overflowY = 'visible';          
+                            });
+                    }
+                    
+                    noCancel.onclick = () => {
+                        overlayContainer.innerHTML = '';
+                        overlayContainer.style.visibility = 'hidden';
+                        document.body.style.overflowY = 'visible';   
+                    }
+                }
+            }
+
         const petTableBody = tableRow.querySelector('.pet-table-body');
         const status = tableRow.querySelector('.status');
 
-        status.classList.add(adoptionApplication.status);
+        switch (adoptionApplication.status) {
+            case 'approved':
+                status.classList.add('approved');
+                break;
+            case 'cancelled':
+                status.classList.add('rejected');
+            default:
+                status.classList.add('pending');
+        }
 
         pets.forEach(pet => {
             const innerTableRow = document.createElement('tr');
