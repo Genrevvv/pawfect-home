@@ -384,28 +384,18 @@
             </div>
 
             <div class="contact-form">
-
                 <form>
-
                     <div class="input-row">
-
-                        <input type="text" placeholder="Your Name">
-
-                        <input type="email" placeholder="Your Email">
-
+                        <input id="name" type="text" placeholder="Your Name">
+                        <input id="email" type="email" placeholder="Your Email">
                     </div>
-
-                    <input type="text" placeholder="Subject">
-
-                    <textarea placeholder="Your Message"></textarea>
-
-                    <button>
+                    <input id="subject" type="text" placeholder="Subject">
+                    <textarea id="message" placeholder="Your Message"></textarea>
+                    <button id="send-message" type="button">
                         Send Message
                         <i class="fa-solid fa-paw"></i>
                     </button>
-
                 </form>
-
             </div>
 
         </div>
@@ -444,7 +434,7 @@
         </div>
     </footer>
 
-    <script src="/js/about-us.js"></script>
+    <script src="/js/about-us.js" type="module"></script>
     <script src="/js/footer.js"></script>
     <script src="/js/header-bar.js" type="module"></script>
 </body>

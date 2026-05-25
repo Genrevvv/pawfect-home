@@ -438,64 +438,6 @@ body{
     background:#b07f37;
 }
 
-/* ================= FOOTER ================= */
-
-.footer{
-    background:#f5ecdf;
-    border-top:1px solid #dbc9b2;
-}
-
-.footer-top{
-    padding:60px 70px;
-    display:grid;
-    grid-template-columns:1.5fr 1fr 1fr;
-    gap:50px;
-}
-
-.footer-logo{
-    margin-bottom:20px;
-}
-
-.footer-logo img{
-    width:190px;
-    height:auto;
-    object-fit:contain;
-}
-
-.footer-about p{
-    line-height:30px;
-}
-
-.footer-links{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-}
-
-.footer-links h4{
-    color:#b68537;
-    margin-bottom:10px;
-}
-
-.footer-links a{
-    text-decoration:none;
-    color:#4b3a2f;
-    transition:.3s;
-}
-
-.footer-links a:hover{
-    color:#c89a4d;
-    transform:translateX(5px);
-    cursor: pointer;
-}
-
-.footer-bottom{
-    background:#c89a4d;
-    color:white;
-    text-align:center;
-    padding:18px;
-}
-
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:1200px){

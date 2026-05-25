@@ -530,6 +530,21 @@
         echo json_encode($db->get_all_data());
     });
 
+    $router->add('/send-message', function () use ($db) {
+        $data = get_json_input();
+
+        $to = 'genrev.aguilar.1@gmail.com';
+        $subject = $data['subject'];
+        $message = $data['message'];
+        $headers = 'From: ' . $data['email'];
+
+        if (mail($to, $subject, $message, $headers)) {
+            echo json_encode(['success' => 'true', 'message' => 'Email sent']);
+        } else {
+            echo json_encode(['success' => 'false', 'message' => 'Failed to send email']);
+        }
+    });
+
     $router->dispatch($path);
 
     // Auxilliary
