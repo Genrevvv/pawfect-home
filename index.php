@@ -49,6 +49,10 @@
         header('Location: /html/order-status.html');
     });
 
+    $router->add('/about-us', function () {
+        header('Location: /html/about-us.html');
+    });
+
     $router->add('/user-login', function () use ($db) {
         $data = get_json_input();
 

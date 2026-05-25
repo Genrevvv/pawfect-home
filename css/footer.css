@@ -1,4 +1,3 @@
-
 .footer{
     background:#f5ecdf;
     border-top:1px solid #dbc9b2;
@@ -45,6 +44,7 @@
 .footer-links a:hover{
     color:#c89a4d;
     transform:translateX(5px);
+    cursor: pointer;
 }
 
 .footer-bottom{

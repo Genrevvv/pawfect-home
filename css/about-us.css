@@ -486,6 +486,7 @@ body{
 .footer-links a:hover{
     color:#c89a4d;
     transform:translateX(5px);
+    cursor: pointer;
 }
 
 .footer-bottom{
