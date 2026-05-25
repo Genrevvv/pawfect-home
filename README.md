@@ -54,8 +54,9 @@ Website ata
 8. Order status ✅
 9. About us
 10. Search bar ✅
-11. Responsive design
-12. Gusto ko na magbakasyon
+11. Script that automates adding pets and products ✅
+12. Responsive design
+13. Gusto ko na magbakasyon
 
 ### Requirements:
 1. PHP
