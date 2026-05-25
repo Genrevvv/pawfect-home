@@ -2,13 +2,16 @@
     $pets = require 'pets.php';
     $products = require 'products.php';
 
+    if (file_exists(__DIR__ . '/seed.lock')) {
+        exit("Already seeded");
+    }
+
     $uploadDir = 'uploads/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
 
     foreach ($pets as $pet) {
-
         $oldPath = $pet['image'];
         $extension = pathinfo($oldPath, PATHINFO_EXTENSION);
 
@@ -33,6 +36,7 @@
     foreach ($products as $product) {
         $oldPath = $product['image'];
         $extension = pathinfo($oldPath, PATHINFO_EXTENSION);
+
         $fileName = uniqid('product_', true) . '.' . $extension;
         $newPath = $uploadDir . $fileName;
 
@@ -51,4 +55,5 @@
         $result = $db->add_product($product_data);
     }
 
+    file_put_contents(__DIR__ . '/seed.lock', 'done');
 ?>
