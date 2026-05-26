@@ -15,7 +15,7 @@
         [
             'name' => 'Luna',
             'age' => '2 years old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Bengal',
             'type' => 'cat',
             'description' => 'Luna is an energetic and intelligent cat with a spotted coat and a playful personality.',
@@ -25,7 +25,7 @@
         [
             'name' => 'Milo',
             'age' => '3 years old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Birman',
             'type' => 'cat',
             'description' => 'Milo is a gentle and affectionate cat known for his soft fur and bright blue eyes.',
@@ -45,7 +45,7 @@
         [
             'name' => 'Daisy',
             'age' => '4 years old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'British Shorthair',
             'type' => 'cat',
             'description' => 'Daisy is a calm and quiet cat with a plush coat and a sweet temperament.',
@@ -55,7 +55,7 @@
         [
             'name' => 'Oliver',
             'age' => '2 years old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Burmese',
             'type' => 'cat',
             'description' => 'Oliver is a friendly and social cat who enjoys attention and playful activities.',
@@ -65,7 +65,7 @@
         [
             'name' => 'Snowy',
             'age' => '3 years old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Himalayan',
             'type' => 'cat',
             'description' => 'Snowy is a relaxed and affectionate cat with long fluffy fur and striking blue eyes.',
@@ -75,7 +75,7 @@
         [
             'name' => 'Leo',
             'age' => '5 years old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Maine Coon',
             'type' => 'cat',
             'description' => 'Leo is a large and gentle cat with thick fur and a very friendly personality.',
@@ -85,7 +85,7 @@
         [
             'name' => 'Mochi',
             'age' => '1 year old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Munchkin',
             'type' => 'cat',
             'description' => 'Mochi is a playful cat with short legs and an energetic, cheerful attitude.',
@@ -95,7 +95,7 @@
         [
             'name' => 'Storm',
             'age' => '3 years old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Persian',
             'type' => 'cat',
             'description' => 'Storm is a calm and graceful cat with a long luxurious coat and sweet personality.',
@@ -105,7 +105,7 @@
         [
             'name' => 'Bella',
             'age' => '2 years old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Ragdoll',
             'type' => 'cat',
             'description' => 'Bella is a calm and cuddly cat who loves being around people and relaxing indoors.',
@@ -115,7 +115,7 @@
         [
             'name' => 'Bella',
             'age' => '2 years old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Aspin',
             'type' => 'dog',
             'description' => 'Bella is a loyal and friendly Aspin known for being energetic and protective of her family.',
@@ -125,7 +125,7 @@
         [
             'name' => 'Oreo',
             'age' => '6 months old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Border Collie',
             'type' => 'dog',
             'description' => 'Oreo is a playful and intelligent puppy with a fluffy black-and-white coat and an adorable curious expression.',
@@ -135,7 +135,7 @@
         [
             'name' => 'Tank',
             'age' => '3 years old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Bulldog',
             'type' => 'dog',
             'description' => 'Tank is a calm and sturdy bulldog with a wrinkly face and a lovable personality.',
@@ -145,7 +145,7 @@
         [
             'name' => 'Max',
             'age' => '1 year old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Cairn Terrier',
             'type' => 'dog',
             'description' => 'Max is an energetic little dog with a scruffy coat and a curious personality.',
@@ -155,7 +155,7 @@
         [
             'name' => 'Chico',
             'age' => '8 months old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'Chihuahua',
             'type' => 'dog',
             'description' => 'Chico is a tiny but confident dog who loves attention and cuddles.',
@@ -165,7 +165,7 @@
         [
             'name' => 'Rex',
             'age' => '2 years old',
-            'sex' => 'Male',
+            'sex' => 'male',
             'breed' => 'German Shepherd',
             'type' => 'dog',
             'description' => 'Rex is a brave and highly intelligent dog often admired for his loyalty and alertness.',
@@ -175,7 +175,7 @@
         [
             'name' => 'Sunny',
             'age' => '5 years old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Golden Labrador',
             'type' => 'dog',
             'description' => 'Sunny is a cheerful and affectionate dog who enjoys playing and spending time with people.',
@@ -185,7 +185,7 @@
         [
             'name' => 'Mochi',
             'age' => '3 months old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Labrador Retriever',
             'type' => 'dog',
             'description' => 'Mochi is an adorable and playful puppy who loves exploring and making new friends.',
@@ -195,7 +195,7 @@
         [
             'name' => 'Sunny',
             'age' => '1 year old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Golden Labrador',
             'type' => 'dog',
             'description' => 'Sunny is a cheerful and affectionate dog who enjoys playing and spending time with people.',
@@ -205,7 +205,7 @@
         [
             'name' => 'Roxy',
             'age' => '8 months old',
-            'sex' => 'Female',
+            'sex' => 'female',
             'breed' => 'Labrador Retriever',
             'type' => 'dog',
             'description' => 'Roxy is a smart and friendly dog known for her loyal and outgoing personality.',
