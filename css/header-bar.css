@@ -111,8 +111,9 @@ header {
 }
 
 #logo img{
-    height: 4.5rem;
-    width: 11.5rem;
+    height: 5.0rem;
+    width: 10.5rem;
+    margin-left: 1rem;
     transition: 0.3s;
 }
 

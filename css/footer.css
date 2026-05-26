@@ -18,21 +18,27 @@
     width:190px;
     height:auto;
     object-fit:contain;
+    margin-right: 1rem;
 }
 
 .footer-about p{
     line-height:30px;
+    font-family: Quicksand;
+    font-weight: 600;
 }
 
 .footer-links{
     display:flex;
     flex-direction:column;
     gap:14px;
+    font-family: Quicksand;
+    font-weight: 600;
 }
 
 .footer-links h4{
     color:#b68537;
     margin-bottom:10px;
+    font-size: 1.2rem;
 }
 
 .footer-links a{

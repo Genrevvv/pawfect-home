@@ -1,6 +1,8 @@
 import { displayMessage } from './auxiliary.js';
 
-window.history.pushState(null, "", "/about-us");
+setTimeout(() => {
+    window.history.pushState(null, "", "/about-us");
+}, 700);
 
 const sendMessage = document.getElementById('send-message');
 
