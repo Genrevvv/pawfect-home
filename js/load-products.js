@@ -83,12 +83,14 @@ export function loadProducts(category) {
         };
 
         catBtn.onclick = () => {
-            products.forEach(p => p.style.display = p.classList.contains('cat') ? '' : 'none');
+            products.forEach(p => p.style.display = p.classList.contains('cat') || 
+                                                    p.classList.contains('both') ? '' : 'none');
             filters.forEach(f => f.classList.toggle('highlighted', f.id === 'cats-btn'));
         };
 
         dogBtn.onclick = () => {
-            products.forEach(p => p.style.display = p.classList.contains('dog') ? '' : 'none');
+            products.forEach(p => p.style.display = p.classList.contains('dog') || 
+                                                    p.classList.contains('both') ? '' : 'none');
             filters.forEach(f => f.classList.toggle('highlighted', f.id === 'dogs-btn'));
         };
     }
