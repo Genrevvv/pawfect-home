@@ -57,6 +57,7 @@
     margin-bottom: 1rem;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     transition: background-color 0.3s ease, opacity 0.3s ease;
+    padding-right: 0.5rem;
 }
 
 .cart-item:hover {
@@ -113,6 +114,12 @@
     font-size: 1rem;
     font-weight: bold;
     color: #A98455;
+    max-width: 6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+
 }
 
 .cart-summary {

@@ -11,7 +11,7 @@
     $db = new Database('pawfect_home.db');
 
     // Content loader, run only once when loading base content
-    //require 'load-content-script.php';
+    // require 'load-content-script.php';
 
     // Path redirection
     $router->add('/', function () {
