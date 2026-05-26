@@ -518,13 +518,14 @@
 
     $router->add('/update-order-status', function () use ($db) {
         $data = get_json_input();
-        echo json_encode([$db->update_order_status($data['order_id'], $data['status'])]);
+        $data['products'] ??= null;
+        echo json_encode([$db->update_order_status($data['order_id'], $data['status'], $data['products'])]);
     });
 
-    $router->add('/cancel-order', function () use ($db) {
-        $data = get_json_input();
-        echo json_encode([$db->update_order_status($data['order_id'], 'cancelled', $data['products'])]);
-    });
+    // $router->add('/cancel-order', function () use ($db) {
+    //     $data = get_json_input();
+    //     echo json_encode([$db->update_order_status($data['order_id'], 'cancelled', $data['products'])]);
+    // });
 
     $router->add('/fetch-overview-data', function () use ($db) {
         echo json_encode($db->get_overview_data());

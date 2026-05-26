@@ -81,7 +81,8 @@ function displayAllOrders(orders) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     order_id: order.id,
-                    status: status
+                    status: status,
+                    products: products
                 })
             };
 
@@ -90,6 +91,7 @@ function displayAllOrders(orders) {
                 .then(data => {
                     console.log(data);
                     order.status = status;
+                    selection.disabled = true;
                 });
         }
         

@@ -73,10 +73,14 @@ function displyOrderLogs(orders) {
                     const options = {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({'order_id': order.id, 'products': products})
+                        body: JSON.stringify({
+                            order_id: order.id,
+                            status: 'cancelled',
+                            products: products
+                        })
                     }
 
-                    fetch('/cancel-order', options)
+                    fetch('/update-order-status', options)
                         .then(res => res.json())
                         .then(data => {
                             const statusSpan = tableRow.querySelector('.status');
