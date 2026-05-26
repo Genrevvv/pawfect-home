@@ -35,7 +35,7 @@
         [
             'name' => 'Shadow',
             'age' => '1 year old',
-            'sex' => 'Mal',
+            'sex' => 'Male',
             'breed' => 'Bombay',
             'type' => 'cat',
             'description' => 'Shadow is a sleek black cat with a curious nature and a loving attitude toward people.',

@@ -18,10 +18,10 @@ export function loadPets() {
                 const petData = data['pets'][i];
 
                 let petSexIcon = '';
-                if (petData['pet_sex'] === 'male') {
+                if (petData['pet_sex'].toLowerCase() === 'male') {
                     petSexIcon = '<i class="fa-solid fa-mars pet-gender"></i>';
                 }
-                else if (petData['pet_sex'] === 'female') {
+                else if (petData['pet_sex'].toLowerCase() === 'female') {
                     petSexIcon = '<i class="fa-solid fa-venus pet-gender"></i>';
                 }
                 
