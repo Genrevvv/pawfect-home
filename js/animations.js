@@ -9,10 +9,10 @@ export function navBarAnimation() {
         const endScroll = 220;
 
         const startHeight = 72;
-        const endHeight = 32;
+        const endHeight = 39;
 
-        const imgStart = 48;
-        const imgEnd = 8;
+        const imgStart = 49;
+        const imgEnd = 7;
 
         let progress = 0;
 
