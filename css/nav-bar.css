@@ -115,3 +115,53 @@
 #nav-options .highlighted {
     background-color: var(--ivory-eggshell);
 }
+
+@media (max-width: 900px) {
+    #search-bar {
+        width: 55%;
+        padding: 0.25rem 0.4rem;
+    }
+
+    #nav-options .nav-option {
+        width: 6.5rem;
+        height: 3.8rem;
+        margin: 0 0.4rem;
+        padding-top: 0.2rem;
+    }
+
+    #adopt-pet img,
+    #pet-houses img,
+    #pet-gadgets img,
+    #pet-foods img {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #search-bar {
+        width: 85%;
+        padding: 0.2rem 0.35rem;
+    }
+
+    #search-input {
+        padding: 0.35rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    #nav-options .nav-option {
+        width: 5.5rem;
+        height: 3.2rem;
+        margin: 0.25rem;
+        padding-top: 0.15rem;
+        font-size: 0.7rem;
+    }
+
+    #adopt-pet img,
+    #pet-houses img,
+    #pet-gadgets img,
+    #pet-foods img {
+        height: 2.1rem;
+        width: 2.1rem;
+    }
+}
