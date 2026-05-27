@@ -221,6 +221,18 @@ gap: 1rem;
         padding: 0.7rem 0.9rem;
         font-size: 0.95rem;
     }
+
+    #account-options {
+        width: 10rem;
+        top: 4.5rem;
+        right: 1rem;
+        font-size: 0.9rem;
+    }
+
+    #delete-account,
+    #logout {
+        padding: 0.8rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -276,5 +288,20 @@ gap: 1rem;
     #account-options {
         width: 1rem;
         right: 0.5rem;
+    }
+
+    #account-options {
+        width: 9rem;
+        top: 4rem;
+        right: 0.5rem;
+
+        font-size: 0.8rem;
+
+        border-radius: 0.8rem;
+    }
+
+    #delete-account,
+    #logout {
+        padding: 0.7rem;
     }
 }
