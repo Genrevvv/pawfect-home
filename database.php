@@ -127,13 +127,17 @@
 
         public function get_products($category = null) {
             if (isset($category)) {
-                $stmt = $this->db->prepare('SELECT * FROM products WHERE category = :category');
+                $stmt = $this->db->prepare('
+                    SELECT * FROM products 
+                    WHERE category = :category
+                    ORDER BY product_name
+                ');
                 $stmt->execute(['category' => $category]);
 
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
 
-            $stmt = $this->db->prepare('SELECT * FROM products');
+            $stmt = $this->db->prepare('SELECT * FROM products ORDER BY product_name');
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -202,7 +206,8 @@
                         JOIN adoption_applications ap
                             ON ap.id = a.application_id
                         WHERE ap.status = "approved"
-                    );
+                    )
+                    ORDER BY p.pet_name;
             ');
             $stmt->execute();
 
@@ -620,7 +625,7 @@
                 'status' => $status
             ]);
 
-            if ($products === null) {
+            if ($status !== 'cancelled') {
                 return $stmt->rowCount();
             }
 
