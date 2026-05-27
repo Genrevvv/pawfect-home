@@ -7,15 +7,19 @@ header {
 }
 
 #header-bar {
-    background-color: var(--pale-cream);
-    min-height: 13svh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.8rem 1.2rem;
-    box-shadow: 0 2px 8px rgba(196, 155, 102, 0.5);
-    flex-wrap: wrap;
-    gap: 1rem;
+background-color: var(--pale-cream);
+min-height: 13vh;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+padding: 0.8rem 1.2rem;
+
+box-shadow: 0 2px 8px rgba(196, 155, 102, 0.5);
+
+flex-wrap: nowrap; /* changed */
+gap: 1rem;
 }
 
 #logo {
