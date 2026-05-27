@@ -1,20 +1,39 @@
-
 header {
     position: sticky;
     top: 0;
     z-index: 100;
     user-select: none;
+    width: 100%;
 }
 
 #header-bar {
     background-color: var(--pale-cream);
-    height: 13svh;
+    min-height: 13svh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0.8rem 1.2rem;
     box-shadow: 0 2px 8px rgba(196, 155, 102, 0.5);
-    
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    height: 5rem;
+    width: auto;
+    max-width: 100%;
+    margin-left: 0.5rem;
+    transition: 0.3s;
+}
+
+#logo:hover {
+    transform: scale(1.03);
+    transition: transform 0.1s ease;
 }
 
 #header-options {
@@ -23,59 +42,64 @@ header {
     align-items: center;
     font-family: Quicksand;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 #header-options ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
     margin: 0;
     padding: 0;
     list-style: none;
-    margin-left: 0.5rem;
 }
 
 #header-options ul li {
-    margin: 0.5rem;
+    margin: 0;
 }
 
 #header-options ul li a {
-    text-decoration:none;
-    color:#2f241d;
+    text-decoration: none;
+    color: #2f241d;
     font-family: Quicksand;
     font-weight: bold;
-    transition:.3s;
-    position:relative;
+    transition: .3s;
+    position: relative;
+    white-space: nowrap;
 }
 
 #header-options ul li a:hover::after {
-    width:100%;
+    width: 100%;
 }
 
 #header-options ul li a::after {
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-5px;
-    width:0%;
-    height:2px;
-    background:#c89a4d;
-    transition:.3s;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #c89a4d;
+    transition: .3s;
 }
 
 #header-options ul li a:hover {
-    color:#c89a4d;
+    color: #c89a4d;
 }
 
 #header-options .active {
-    color:#c89a4d;
+    color: #c89a4d;
 }
 
 #header-options ul li i {
     position: relative;
     color: var(--dark-charcoal);
-    font-size: 1.7rem;
-    margin-right: 1rem;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
 }
 
 #header-options ul li i:hover {
@@ -84,13 +108,13 @@ header {
 }
 
 #cart-btn {
-    cursor:pointer;
-    transition:.3s;
+    cursor: pointer;
+    transition: .3s;
 }
 
 #cart-btn:hover {
-    color:#c89a4d;
-    transform:scale(1.1);
+    color: #c89a4d;
+    transform: scale(1.1);
 }
 
 #cart-item-count {
@@ -102,45 +126,32 @@ header {
     font-weight: lighter;
     text-align: center;
     line-height: 1.2rem;
-    /* padding: 0.3rem 0.5rem; */
     border-radius: 50%;
     position: absolute;
-    right: -0.8rem;
-    top: -0.7rem;
-
+    right: -0.7rem;
+    top: -0.6rem;
 }
 
-#logo img{
-    height: 5.0rem;
-    width: 10.5rem;
-    margin-left: 1rem;
-    transition: 0.3s;
-}
-
-#logo:hover {
-    transform:scale(1.03);
-    transition: transform 0.1s ease;
-}
-
-.auth-btn, #admin-page {
+.auth-btn,
+#admin-page {
     background-color: #c89a4d;
     font-family: Quicksand;
     font-weight: bold;
     text-decoration: none;
     color: var(--white);
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 0.7rem;
-    margin-bottom: 0.5rem;
-    transition:.3s;
+    transition: .3s;
+    white-space: nowrap;
 }
 
-.auth-btn:hover, #admin-page:hover {
+.auth-btn:hover,
+#admin-page:hover {
     background-color: var(--sandy-tan);
     cursor: pointer;
-     background:#b07f37;
-    transform:translateY(-2px);
+    background: #b07f37;
+    transform: translateY(-2px);
 }
-
 
 #adoption-status,
 #order-status,
@@ -155,10 +166,14 @@ header {
     flex-direction: column;
     border-radius: 1rem;
     position: fixed;
-    top: 4.7rem;
-    right: 1.5rem;
+    top: 5rem;
+    right: 1rem;
     overflow: hidden;
     z-index: 200;
+    margin-top: 0.5rem;
+    transform: translateX(0);
+    font-family: Quicksand;
+    font-weight: bold;
 }
 
 #delete-account,
@@ -174,9 +189,85 @@ header {
     background-color: var(--sandy-tan);
 }
 
-#account-options{
-    margin-top: 0.5rem;
-    transform: translateX(0.5rem);
-    font-family: Quicksand ;
-    font-weight: bold;
+
+@media (max-width: 900px) {
+
+    #header-bar {
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    #logo img {
+        height: 4.2rem;
+    }
+
+    #header-options {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    #header-options ul {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .auth-btn,
+    #admin-page {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #header-bar {
+        padding: 0rem;
+        gap: 0.8rem;
+        position: relative;
+    }
+
+    #header-bar ul {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    #logo img {
+        height: 3.5rem;
+        position: absolute;
+        left: 0;
+    }
+
+    #auth-btn,
+    #admin-page {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    #auth-btn {
+        position: absolute;
+        right: 0.2rem;
+    }
+
+    #admin-page {
+        position: absolute;
+    }
+
+    #header-options {
+        font-size: 0.9rem;
+    }
+
+    #header-options ul {
+        gap: 0.6rem;
+    }
+
+    #header-options ul li i {
+        font-size: 1.3rem;
+        margin-right: 0;
+    }
+
+    #account-options {
+        width: 1rem;
+        right: 0.5rem;
+    }
 }
