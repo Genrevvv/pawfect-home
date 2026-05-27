@@ -67,11 +67,15 @@ export function adoptionManagementScript() {
                     document.getElementById('phone-number').innerHTML = appData.phone_number;
                     document.getElementById('email-address').innerHTML = appData.email_address;
                     document.getElementById('home-address').innerHTML = appData.home_address;
+
+                    document.getElementById('house-type').innerHTML = toTitleCase(appData.house_type);
+                    document.getElementById('yard-type').innerHTML = toTitleCase(appData.yard_type);
+
                     document.getElementById('reason').innerHTML = appData.reason;
                     document.getElementById('existing-pet').innerHTML = appData.existing_pet;
 
                     const requestedPets = document.getElementById('requested-pets');
-                    requestedPets.innerHTML = ""; 
+                    requestedPets.innerHTML = ''; 
 
                     pets.forEach(pet => {
                         const petProfile = document.createElement('div');
