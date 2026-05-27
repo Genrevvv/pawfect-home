@@ -79,7 +79,7 @@ export function productManagementScript() {
         newProductRow.innerHTML = `
             <td class="product_name">${productData.product_name}</td>
             <td class="price">₱${formatNumber(productData.price)}</td>
-            <td class="stock">${formatNumber(productData.stock)}</td>
+            <td class="stock">${formatNumber(productData.stock, 0)}</td>
             <td class="status">${productData.stock > 0 ? 'In Stock' : 'No Stock'}</td>
             <td>
                 <i id="edit-product-${productData.id}" class="fa-regular fa-pen-to-square"></i>
@@ -174,7 +174,7 @@ export function productManagementScript() {
 
             productRow.querySelector('.product_name').innerText = updatedProductData.product_name;
             productRow.querySelector('.price').innerText = `₱${formatNumber(updatedProductData.price)}`;
-            productRow.querySelector('.stock').innerText = formatNumber(updatedProductData.stock);
+            productRow.querySelector('.stock').innerText = formatNumber(updatedProductData.stock, 0);
             productRow.querySelector('.status').innerText =
                 updatedProductData.stock > 0 ? 'In Stock' : 'No Stock';
 

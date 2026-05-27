@@ -241,3 +241,16 @@
 .options i:hover {
     background-color: var(--tan-ocher);
 }
+
+#product-list .fa-pen-to-square:hover,
+#product-list .fa-trash:hover {
+    cursor: pointer;
+}
+
+#product-list .fa-pen-to-square:hover {
+    color: orange;
+}
+
+#product-list .fa-trash:hover {
+    color: red;
+}

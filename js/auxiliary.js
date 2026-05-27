@@ -38,9 +38,9 @@ export function truncateString(str, len) {
     return str.length > len ? str.slice(0, len) + '...' : str;
 }
 
-export function formatNumber(price) {
+export function formatNumber(price, decimal = 2) {
     return Number(price).toLocaleString('en-PH', {
-        minimumFractionDigits: 2,
+        minimumFractionDigits: decimal,
         maximumFractionDigits: 2
     });
 }
