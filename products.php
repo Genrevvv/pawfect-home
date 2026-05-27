@@ -209,7 +209,7 @@
             'type' => 'dog',
             'price' => 180,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_4.jpg'
+            'image' => 'products/pet_gadgets/gadget_4.jpg'
         ],
         // pet_gadget_5
         [
@@ -219,7 +219,7 @@
             'type' => 'dog',
             'price' => 150,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_5.jpg'
+            'image' => 'products/pet_gadgets/gadget_5.jpg'
         ],
         // pet_gadget_6
         [
@@ -229,7 +229,7 @@
             'type' => 'dog',
             'price' => 190,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_6.jpg'
+            'image' => 'products/pet_gadgets/gadget_6.jpg'
         ],
         // pet_gadget_7
         [
@@ -239,7 +239,7 @@
             'type' => 'cat',
             'price' => 130,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_7.jpg'
+            'image' => 'products/pet_gadgets/gadget_7.jpg'
         ],
         // pet_gadget_8
         [
@@ -249,7 +249,7 @@
             'type' => 'dog',
             'price' => 250,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_8.jpg'
+            'image' => 'products/pet_gadgets/gadget_8.jpg'
         ],
         // pet_gadget_9
         [
@@ -259,7 +259,7 @@
             'type' => 'cat',
             'price' => 850,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_9.jpg'
+            'image' => 'products/pet_gadgets/gadget_9.jpg'
         ],
         // pet_gadget_10
         [
@@ -269,7 +269,7 @@
             'type' => 'dog',
             'price' => 350,
             'stock' => 67,
-            'image' => 'products/pet_gadgets/pet_gadgets/gadget_10.jpg'
+            'image' => 'products/pet_gadgets/gadget_10.jpg'
         ],
         // cat_house_1
         [

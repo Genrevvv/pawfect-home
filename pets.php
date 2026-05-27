@@ -119,7 +119,7 @@
             'breed' => 'Aspin',
             'type' => 'dog',
             'description' => 'Bella is a loyal and friendly Aspin known for being energetic and protective of her family.',
-            'image' => 'pets/dogs/dog_1.jpg'
+            'image' => 'pets/dogs/dog_1.png'
         ],
         // dog_2
         [
@@ -129,7 +129,7 @@
             'breed' => 'Border Collie',
             'type' => 'dog',
             'description' => 'Oreo is a playful and intelligent puppy with a fluffy black-and-white coat and an adorable curious expression.',
-            'image' => 'pets/dogs/dog_2.jpg'
+            'image' => 'pets/dogs/dog_2.png'
         ],
         // dog_3
         [
@@ -139,7 +139,7 @@
             'breed' => 'Bulldog',
             'type' => 'dog',
             'description' => 'Tank is a calm and sturdy bulldog with a wrinkly face and a lovable personality.',
-            'image' => 'pets/dogs/dog_3.jpg'
+            'image' => 'pets/dogs/dog_3.png'
         ],
         // dog_4
         [
@@ -149,7 +149,7 @@
             'breed' => 'Cairn Terrier',
             'type' => 'dog',
             'description' => 'Max is an energetic little dog with a scruffy coat and a curious personality.',
-            'image' => 'pets/dogs/dog_4.jpg'
+            'image' => 'pets/dogs/dog_4.png'
         ],
         // dog_5
         [
@@ -159,7 +159,7 @@
             'breed' => 'Chihuahua',
             'type' => 'dog',
             'description' => 'Chico is a tiny but confident dog who loves attention and cuddles.',
-            'image' => 'pets/dogs/dog_5.jpg'
+            'image' => 'pets/dogs/dog_5.png'
         ],
         // dog_6
         [
@@ -169,7 +169,7 @@
             'breed' => 'German Shepherd',
             'type' => 'dog',
             'description' => 'Rex is a brave and highly intelligent dog often admired for his loyalty and alertness.',
-            'image' => 'pets/dogs/dog_6.jpg'
+            'image' => 'pets/dogs/dog_6.png'
         ],
         // dog_7
         [
@@ -179,7 +179,7 @@
             'breed' => 'Golden Labrador',
             'type' => 'dog',
             'description' => 'Sunny is a cheerful and affectionate dog who enjoys playing and spending time with people.',
-            'image' => 'pets/dogs/dog_7.jpg'
+            'image' => 'pets/dogs/dog_7.png'
         ],
         // dog_8
         [
@@ -189,7 +189,7 @@
             'breed' => 'Labrador Retriever',
             'type' => 'dog',
             'description' => 'Mochi is an adorable and playful puppy who loves exploring and making new friends.',
-            'image' => 'pets/dogs/dog_8.jpg'
+            'image' => 'pets/dogs/dog_8.png'
         ],
         // dog_9
         [
@@ -199,7 +199,7 @@
             'breed' => 'Golden Labrador',
             'type' => 'dog',
             'description' => 'Sunny is a cheerful and affectionate dog who enjoys playing and spending time with people.',
-            'image' => 'pets/dogs/dog_9.jpg'
+            'image' => 'pets/dogs/dog_9.png'
         ],
         // dog_10
         [
@@ -209,7 +209,7 @@
             'breed' => 'Labrador Retriever',
             'type' => 'dog',
             'description' => 'Roxy is a smart and friendly dog known for her loyal and outgoing personality.',
-            'image' => 'pets/dogs/dog_10.jpg'
+            'image' => 'pets/dogs/dog_10.png'
         ]
     ];
 ?>
