@@ -10,10 +10,6 @@
     margin-bottom: 1rem;
 }
 
-/* #pet-management-container {
-    grid-template-columns: 35% 65%;   
-} */
-
 .management-add-container {
     background-color: #fff;
 
@@ -255,3 +251,108 @@
     color: red;
 }
 
+@media (max-width: 900px) {
+    .management-container {
+        width: 92%;
+        flex-direction: column;
+    }
+
+    .management-add-container,
+    .list {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .select-input,
+    .container-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .upload-image-area {
+        width: 11rem;
+        height: 7rem;
+    }
+
+    .add-element-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    #product-management-container,
+    #pet-management {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #pet-mangement {
+        width: 00%;
+    }
+    .management-container {
+        width: 90%;
+        gap: 0.7rem;
+    }
+
+    .management-add-container,
+    .list {
+        padding: 0.8rem;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+    
+    #add-product-container {
+        width: 90%;
+    }
+
+    #product-list {
+        width: 90%;
+        overflow-x: scroll;
+    }
+    .input-container input,
+    .input-container select,
+    .input-container textarea {
+        font-size: 0.85rem;
+        padding: 0.55rem;
+    }
+
+    .select-input,
+    .container-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .upload-image-area {
+        width: 9rem;
+        height: 6rem;
+    }
+
+    .add-element-btn {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    #pet-cards {
+        gap: 0.7rem;
+    }
+
+    .pet-card {
+        width: 7rem;
+    }
+
+    .pet-image {
+        height: 4.5rem;
+    }
+
+    .pet-name {
+        font-size: 0.7rem;
+    }
+
+    .pet-description,
+    .pet-age,
+    .options i {
+        font-size: 0.6rem;
+    }
+}

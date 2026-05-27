@@ -61,3 +61,70 @@
 
     cursor: pointer;
 }
+
+@media (max-width: 900px) {
+    #adoption-management-container {
+        padding: 0.7rem;
+        border-radius: 0.8rem;
+        overflow-x: hidden;
+    }
+
+    #adoption-log {
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    #adoption-log td,
+    #adoption-log th {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    #adoption-log th:last-child,
+    #adoption-log td:last-child {
+        width: 90px;
+    }
+
+    .contact-info {
+        gap: 0.1rem;
+        font-size: 0.75rem;
+    }
+
+    .view-details-btn {
+        width: 100%;
+        padding: 0.45rem 0.3rem;
+        font-size: 0.72rem;
+        border-radius: 0.45rem;
+        white-space: normal;
+    }
+}
+
+@media (max-width: 600px) {
+    #adoption-management-container {
+        padding: 0.45rem;
+        border-radius: 0.65rem;
+    }
+
+    #adoption-log td,
+    #adoption-log th {
+        padding: 0.35rem;
+        font-size: 0.65rem;
+    }
+
+    #adoption-log th:last-child,
+    #adoption-log td:last-child {
+        width: 75px;
+    }
+
+    .contact-info {
+        font-size: 0.6rem;
+    }
+
+    .view-details-btn {
+        padding: 0.35rem 0.2rem;
+        font-size: 0.6rem;
+        border-radius: 0.35rem;
+    }
+}
