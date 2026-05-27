@@ -1,5 +1,7 @@
 import { toTitleCase } from "./auxiliary.js";
 
+let overviewData = null;
+
 export function dashBoardScript() {
 
     fetch('/get-all-orders')
@@ -15,6 +17,7 @@ export function dashBoardScript() {
         .then(data => {
             console.log(data);
             displayOverviewContent(data);
+            overviewData = data;
         });
 }
 
@@ -68,7 +71,7 @@ function displayAllOrders(orders) {
         const selection = tableRow.querySelector('select');
         selection.value = order.status;
         
-        if (selection.value === 'cancelled') {
+        if (selection.value === 'cancelled' || selection.value === 'delivered') {
             selection.disabled = true;
         }
 
@@ -91,7 +94,19 @@ function displayAllOrders(orders) {
                 .then(data => {
                     console.log(data);
                     order.status = status;
+
+                    if (!(status === 'cancelled' || status === 'delivered')) return;
                     selection.disabled = true;
+
+                    if (!(status === 'delivered')) return;
+                    const weeklySales = document.getElementById('weekly-sales');
+                    const totalOrders = document.getElementById('total-orders');
+
+                    overviewData.weekly_sales += Number(order.total_price);
+                    overviewData.total_orders += 1;
+
+                    weeklySales.innerHTML = `₱${overviewData.weekly_sales}`;
+                    totalOrders.innerHTML = `${overviewData.total_orders} Order this week`;
                 });
         }
         
