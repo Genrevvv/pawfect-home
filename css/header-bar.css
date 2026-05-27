@@ -221,7 +221,8 @@ header {
 
 @media (max-width: 600px) {
     #header-bar {
-        padding: 0rem;
+        min-height: 10svh;
+        padding: 0;
         gap: 0.8rem;
         position: relative;
     }
@@ -235,7 +236,7 @@ header {
     #logo img {
         height: 3.5rem;
         position: absolute;
-        left: 0;
+        left: 0.2rem;
     }
 
     #auth-btn,
@@ -247,10 +248,12 @@ header {
     #auth-btn {
         position: absolute;
         right: 0.2rem;
+        bottom: 0.4rem;
     }
 
     #admin-page {
         position: absolute;
+        bottom: 0.4rem;
     }
 
     #header-options {

@@ -2,7 +2,6 @@
     width: 100%;
     font-family: Quicksand;
     font-weight: 700;
-    
 }
 
 #featured h2 {
@@ -11,11 +10,12 @@
 
 #featured-dogs,
 #featured-cats,
-#featured-pet-accessories {
+#featured-products {
     width: 100%;
 }
 
-#featured-dogs {
+#featured-dogs,
+#featured-products {
     background-color: var(--warm-honey);
 }
 
@@ -23,25 +23,27 @@
     background-color: var(--pale-cream);
 }
 
-#featured-products {
-    background-color: var(--warm-honey);
-}
-
 #view-all-dogs,
 #view-all-cats,
 #view-all-products {
     background-color: var(--tan-ocher);
+
     width: 10rem;
-    height: 2rem;
+    height: 2.3rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     margin-top: 0.8rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+
     color: var(--cream);
+
     border-radius: 1rem;
     border: 0.2rem solid var(--deep-bronze);
-    
+
+    transition: 0.2s ease;
 }
 
 #view-all-dogs:hover,
@@ -53,11 +55,12 @@
 
 .featured-container {
     width: 100%;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 1rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+
+    box-sizing: border-box;
 }
 
 .featured-container h2 {
@@ -67,32 +70,41 @@
 }
 
 .featured-container .inner-container {
-    width: min(1200px, 95%);
+    width: min(1200px, 100%);
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
     gap: 1.5rem;
 }
 
-
-
 .featured-element {
     background-color: var(--pale-cream);
+
     display: flex;
     flex-direction: column;
+
     width: 12rem;
     min-height: 15rem;
+
     border-radius: 1rem;
     border: 0.2rem solid var(--deep-bronze);
+
     position: relative;
     overflow: hidden;
+
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .featured-element:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.04);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
 .featured-element img {
@@ -104,22 +116,26 @@
 
 .featured-element .details {
     flex: 1;
+
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+
     padding: 0.9rem;
 }
 
 .featured-element .fa-heart {
     font-size: 1.3rem;
     color: var(--deep-bronze);
+
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
 }
 
 .featured-element .pet-name {
-    height: 2rem;
+    min-height: 2rem;
+
     font-weight: bold;
     font-size: 1rem;
 }
@@ -142,6 +158,7 @@
     align-items: center;
 
     border-radius: 50%;
+
     position: absolute;
     top: 40%;
     right: 0.5rem;
@@ -150,7 +167,9 @@
 .card .pet-gender {
     width: 2.7rem;
     height: 2.7rem;
+
     font-size: 1.5rem;
+
     top: 45%;
     right: 0.7rem;
 }
@@ -163,29 +182,134 @@
     background-color: var(--soft-pink);
 }
 
-.description p{
+.description p {
     font-family: Quicksand;
     font-weight: 600;
     word-break: break-word;
 }
 
-.paw-left{
+.paw-left {
     color: hsl(29, 53%, 36%);
     transform: rotate(-30deg) translateY(-15px);
+
     font-size: 1.4rem;
+
     margin-left: 0.5rem;
+
     display: inline-block;
 }
 
-.paw-right{
+.paw-right {
     color: hsl(29, 53%, 36%);
     transform: rotate(15deg);
+
     font-size: 1.4rem;
+
     margin-left: -0.7rem;
     margin-right: 0.3rem;
+
     display: inline-block;
 }
 
-.home-emoji{
+.home-emoji {
     font-size: 2.5rem;
+}
+
+@media (max-width: 900px) {
+
+    .featured-container .inner-container {
+        gap: 1rem;
+    }
+
+    .featured-element {
+        width: 10.5rem;
+        min-height: 14rem;
+    }
+
+    .featured-element img {
+        height: 6rem;
+    }
+
+    .featured-element .pet-name {
+        font-size: 0.95rem;
+    }
+
+    .featured-element .pet-description {
+        font-size: 0.82rem;
+    }
+
+    .home-emoji {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .featured-container {
+        padding: 0.5rem;
+    }
+
+    .featured-container .inner-container {
+        gap: 0.7rem;
+    }
+
+    .content-container .description p {
+        width: 100%;
+    }
+
+    .featured-element {
+        width: 8.7rem;
+        min-height: 12.5rem;
+
+        border-radius: 0.8rem;
+    }
+
+    .featured-element img {
+        height: 5rem;
+    }
+
+    .featured-element .details {
+        padding: 0.6rem;
+    }
+
+    .featured-element .pet-name {
+        font-size: 0.82rem;
+        min-height: 1.5rem;
+    }
+
+    .featured-element .pet-description {
+        font-size: 0.72rem;
+    }
+
+    .featured-element .fa-heart {
+        font-size: 1rem;
+    }
+
+    .featured-element .pet-gender,
+    .pet-gender {
+        width: 1.6rem;
+        height: 1.6rem;
+
+        font-size: 0.9rem;
+
+        top: 36%;
+    }
+
+    #view-all-dogs,
+    #view-all-cats,
+    #view-all-products {
+        width: 8rem;
+        height: 2rem;
+
+        font-size: 0.8rem;
+    }
+
+    .paw-left,
+    .paw-right {
+        font-size: 1rem;
+    }
+
+    .home-emoji {
+        font-size: 1.6rem;
+    }
 }
