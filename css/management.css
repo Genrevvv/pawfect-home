@@ -1,5 +1,6 @@
 .management-container {
     width: 80%;
+
     margin: 0 auto;
 
     /* display: grid;
@@ -13,9 +14,11 @@
     grid-template-columns: 35% 65%;   
 } */
 
-.management-add-container { 
-    min-width: 18rem;
+.management-add-container {
     background-color: #fff;
+
+    min-width: 18rem;
+    height: fit-content;
 
     display: flex;
     flex-direction: column;
