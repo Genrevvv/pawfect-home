@@ -1,5 +1,6 @@
 import { displayMessage } from './auxiliary.js';
 
+
 setTimeout(() => {
     window.history.pushState(null, "", "/about-us");
 }, 700);
