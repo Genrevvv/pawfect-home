@@ -33,12 +33,13 @@
 
 .table-scroll {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .main-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 900px;
+    min-width: 700px;
 }
 
 .main-table thead {
@@ -47,32 +48,33 @@
 }
 
 .main-table th {
-    padding: 0.9rem;
-    font-size: 0.95rem;
+    padding: 0.7rem;
+    font-size: 0.9rem;
     text-align: center;
+    white-space: nowrap;
 }
 
-.main-table:first-child,
+.main-table th:first-child,
 .main-table th:last-child {
     width: 20%;
 }
 
 .main-table td {
-    padding: 1rem;
+    padding: 0.8rem;
     background: white;
     border-bottom: 1px solid #eee;
     vertical-align: top;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     text-align: center;
     font-family: Quicksand;
     font-weight: bold;
+    word-break: break-word;
 }
-
 
 .inner-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .inner-table thead {
@@ -80,26 +82,17 @@
 }
 
 .inner-table th {
-    padding: 0.6rem;
+    padding: 0.5rem;
     text-align: left;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #333;
+    font-size: 0.75rem;
     font-weight: bold;
-}
-
-.inner-table th:first-child {
-    width: 30%;
-}
-
-.inner-table th:nth-child(2) {
-    width: 30%;
+    color: #333;
 }
 
 .inner-table td {
-    padding: 0.6rem;
+    padding: 0.5rem;
     border-bottom: 1px solid #eee;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #222;
     text-align: left;
     font-family: Quicksand;
@@ -107,12 +100,12 @@
 }
 
 .status {
-    padding: 0.4rem 0.8rem;
+    padding: 0.3rem 0.7rem;
     border-radius: 999px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: bold;
     display: inline-block;
-    min-width: 6.5rem;
+    min-width: 5.5rem;
 }
 
 .approved {
@@ -131,10 +124,10 @@
 }
 
 .cancel-btn {
-    font-size: 0.85rem;
-    margin-top: 0.7rem;
-    padding: 0.4rem 1.5rem;
-    border-radius: 1.2rem;
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+    padding: 0.35rem 1.2rem;
+    border-radius: 1rem;
     border: none;
 }
 
@@ -150,7 +143,7 @@
     background-color: #F0E5D7;
     border: 2px solid #C5A579;
     border-radius: 1.2rem;
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -163,10 +156,10 @@
 
 #confirm-cancel-ui button {
     border: none;
-    min-width: 8rem;
-    padding: 0.85rem 1rem;
+    min-width: 7rem;
+    padding: 0.7rem 0.9rem;
     border-radius: 0.7rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s ease;
@@ -182,41 +175,107 @@
 }
 
 #confirm-cancel-ui .no-cancel {
-    background-color: #E5D5C0;
+    background-color: #D8C3A8;
     color: #2D2824;
 }
 
-#confirm-cancel-ui .no-cancel {
-    background-color: #D8C3A8;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .tables {
-        padding: 0.8rem;
+        padding: 1rem;
+    }
+
+    .table-section {
+        max-width: 95%;
     }
 
     .title h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     #text {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 
-    .main-table th,
-    .main-table td {
+    .main-table {
+        min-width: 650px;
+    }
+
+    .main-table th {
+        padding: 0.6rem;
         font-size: 0.85rem;
+    }
+
+    .main-table td {
+        padding: 0.7rem;
+        font-size: 0.82rem;
+    }
+
+    .inner-table th {
+        font-size: 0.72rem;
+        padding: 0.45rem;
+    }
+
+    .inner-table td {
+        font-size: 0.78rem;
+        padding: 0.45rem;
+    }
+
+    .status {
+        font-size: 0.72rem;
+        padding: 0.25rem 0.6rem;
+        min-width: 5rem;
+    }
+
+    .cancel-btn {
+        font-size: 0.78rem;
+        padding: 0.3rem 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tables {
         padding: 0.7rem;
     }
 
-    .pet-table th,
-    .pet-table td {
+    .title h1 {
+        font-size: 1.35rem;
+    }
+
+    #text {
+        font-size: 0.78rem;
+    }
+
+    .main-table {
+        min-width: 550px;
+    }
+
+    .main-table th {
+        padding: 0.5rem;
         font-size: 0.8rem;
+    }
+
+    .main-table td {
+        padding: 0.6rem;
+        font-size: 0.78rem;
+    }
+
+    .inner-table th {
+        font-size: 0.7rem;
+        padding: 0.4rem;
+    }
+
+    .inner-table td {
+        font-size: 0.75rem;
         padding: 0.4rem;
     }
 
     .status {
-        width: 100%;
-        min-width: auto;
+        font-size: 0.7rem;
+        min-width: 4.8rem;
+    }
+
+    .cancel-btn {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.9rem;
     }
 }

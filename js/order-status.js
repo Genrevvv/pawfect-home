@@ -24,8 +24,8 @@ function displyOrderLogs(orders) {
                 <table class="inner-table">
                     <thead>
                         <tr>
-                            <th>Product</th>
                             <th>Quantity</th>
+                            <th>Product</th>
                             <th>Price</th>
                         </tr>
                     </thead>
@@ -115,8 +115,8 @@ function displyOrderLogs(orders) {
         products.forEach(product => {
             const innerTableRow = document.createElement('tr');
             innerTableRow.innerHTML = `
-                <td>${product.product_name}</td>
                 <td>${product.quantity}</td>
+                <td>${product.product_name}</td>
                 <td>${product.price}</td>
             `;
 

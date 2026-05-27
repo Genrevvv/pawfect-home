@@ -108,29 +108,91 @@
     font-weight: bold;
 }
 
-@media (max-width: 768px) {
-
+@media (max-width: 900px) {
     .order-status-wrapper {
-        padding: 0.8rem;
+        padding: 1rem;
+    }
+
+    .order-status-section {
+        max-width: 95%;
     }
 
     .order-status-title h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     .order-status-text {
-        font-size: 0.8rem;
-    }
-
-    .order-status-main-table th,
-    .order-status-main-table td {
         font-size: 0.85rem;
-        padding: 0.7rem;
     }
 
-    .order-status-inner-table th,
+    .order-status-main-table {
+        min-width: 55rem;
+    }
+
+    .order-status-main-table th {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .order-status-main-table td {
+        padding: 0.8rem;
+        font-size: 0.82rem;
+    }
+
+    .order-status-inner-table th {
+        font-size: 0.78rem;
+        padding: 0.5rem;
+    }
+
     .order-status-inner-table td {
         font-size: 0.8rem;
         padding: 0.5rem;
+    }
+
+    #account-options {
+        font-size: 0.9rem;
+        transform: translateX(0.3rem);
+    }
+}
+
+@media (max-width: 600px) {
+    .order-status-wrapper {
+        padding: 0.7rem;
+    }
+
+    .order-status-title h1 {
+        font-size: 1.3rem;
+    }
+
+    .order-status-text {
+        font-size: 0.78rem;
+    }
+
+    .order-status-main-table {
+        min-width: 50rem;
+    }
+
+    .order-status-main-table th {
+        padding: 0.55rem;
+        font-size: 0.8rem;
+    }
+
+    .order-status-main-table td {
+        padding: 0.65rem;
+        font-size: 0.78rem;
+    }
+
+    .order-status-inner-table th {
+        font-size: 0.75rem;
+        padding: 0.45rem;
+    }
+
+    .order-status-inner-table td {
+        font-size: 0.75rem;
+        padding: 0.45rem;
+    }
+
+    #account-options {
+        font-size: 0.85rem;
     }
 }
