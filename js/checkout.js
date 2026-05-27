@@ -1,4 +1,4 @@
-import { displayMessage, formatPrice } from "./auxiliary.js";
+import { displayMessage, formatNumber } from "./auxiliary.js";
 import { clearCart, updateCartItemCount, updateTotalPrice } from "./cart.js";
 import { cartItems } from "./init.js";
 
@@ -21,7 +21,7 @@ export function checkOutScript() {
                 <h3>${item.product_name}</h3>
                 <span>Quantity: ${item.quantity}</span>
             </div>
-            <div class="checkout-price">₱${formatPrice(item.price * item.quantity)}</div>
+            <div class="checkout-price">₱${formatNumber(item.price * item.quantity)}</div>
         `;
 
         checkoutProducts.append(checkoutItem);
