@@ -8,6 +8,7 @@ const submitApplication = document.getElementById('submit-application');
 
 let pets = [];
 let selectedPets = [];
+let submitted = false;
 
 submitApplication.onclick = () => {
 
@@ -47,7 +48,8 @@ submitApplication.onclick = () => {
         console.log(data)
         sessionStorage.setItem('onloadMessage', 'Adoption application was sent successfully');
         localStorage.removeItem('form_data');
-
+        submitted = true;
+        
         window.location.href = '/';
     });
 };
@@ -77,6 +79,8 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("beforeunload", () => {
+    if (submitted) return;
+    
     const formData = {
         full_name: getValue('full-name'),
         email_address: getValue('email-address'),
