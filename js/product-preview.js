@@ -1,4 +1,4 @@
-import { updateContent, displayMessage, toTitleCase } from "./auxiliary.js";
+import { updateContent, displayMessage, toTitleCase, formatNumber } from "./auxiliary.js";
 import { addToCart } from "./cart.js";
 import { logIn } from "./header-bar.js";
 
@@ -18,7 +18,7 @@ export async function productContentPreview(productData) {
 
     document.getElementById('product-image').src = productData.image;
     document.getElementById('product-name').innerText = productData.product_name;
-    document.getElementById('price').innerText = `₱${productData.price}`;
+    document.getElementById('price').innerText = `₱${formatNumber(productData.price)}`;
     document.getElementById('stock').innerText = productData.stock;
     document.getElementById('category').innerText = toTitleCase(productData.category.replace('_', ' '));
     document.getElementById('description').innerText = productData.description;

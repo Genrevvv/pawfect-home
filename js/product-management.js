@@ -1,4 +1,4 @@
-import { displayMessage } from "./auxiliary.js";
+import { displayMessage, formatNumber } from "./auxiliary.js";
 
 export function productManagementScript() {
     const overlayContainer = document.getElementById('overlay-container');
@@ -78,8 +78,8 @@ export function productManagementScript() {
         const newProductRow = document.createElement('tr');
         newProductRow.innerHTML = `
             <td class="product_name">${productData.product_name}</td>
-            <td class="price">₱${productData.price}</td>
-            <td class="stock">${productData.stock}</td>
+            <td class="price">₱${formatNumber(productData.price)}</td>
+            <td class="stock">${formatNumber(productData.stock)}</td>
             <td class="status">${productData.stock > 0 ? 'In Stock' : 'No Stock'}</td>
             <td>
                 <i id="edit-product-${productData.id}" class="fa-regular fa-pen-to-square"></i>
@@ -173,8 +173,8 @@ export function productManagementScript() {
             document.body.style.overflowY = 'visible';
 
             productRow.querySelector('.product_name').innerText = updatedProductData.product_name;
-            productRow.querySelector('.price').innerText = `₱${updatedProductData.price}`;
-            productRow.querySelector('.stock').innerText = updatedProductData.stock;
+            productRow.querySelector('.price').innerText = `₱${formatNumber(updatedProductData.price)}`;
+            productRow.querySelector('.stock').innerText = formatNumber(updatedProductData.stock);
             productRow.querySelector('.status').innerText =
                 updatedProductData.stock > 0 ? 'In Stock' : 'No Stock';
 

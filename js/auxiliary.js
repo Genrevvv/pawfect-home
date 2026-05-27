@@ -37,3 +37,10 @@ export function toTitleCase(str) {
 export function truncateString(str, len) {
     return str.length > len ? str.slice(0, len) + '...' : str;
 }
+
+export function formatNumber(price) {
+    return Number(price).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}

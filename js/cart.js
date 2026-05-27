@@ -1,4 +1,4 @@
-import { displayMessage, truncateString, updateContent } from "./auxiliary.js";
+import { displayMessage, formatNumber, truncateString, updateContent } from "./auxiliary.js";
 import { checkOutScript } from "./checkout.js";
 import { logIn } from "./header-bar.js";
 import { cartItems } from "./init.js";
@@ -38,7 +38,7 @@ export function cartScript() {
                     </div>
                 </div>
             </div>
-            <div class="cart-item-price">₱${product.price}</div>
+            <div class="cart-item-price">₱${formatNumber(product.price)}</div>
         `;
 
         cartBody.append(cartItem);
@@ -174,8 +174,8 @@ export function updateTotalPrice() {
         total += item.price * item.quantity;
     }
 
-    totalPrice.innerHTML = `₱${total}`;
-
+    totalPrice.innerHTML = `₱${formatNumber(total)}`;
+    
     return total;
 }
 
