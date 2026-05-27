@@ -45,3 +45,56 @@ body {
     background-color: #b8860b;
     border-color: #b8860b;
 }
+
+@media (max-width: 900px) {
+    .error-container {
+        padding: 1rem;
+    }
+
+    .error-message {
+        gap: 15px;
+    }
+
+    .error-message h1 {
+        font-size: 1.6rem;
+    }
+
+    .error-message p {
+        font-size: 0.95rem;
+    }
+
+    #return-button {
+        padding: 9px 18px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .error-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+
+    .error-message {
+        align-items: center;
+        gap: 12px;
+    }
+
+    .error-message h1 {
+        font-size: 1.4rem;
+    }
+
+    .error-message p {
+        font-size: 0.85rem;
+    }
+
+    #return-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}

@@ -67,3 +67,53 @@
 #delete-account-no:hover {
     background-color: #D8C3A8;
 }
+
+@media (max-width: 900px) {
+    #delete-account-container {
+        max-width: 24rem;
+        padding: 1.5rem;
+        gap: 1.2rem;
+    }
+
+    #delete-account-container img {
+        width: 13rem;
+        height: 13rem;
+    }
+
+    #delete-account-container span {
+        font-size: 1rem;
+    }
+
+    #delete-account-container button {
+        min-width: 7rem;
+        padding: 0.75rem 0.9rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #delete-account-container {
+        max-width: 22rem;
+        padding: 1.2rem;
+        gap: 1rem;
+    }
+
+    #delete-account-container img {
+        width: 11rem;
+        height: 11rem;
+    }
+
+    #delete-account-container span {
+        font-size: 0.9rem;
+    }
+
+    #delete-account-container button {
+        min-width: 6.5rem;
+        padding: 0.7rem 0.85rem;
+        font-size: 0.85rem;
+    }
+
+    #delete-account-container div {
+        gap: 0.7rem;
+    }
+}
