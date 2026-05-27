@@ -14,7 +14,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 
-padding: 0.8rem 1.2rem;
+padding: 0rem 1.2rem;
 
 box-shadow: 0 2px 8px rgba(196, 155, 102, 0.5);
 
@@ -195,13 +195,6 @@ gap: 1rem;
 
 
 @media (max-width: 900px) {
-
-    #header-bar {
-        flex-direction: column;
-        justify-content: center;
-        padding: 1rem;
-    }
-
     #logo img {
         height: 4.2rem;
     }
@@ -209,11 +202,6 @@ gap: 1rem;
     #header-options {
         width: 100%;
         font-size: 1rem;
-    }
-
-    #header-options ul {
-        justify-content: center;
-        gap: 1rem;
     }
 
     .auth-btn,
@@ -269,6 +257,7 @@ gap: 1rem;
 
     #admin-page {
         position: absolute;
+        right: 7rem;
         bottom: 0.4rem;
     }
 
