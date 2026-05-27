@@ -185,21 +185,20 @@
 
     .container-1 .product-name,
     .container-1 .pet-name {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .container-1 .product-description,
     .container-1 .pet-description {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .container-2 .price {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
     }
 
     .container-2 .add-to-cart {
-        padding: 0.25rem 0.45rem;
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 }
 
@@ -249,24 +248,19 @@
 
     .container-1 .product-name,
     .container-1 .pet-name {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 
     .container-1 .product-description,
     .container-1 .pet-description {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
 
     .container-2 .price {
-        font-size: 0.85rem;
-    }
-
-    .container-2 .add-to-cart {
-        padding: 0.2rem 0.4rem;
         font-size: 0.75rem;
     }
 
-    .card:hover {
-        transform: scale(1.03);
+    .container-2 .add-to-cart {
+        font-size: 0.65rem;
     }
-}   
+}
