@@ -1,13 +1,10 @@
 #nav-bar {
-    /* width: 70%; */
     background-color: var(--muted-bronze);
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    /* margin: 0 auto; */
     padding-bottom: 1rem;
-    /* border-radius: 3rem; */
 
     position: sticky;
     z-index: 100;
@@ -15,22 +12,26 @@
 
     box-shadow:
         0 -3px 6px rgba(0, 0, 0, 0.05),
-        0 3px 6px rgba(0, 0, 0, 0.05); 
-     
+        0 3px 6px rgba(0, 0, 0, 0.05);
+
     user-select: none;
 }
+
+/* SEARCH BAR */
 
 #search-bar {
     background-color: var(--white);
     width: 50%;
+
     display: flex;
+    align-items: center;
     gap: 0.5rem;
 
     padding: 0.4rem 0.6rem;
 
     border-radius: 4rem;
     border: 0.2rem solid var(--dark-charcoal);
-    
+
     overflow: hidden;
     position: relative;
     top: -3svh;
@@ -38,6 +39,13 @@
 
 #search-bar input {
     border: none;
+    background: transparent;
+}
+
+#search-input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    min-width: 0;
 }
 
 #search-input::placeholder {
@@ -51,23 +59,28 @@
 
 #search-bar button {
     background-color: var(--warm-honey);
-    padding: 0.2rem 0.7rem;
+    padding: 0.45rem 0.8rem;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 #search-bar button i {
     color: var(--deep-bronze);
 }
 
-#search-input {
-    flex: 1;
-    padding: 0.5rem 1rem;
-}
+/* NAV OPTIONS */
 
 #nav-options {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 #nav-options .nav-option {
@@ -76,22 +89,22 @@
     width: 9rem;
     height: 5rem;
 
-    margin: 0 1rem;
     padding-top: 0.5rem;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* NOT center */
+    justify-content: flex-start;
     align-items: center;
-    overflow: hidden;
 
+    overflow: hidden;
 
     border-radius: 1rem;
     border: 0.1rem solid var(--dark-charcoal);
 
     transition:
         height 0.15s ease,
-        background-color 0.2s ease;
+        background-color 0.2s ease,
+        transform 0.2s ease;
 
     flex-shrink: 0;
 
@@ -99,19 +112,86 @@
     font-weight: 800;
 }
 
-#adopt-pet img,
-#pet-houses img, 
-#pet-gadgets img, 
-#pet-foods img {
-    height: 3.5rem;
-    width: 3.5rem;
-}
-
 #nav-options .nav-option:hover {
     background-color: var(--ivory-eggshell);
     cursor: pointer;
+    transform: translateY(-2px);
 }
 
 #nav-options .highlighted {
     background-color: var(--ivory-eggshell);
+}
+
+/* ICON IMAGES */
+
+#adopt-pet img,
+#pet-houses img,
+#pet-gadgets img,
+#pet-foods img {
+    height: 3.5rem;
+    width: 3.5rem;
+    object-fit: contain;
+}
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+    #nav-bar {
+        top: 10svh;
+        padding-bottom: 0.8rem;
+    }
+
+    #search-bar {
+        width: 75%;
+    }
+
+    #nav-options {
+        gap: 0.8rem;
+    }
+
+    #nav-options .nav-option {
+        width: 7.5rem;
+        height: 4.7rem;
+        font-size: 0.9rem;
+    }
+
+    #adopt-pet img,
+    #pet-houses img,
+    #pet-gadgets img,
+    #pet-foods img {
+        height: 3rem;
+        width: 3rem;
+    }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+    #nav-options {
+        gap: 0.45rem;
+    }
+
+    #nav-options .nav-option {
+        width: 5.3rem;
+        height: 3.7rem;
+
+        font-size: 0.65rem;
+        padding-top: 0.35rem;
+
+        border-radius: 0.7rem;
+    }
+
+    #adopt-pet img,
+    #pet-houses img,
+    #pet-gadgets img,
+    #pet-foods img {
+        height: 1.9rem;
+        width: 1.9rem;
+    }
 }
