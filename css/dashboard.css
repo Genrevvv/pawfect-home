@@ -1,7 +1,8 @@
 #dashboard {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    padding: 1rem;
 }
 
 #dashboard .overview-header {
@@ -9,56 +10,97 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-bottom: 1rem;
 }
 
+/* Overview Container - Responsive */
 #overview-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-#overview-container {
-    display: flex;   
-    gap: 1rem;
-}
-
+/* Main Content Area */
 #overview-main {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; 
+    gap: 1rem;
 }
 
+/* Top Section - 3 cards */
 #main-top {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
 }
 
 #main-top div {
     background-color: #fff;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 1rem;
-    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Product Details */
 .product-details {
     display: flex;
     flex-direction: column;
+    gap: 0.75rem;
 }
 
+/* Order Log */
 #order-log select {
-    padding: 0.2rem 0.3rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 1rem;
+    width: 100%;
+    max-width: 100%;
 }
 
+/* Top Products */
 .top-products {
     background-color: #fff;
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 1rem;
-    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .top-products ol {
     margin: 0;
     padding: 0 1.2rem;
+}
+
+/* ===================== RESPONSIVE IMPROVEMENTS ===================== */
+
+@media (min-width: 768px) {
+    #overview-container {
+        flex-direction: row;
+    }
+    
+    #dashboard {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #main-top {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .top-products {
+        flex: 1;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    #dashboard {
+        padding: 0.75rem;
+        gap: 1rem;
+    }
+    
+    #main-top div,
+    .top-products {
+        padding: 1rem;
+    }
 }
