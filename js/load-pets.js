@@ -77,5 +77,16 @@ export function loadPets() {
             products.forEach(p => p.style.display = p.classList.contains('dog') ? '' : 'none');
             filters.forEach(f => f.classList.toggle('highlighted', f.id === 'dogs-btn'));
         };
+
+        switch (petFilter) {
+            case 'dog':
+                dogBtn.click();
+                break;
+            case 'cat': 
+                catBtn.click();
+                break;
+            default:
+                break;
+        }
     }
 }
