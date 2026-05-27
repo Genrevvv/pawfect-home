@@ -36,7 +36,10 @@ export function productManagementScript() {
         })
         .then(res => res.json())
         .then(data => {
-            if (data.error) return displayMessage(data.error);
+            if (data.error) {
+                displayMessage(data.error);
+                return;
+            }
 
             displayMessage('Product was added successfully');
             addProductElement(data.product_data);

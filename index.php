@@ -186,7 +186,7 @@
 
         $product_validation = isValidProduct($product_data);
         if (!$product_validation['valid']) {
-            echo json_encode(['error' => $product_validation['valid']]);
+            echo json_encode(['error' => $product_validation['error']]);
             exit();
         }
 
