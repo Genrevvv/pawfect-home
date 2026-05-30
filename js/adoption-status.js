@@ -47,7 +47,7 @@ function displayAdoptionLogs(applications) {
     
                 const cancelBtn = document.createElement('button');
                 cancelBtn.classList.add('cancel-btn');
-                cancelBtn.innerHTML = 'Cancel Order';
+                cancelBtn.innerHTML = 'Cancel request';
     
                 lastColumn.append(cancelBtn);
     
@@ -97,7 +97,8 @@ function displayAdoptionLogs(applications) {
 
         const petTableBody = tableRow.querySelector('.pet-table-body');
         const status = tableRow.querySelector('.status');
-
+        status.classList.add(adoptionApplication.status);
+        
         switch (adoptionApplication.status) {
             case 'approved':
                 status.classList.add('approved');
@@ -105,7 +106,7 @@ function displayAdoptionLogs(applications) {
             case 'cancelled':
                 status.classList.add('rejected');
             default:
-                status.classList.add('pending');
+                status.classList.add(adoptionApplication.status);
         }
 
         pets.forEach(pet => {
