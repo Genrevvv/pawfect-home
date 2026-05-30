@@ -55,7 +55,7 @@ Website ata
 9. About us
 10. Search bar ✅
 11. Script that automates adding pets and products ✅
-12. Responsive design
+12. Responsive design ✅
 13. Gusto ko na magbakasyon
 
 ### Requirements:
